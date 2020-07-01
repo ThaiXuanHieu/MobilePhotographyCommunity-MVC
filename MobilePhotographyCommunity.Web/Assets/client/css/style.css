@@ -182,7 +182,8 @@ body {
     display: none;
 }
 
-.upload-image i, label {
+.upload-image i,
+label {
     cursor: pointer;
 }
 
@@ -446,13 +447,14 @@ body {
 
 .user-info .user-name {
     position: relative;
+    font-size: 30px;
 }
 
-.user-info .is-admin {
-    position: absolute;
-    top: 5px;
-    left: 90px;
-}
+    .user-info .user-name i {
+        color: blue;
+        margin-left: 15px;
+    }
+
 
 .user-info .status-friend {
     padding-top: 15px;
@@ -481,8 +483,8 @@ body {
 
 .update-profile {
     position: absolute;
-    right: 110px;
-    top: 20px;
+    right: 0px;
+    top: 10px;
     cursor: pointer;
 }
 
