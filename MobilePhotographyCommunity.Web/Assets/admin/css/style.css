@@ -1,0 +1,180 @@
+body {
+    background-color: #E9EBEE;
+    font-family: sans-serif;
+}
+
+table thead {
+    background-color: #337ab7;
+    color: white;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+#header {
+    height: 55px;
+}
+
+    #header .search-box,
+    .my-box {
+        padding-top: 10px;
+    }
+
+        .my-box .f-right {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            float: right;
+        }
+
+.user-avt {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.my-box .f-right .mr-l-30 {
+    position: relative;
+    margin-left: 30px;
+    text-decoration: none;
+}
+
+.my-box .f-right i {
+    color: black;
+}
+
+.f-right .mr-l-30 span {
+    position: absolute;
+    top: -7px;
+}
+
+.header-box {
+    padding-left: 20px;
+}
+
+.notification-box .d-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.notification-content {
+    padding: 5px 10px;
+    margin-right: 20px;
+    width: 247px;
+}
+
+.notifiedby-img img {
+    object-fit: cover;
+}
+
+.col-left, .col-main {
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.pd-15px {
+    padding: 15px 0px;
+}
+
+.vertical-menu {
+    width: 230px;
+    display: block;
+    margin: 0 auto;
+}
+
+    .vertical-menu a {
+        display: block;
+        background-color: #337ab7;
+        color: white;
+        border-radius: 5px;
+        font-size: 17px;
+        padding: 10px 0px;
+        text-decoration: none;
+        border-bottom: 1px solid white;
+        padding-left: 10px;
+    }
+
+        .vertical-menu a:hover {
+            color: #E9EBEE;
+        }
+
+#challenge-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    #challenge-menu ul li a {
+        background-color: white;
+        color: #337ab7;
+    }
+
+    #challenge-menu ul li .icon-left {
+        width: 20px;
+        margin-right: 15px;
+    }
+
+    #challenge-menu ul li a:hover {
+        background-color: #337ab7;
+        color: white;
+    }
+
+.content-manage {
+    padding: 15px;
+}
+
+.title-content {
+    margin: 0;
+}
+
+.create-category-region, .create-challenge-region {
+    margin: 20px 0px;
+}
+
+.feature {
+    margin: 15px 0px;
+}
+
+    .feature .col-xs-4 {
+        padding: 0px;
+    }
+
+.content-manage .ov {
+    margin: 30px 35px 30px 35px;
+}
+
+
+.content-manage .ov-box {
+    width: 310px;
+    height: 150px;
+    margin: 0px 25px 25px 0px;
+    border-left: 4px solid #337ab7;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+}
+
+.ov-box .title-box {
+    color: #5a5c69;
+}
+
+footer {
+    width: 100%;
+    margin-top: 20px;
+    padding: 20px 0px;
+}
+
+    footer .copyright {
+        text-align: center;
+        font-size: 16px;
+    }
+
+@media only screen and (max-width: 600px) {
+
+    .logo-box {
+        display: none;
+    }
+
+    .search-box {
+        margin-right: 150px;
+    }
+}

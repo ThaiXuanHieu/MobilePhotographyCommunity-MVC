@@ -1,0 +1,99 @@
+﻿@model MobilePhotographyCommunity.Common.UserLoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/Assets/client/fonts/fontawesome-pro-5.11.2-web/css/all.min.css">
+    <link rel="stylesheet" href="~/Assets/client/css/style.css">
+    <title>Cộng đồng nhiếp ảnh di động</title>
+    <link rel="icon" href="~/Assets/client/img/page/icon.png" type="image/gif">
+</head>
+
+<body>
+    <div class="main">
+        <div class="d-flex">
+            <div class="box-left home-phone">
+                <img src="~/Assets/client/img/page/bphone-camera.png" alt="" width="100%">
+            </div>
+            <div class="box-right bg-white">
+                <div class="logo" style="text-align: center;">
+                    <img src="~/Assets/client/img/page/logo.png" alt="" style="width: 150px; height: 50px;">
+                </div>
+                <div class="form-signin">
+                    <h3>Đăng nhập</h3>
+                    <form action="/Account/LoginByCredentials" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <input type="text" name="UserName" id="txtUserName" placeholder="Tên đăng nhập"
+                                   class="form-control">
+                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="Password" id="txtPassword" placeholder="Mật khẩu" class="form-control">
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
+                            <a href="" class="forgotPassword" style="float: right;">Quên mật khẩu?</a>
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </form>
+                </div>
+                <hr>
+                <div class="form-signup">
+                    <h3>Tài khoản mới</h3>
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <input type="text" name="FirstName" id="txtFirstName" placeholder="Họ" class="form-control">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="LastName" id="txtLastName" placeholder="Tên" class="form-control">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="UserName" id="txtUserName" placeholder="Tên đăng nhập"
+                                   class="form-control">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="Password" id="txtPassword" placeholder="Mật khẩu" class="form-control">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="PasswordAgain" id="txtPasswordAgain" placeholder="Nhập lại mật khẩu"
+                                   class="form-control">
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-login">Đăng ký</button>
+                        </div>
+                    </form>
+                    <div class="policy">
+                        Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a target="_blank" href="#"
+                                                                      class="link">
+                            Điều
+                            khoản
+                        </a>, <a target="_blank" href="#" class="link">
+                            Chính sách bảo
+                            mật
+                        </a> của chúng tôi.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

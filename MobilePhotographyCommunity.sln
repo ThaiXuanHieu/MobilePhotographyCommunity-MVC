@@ -3,9 +3,62 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Web", "1. Web", "{ADBF5D83-9404-4CE3-AD95-B1923F7B5904}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Service", "2. Service", "{54FE1DA3-7085-4831-A4C0-0635B2363E1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Data", "3. Data", "{308BE81D-05AD-4D3E-9FD9-0CC8A2539070}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Common", "4. Common", "{EAF04599-E676-4EE1-8DC5-F558AA1A1C8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhotographyCommunity.Web", "MobilePhotographyCommunity.Web\MobilePhotographyCommunity.Web.csproj", "{A6CEBED8-38C5-4BEA-A338-4568235A111E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhotographyCommunity.Service", "MobilePhotographyCommunity.Service\MobilePhotographyCommunity.Service.csproj", "{8DF5E86C-C478-43CE-9125-3AB9F4190975}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhotographyCommunity.Data", "MobilePhotographyCommunity.Data\MobilePhotographyCommunity.Data.csproj", "{5FBC351A-BFAC-4D8F-B0BE-822FC079C842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhotographyCommunity.Common", "MobilePhotographyCommunity.Common\MobilePhotographyCommunity.Common.csproj", "{461EBAD5-621A-443C-9F08-D23512C425C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Test", "5. Test", "{A286DDE4-1F57-4EA2-853C-1790E19E08CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobilePhotographyCommunity.Test", "MobilePhotographyCommunity.Test\MobilePhotographyCommunity.Test.csproj", "{4977DFE8-4189-4EEE-911C-5A98529ABCD0}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6CEBED8-38C5-4BEA-A338-4568235A111E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6CEBED8-38C5-4BEA-A338-4568235A111E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6CEBED8-38C5-4BEA-A338-4568235A111E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6CEBED8-38C5-4BEA-A338-4568235A111E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF5E86C-C478-43CE-9125-3AB9F4190975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF5E86C-C478-43CE-9125-3AB9F4190975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF5E86C-C478-43CE-9125-3AB9F4190975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF5E86C-C478-43CE-9125-3AB9F4190975}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FBC351A-BFAC-4D8F-B0BE-822FC079C842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBC351A-BFAC-4D8F-B0BE-822FC079C842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBC351A-BFAC-4D8F-B0BE-822FC079C842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBC351A-BFAC-4D8F-B0BE-822FC079C842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{461EBAD5-621A-443C-9F08-D23512C425C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{461EBAD5-621A-443C-9F08-D23512C425C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{461EBAD5-621A-443C-9F08-D23512C425C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{461EBAD5-621A-443C-9F08-D23512C425C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4977DFE8-4189-4EEE-911C-5A98529ABCD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4977DFE8-4189-4EEE-911C-5A98529ABCD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4977DFE8-4189-4EEE-911C-5A98529ABCD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4977DFE8-4189-4EEE-911C-5A98529ABCD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A6CEBED8-38C5-4BEA-A338-4568235A111E} = {ADBF5D83-9404-4CE3-AD95-B1923F7B5904}
+		{8DF5E86C-C478-43CE-9125-3AB9F4190975} = {54FE1DA3-7085-4831-A4C0-0635B2363E1C}
+		{5FBC351A-BFAC-4D8F-B0BE-822FC079C842} = {308BE81D-05AD-4D3E-9FD9-0CC8A2539070}
+		{461EBAD5-621A-443C-9F08-D23512C425C1} = {EAF04599-E676-4EE1-8DC5-F558AA1A1C8B}
+		{4977DFE8-4189-4EEE-911C-5A98529ABCD0} = {A286DDE4-1F57-4EA2-853C-1790E19E08CD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC9DFA7F-45FB-4981-AF68-03DFAFC2C124}
