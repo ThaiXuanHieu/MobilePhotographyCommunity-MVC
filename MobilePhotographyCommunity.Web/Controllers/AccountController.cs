@@ -24,6 +24,9 @@ namespace MobilePhotographyCommunity.Web.Controllers
             return View();
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult LoginByCredentials(UserLoginModel model)
         {
             if(ModelState.IsValid)
