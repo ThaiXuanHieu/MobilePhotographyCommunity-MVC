@@ -11,6 +11,7 @@ namespace MobilePhotographyCommunity.Data.Repositories
     public interface IUserRepository : IRepository<User>
     {
         User GetUser(string username, string passwordHash);
+        bool CheckAccountExists(string username);
     }
 
     public class UserRepository : RepositoryBase<User>, IUserRepository
@@ -18,6 +19,14 @@ namespace MobilePhotographyCommunity.Data.Repositories
         public UserRepository(IDatabaseFactory databaseFactory) : base(databaseFactory)
         {
 
+        }
+
+        public bool CheckAccountExists(string username)
+        {
+            var user = Context.Users.Where(x => x.UserName.Equals(username)).FirstOrDefault();
+            if (user == null)
+                return true;
+            return false;
         }
 
         public User GetUser(string username, string passwordHash)

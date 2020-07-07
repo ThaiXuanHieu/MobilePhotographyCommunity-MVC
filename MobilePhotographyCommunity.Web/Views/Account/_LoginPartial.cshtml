@@ -1,0 +1,26 @@
+﻿@model MobilePhotographyCommunity.Common.UserLoginModel
+<div class="form-signin">
+    <h3>Đăng nhập</h3>
+    <form action="/Account/LoginByCredentials" method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <input type="text" name="UserName" id="txtUserName" placeholder="Tên đăng nhập"
+                   class="form-control">
+            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input type="password" name="Password" id="txtPassword" placeholder="Mật khẩu" class="form-control">
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
+            <a href="" class="forgotPassword" style="float: right;">Quên mật khẩu?</a>
+        </div>
+        @if (TempData["statusLogin"] != null && (bool)TempData["statusLogin"] == false)
+        {
+            <div class="text-danger">@TempData["messageLogin"]</div>
+        }
+    </form>
+</div>

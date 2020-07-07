@@ -34,11 +34,13 @@ namespace MobilePhotographyCommunity.Data.Infrastructure
         public virtual void Add(T entity)
         {
             dbSet.Add(entity);
+            context.SaveChanges();
         }
 
         public virtual void Delete(T entity)
         {
             dbSet.Remove(entity);
+            context.SaveChanges();
         }
 
         public virtual void Delete(Expression<Func<T, bool>> predicate)
@@ -48,6 +50,7 @@ namespace MobilePhotographyCommunity.Data.Infrastructure
             {
                 dbSet.Remove(entity);
             }
+            context.SaveChanges();
         }
 
         public virtual T Get(Expression<Func<T, bool>> predicate)
@@ -74,12 +77,14 @@ namespace MobilePhotographyCommunity.Data.Infrastructure
         {
             dbSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
+            context.SaveChanges();
         }
 
         public virtual void Delete(int id)
         {
             var entity = dbSet.Find(id);
             dbSet.Remove(entity);
+            context.SaveChanges();
         }
     }
 }

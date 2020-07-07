@@ -1,5 +1,4 @@
-﻿@model MobilePhotographyCommunity.Common.UserLoginModel
-@{
+﻿@{
     Layout = null;
 }
 
@@ -28,69 +27,9 @@
                 <div class="logo" style="text-align: center;">
                     <img src="~/Assets/client/img/page/logo.png" alt="" style="width: 150px; height: 50px;">
                 </div>
-                <div class="form-signin">
-                    <h3>Đăng nhập</h3>
-                    <form action="/Account/LoginByCredentials" method="post">
-                        @Html.AntiForgeryToken()
-                        <div class="form-group">
-                            <input type="text" name="UserName" id="txtUserName" placeholder="Tên đăng nhập"
-                                   class="form-control">
-                            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="Password" id="txtPassword" placeholder="Mật khẩu" class="form-control">
-                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-login">Đăng nhập</button>
-                            <a href="" class="forgotPassword" style="float: right;">Quên mật khẩu?</a>
-                        </div>
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    </form>
-                </div>
+                @Html.Partial("_LoginPartial")
                 <hr>
-                <div class="form-signup">
-                    <h3>Tài khoản mới</h3>
-                    <form action="" method="post">
-                        <div class="form-group">
-                            <input type="text" name="FirstName" id="txtFirstName" placeholder="Họ" class="form-control">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="LastName" id="txtLastName" placeholder="Tên" class="form-control">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="UserName" id="txtUserName" placeholder="Tên đăng nhập"
-                                   class="form-control">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="Password" id="txtPassword" placeholder="Mật khẩu" class="form-control">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="PasswordAgain" id="txtPasswordAgain" placeholder="Nhập lại mật khẩu"
-                                   class="form-control">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-login">Đăng ký</button>
-                        </div>
-                    </form>
-                    <div class="policy">
-                        Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a target="_blank" href="#"
-                                                                      class="link">
-                            Điều
-                            khoản
-                        </a>, <a target="_blank" href="#" class="link">
-                            Chính sách bảo
-                            mật
-                        </a> của chúng tôi.
-                    </div>
-                </div>
+                @Html.Partial("_SignupPartial")
             </div>
         </div>
     </div>

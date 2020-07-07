@@ -386,7 +386,7 @@ label {
     }
 
     .search-box {
-        margin-right: 150px;
+        margin-right: 120px;
     }
 
     .col-right,
@@ -508,15 +508,12 @@ label {
     margin-top: 20px;
 }
 
-    .tab-content .d-flex #center {
-        margin: 0 20px;
-    }
-
 .photo-box {
     position: relative;
     width: 300px;
     height: 300px;
     overflow: hidden;
+    margin: 0px 10px;
 }
 
     .photo-box a {

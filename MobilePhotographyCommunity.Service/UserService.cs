@@ -11,7 +11,9 @@ namespace MobilePhotographyCommunity.Service
 {
     public interface IUserService
     {
+        void Add(User model);
         User GetUser(string username, string passwordHash);
+        bool CheckAccountExists(string username);
     }
 
     public class UserService : IUserService
@@ -23,6 +25,17 @@ namespace MobilePhotographyCommunity.Service
         {
             this.userRepository = userRepository;
             this.unitOfWork = unitOfWork;
+        }
+
+        public void Add(User user)
+        {
+            userRepository.Add(user);
+            unitOfWork.Commit();
+        }
+
+        public bool CheckAccountExists(string username)
+        {
+            return userRepository.CheckAccountExists(username);
         }
 
         public User GetUser(string username, string passwordHash)

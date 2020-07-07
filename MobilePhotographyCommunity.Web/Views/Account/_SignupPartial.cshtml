@@ -1,0 +1,52 @@
+﻿@model MobilePhotographyCommunity.Common.UserSignupModel
+<div class="form-signup">
+    <h3>Tài khoản mới</h3>
+    <form action="/Account/Signup" method="post">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <input type="text" name="FirstName" id="txtFirstName" placeholder="Họ" class="form-control">
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="LastName" id="txtLastName" placeholder="Tên" class="form-control">
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input type="text" name="UserName_S" id="txtUserName" placeholder="Tên đăng nhập"
+                   class="form-control">
+            @Html.ValidationMessageFor(m => m.UserName_S, "", new { @class = "text-danger" })
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input type="password" name="Password_S" id="txtPassword" placeholder="Mật khẩu" class="form-control">
+            @Html.ValidationMessageFor(m => m.Password_S, "", new { @class = "text-danger" })
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <input type="password" name="ConfirmPassword" id="txtPasswordAgain" placeholder="Nhập lại mật khẩu"
+                   class="form-control">
+            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-login">Đăng ký</button>
+        </div>
+        @if (TempData["statusSignup"] != null && (bool)TempData["statusSignup"] == false)
+        {
+            <div class="text-danger">@TempData["messageSignup"]</div>
+        }
+
+    </form>
+    <div class="policy">
+        Bằng cách nhấp vào Đăng ký, bạn đồng ý với <a target="_blank" href="#"
+                                                      class="link">
+            Điều
+            khoản
+        </a>, <a target="_blank" href="#" class="link">
+            Chính sách bảo
+            mật
+        </a> của chúng tôi.
+    </div>
+</div>

@@ -15,8 +15,8 @@
     <header id="header" class="bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-xs-4">
-                    <div class="logo jumbToHome" style="padding-top: 3px;">
+                <div class="col-xs-4 logo-box">
+                    <div class="logo jumpToHome" style="padding-top: 3px;">
                         <a href="index.html">
                             <img src="~/Assets/client/img/page/logo.png" alt="">
                         </a>
@@ -27,9 +27,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Tìm kiếm" id="txtSearch" name="search">
                             <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit">
-                                    <i class="fal fa-search"></i>
-                                </button>
+                                <button class="btn btn-default" type="submit"><i class="fal fa-search"></i></button>
                             </div>
                         </div>
                     </form>
@@ -45,12 +43,12 @@
                                  style="width: 40px; height: 40px;" alt="">
                         </a>
                         <a class="mr-l-30" href="">
-                            <i class="fal fa-user-friends fa-lg"></i><sup style="color: red;">2</sup>
+                            <i class="fal fa-user-friends fa-lg"></i><span style="color: red;">2</span>
                         </a>
 
                         <div class="notification">
                             <a class="mr-l-30" href="#" id="notification-dropdown" data-toggle="dropdown">
-                                <i class="fal fa-bell fa-lg"></i><sup style="color: red;">3</sup>
+                                <i class="fal fa-bell fa-lg"></i><span style="color: red;">3</span>
                             </a>
 
                             <!-- Open Notification -->
@@ -130,7 +128,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#"><i class="fal fa-comment-alt-edit"></i> Phản hồi</a></li>
                                 <li class="divider"></li>
-                                <li><a href="login.html"><i class="fal fa-sign-out-alt"></i> Đăng xuất</a></li>
+                                <li><a href="/Account/Logout"><i class="fal fa-sign-out-alt"></i> Đăng xuất</a></li>
                             </ul>
                             <!-- End Option -->
                         </div>

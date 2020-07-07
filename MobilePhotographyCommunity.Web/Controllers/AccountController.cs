@@ -34,7 +34,8 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 User user = userService.GetUser(model.UserName, PasswordHashMD5.MD5Hash(model.Password));
                 if(user == null)
                 {
-                    ModelState.AddModelError("", "Tài khoản không tồn tại. Vui lòng kiểm tra lại.");
+                    TempData["statusLogin"] = false;
+                    TempData["messageLogin"] = "Tài khoản không tồn tại. Vui lòng kiểm tra lại.";
                 }
                 else
                 {
@@ -44,6 +45,55 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 }
             }
             return View("Index");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Signup(UserSignupModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var check = userService.CheckAccountExists(model.UserName_S);
+                if(check)
+                {
+                    User user = new User();
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.UserName = model.UserName_S;
+                    user.PasswordHash = PasswordHashMD5.MD5Hash(model.Password_S);
+                    user.Gender = true;
+                    user.Avatar = "AvatarDefault-Male.png";
+                    userService.Add(user);
+
+                    Session["UserId"] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).UserId;
+                    Session["FullName"] = model.FirstName + " " + model.LastName;
+                    return Redirect("/Home/Index");
+                }
+                else
+                {
+                    TempData["statusSignup"] = false;
+                    TempData["messageSignup"] = "Tên đăng nhập đã tồn tại.Vui lòng kiểm tra lại.";
+                }
+            }
+            return View("Index");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult LoginPartial()
+        {
+            return PartialView("_LoginPartial");
+        }
+        [ChildActionOnly]
+        public PartialViewResult SignupPartial()
+        {
+            return PartialView("_SignupPartial");
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "Account");
         }
     }
 }
