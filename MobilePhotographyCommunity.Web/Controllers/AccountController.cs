@@ -41,6 +41,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 {
                     Session["UserId"] = user.UserId;
                     Session["FullName"] = user.FirstName + " " + user.LastName;
+                    Session["Avatar"] = user.Avatar;
                     return Redirect("/Home/Index");
                 }
             }
@@ -68,6 +69,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
 
                     Session["UserId"] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).UserId;
                     Session["FullName"] = model.FirstName + " " + model.LastName;
+                    Session["Avatar"] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).Avatar;
                     return Redirect("/Home/Index");
                 }
                 else
@@ -88,6 +90,11 @@ namespace MobilePhotographyCommunity.Web.Controllers
         public PartialViewResult SignupPartial()
         {
             return PartialView("_SignupPartial");
+        }
+
+        public ActionResult UserProfile()
+        {
+            return View();
         }
 
         public ActionResult Logout()
