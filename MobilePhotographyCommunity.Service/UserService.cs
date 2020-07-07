@@ -13,6 +13,7 @@ namespace MobilePhotographyCommunity.Service
     {
         void Add(User model);
         User GetUser(string username, string passwordHash);
+        User GetById(int id);
         bool CheckAccountExists(string username);
     }
 
@@ -36,6 +37,11 @@ namespace MobilePhotographyCommunity.Service
         public bool CheckAccountExists(string username)
         {
             return userRepository.CheckAccountExists(username);
+        }
+
+        public User GetById(int id)
+        {
+            return userRepository.GetById(id);
         }
 
         public User GetUser(string username, string passwordHash)

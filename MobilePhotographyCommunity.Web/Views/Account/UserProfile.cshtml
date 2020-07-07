@@ -1,0 +1,244 @@
+﻿@model MobilePhotographyCommunity.Data.DomainModel.User
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="profile">
+    <div class="container">
+        <div class="row user">
+            <div class="col-xs-4 avt-box">
+                <div class="bg-white center">
+                    <a href="#">
+                        <img src="~/UploadImage/Avatar/@Model.Avatar" alt="" id="avatar">
+                    </a>
+                </div>
+                <div>
+                    <div class="upload-avatar" title="Tải ảnh lên">
+                        <label for="icon-input">
+                            <i class="fas fa-camera fa-lg"></i>
+                        </label>
+                        <input id="icon-input" type="file" name="file" accept=".jpg, .png, *.jpeg"
+                               onchange="uploadAvatar(this)" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-8 detail-info">
+                <div class="user-info">
+                    <div class="user-name">
+                        <span>@Model.FirstName @Model.LastName</span>
+                        <span class="is-admin"><i class="fal fa-check-circle"></i></span>
+                    </div>
+                    <div class="status-friend">
+                        <a href="#" class="btn btn-default"><i class="fal fa-user-plus"></i> Kết bạn</a>
+                        <a href="#" class="btn btn-default">
+                            <i class="fal fa-sign-out-alt"></i> Đã gửi lời mời kết
+                            bạn
+                        </a>
+                        <a href="#" class="btn btn-default"><i class="fal fa-check"></i> Bạn bè</a>
+                        <a href="#" class="btn btn-default"><i class="fal fa-signal"></i> Theo dõi</a>
+                        <a href="#" class="btn btn-default" style="display:none"><i class="fal fa-check"></i> Đang theo dõi</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h4>Ngày sinh: @Convert.ToDateTime(Model.DateOfBirth).ToString("dd/MM/yyyy")</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4>Số điện thoại: @Model.PhoneNumber</h4>
+                        </div>
+                        <div class="col-sm-4">
+                            @if (Model.Gender == true)
+                            {
+                                <h4>Giới tính: Nam</h4>
+                            }
+                            else
+                            {
+                                <h4>Giới tính: Nữ</h4>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="other-info">
+                    <ul>
+                        <a href="">
+                            <li><span><strong>299</strong></span> bài viết</li>
+                        </a>
+                        <a href="">
+                            <li><span><strong>145</strong></span> bạn bè</li>
+                        </a>
+                        <a href="">
+                            <li>Đang theo dõi <span><strong>987</strong></span> người dùng</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="update-profile" title="Cập nhật trang cá nhân">
+                    <a href="#" style="color: black;"><i class="fal fa-edit fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="photo-gallery">
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a data-toggle="tab" href="#grid-photo-user">Ảnh của An Pon</a></li>
+                <li><a data-toggle="tab" href="#photo-challenge">Ảnh thử thách</a></li>
+                <li><a data-toggle="tab" href="#album">Allbum</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="grid-photo-user" class="tab-pane fade in active">
+                    <div class="d-flex">
+                        <div class="">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/chuonchuon.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="center">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/black&white.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/hoacuc.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/giotnuoc-hoahong.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="center">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/contrau.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/hoamai.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="photo-challenge" class="tab-pane fade">
+                    <div class="d-flex">
+                        <div class="">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/chuonchuon-new.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="center">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/ongmat.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/nhahoca.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/baibien.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="center">
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/cuabien.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="photo-box">
+                                <a href="#">
+                                    <img class="photo-user" src="~/Assets/client/img/post-img/hatmua.jpg" alt="">
+                                    <div class="middle">
+                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
+                                        <span><i class="fal fa-comment-alt"></i> 50</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="album" class="tab-pane fade">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/Assets/client/js/main.js"></script>
+}

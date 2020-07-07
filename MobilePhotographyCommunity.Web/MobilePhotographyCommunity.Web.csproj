@@ -14997,6 +14997,7 @@
     <Content Include="Assets\client\img\post-img\tambiakinh.jpg" />
     <Content Include="Assets\client\img\post-img\vietnam-giotnuoc.jpg" />
     <Content Include="Assets\client\img\user\anpon.jpg" />
+    <Content Include="Assets\client\img\user\duongtang.jpg" />
     <Content Include="Assets\client\img\user\hieuxt.png" />
     <Content Include="Assets\client\img\user\satang.jpg" />
     <Content Include="Assets\client\img\user\tonngokhong.jpg" />
@@ -15156,6 +15157,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="UploadImage\Avatar\AvatarDefault-Female.png" />
     <Content Include="UploadImage\Avatar\AvatarDefault-Male.png" />
+    <Content Include="UploadImage\Avatar\duongtang.jpg" />
     <Content Include="UploadImage\Avatar\thaixuanhieu.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -15172,6 +15174,7 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\_LoginPartial.cshtml" />
     <Content Include="Views\Account\_SignupPartial.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

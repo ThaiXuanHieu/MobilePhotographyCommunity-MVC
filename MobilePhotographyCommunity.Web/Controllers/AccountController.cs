@@ -63,6 +63,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
                     user.LastName = model.LastName;
                     user.UserName = model.UserName_S;
                     user.PasswordHash = PasswordHashMD5.MD5Hash(model.Password_S);
+                    user.DateOfBirth = DateTime.Now;
                     user.Gender = true;
                     user.Avatar = "AvatarDefault-Male.png";
                     userService.Add(user);
@@ -92,9 +93,10 @@ namespace MobilePhotographyCommunity.Web.Controllers
             return PartialView("_SignupPartial");
         }
 
-        public ActionResult UserProfile()
+        public ActionResult UserProfile(int id)
         {
-            return View();
+            var user = userService.GetById(id);
+            return View(user);
         }
 
         public ActionResult Logout()

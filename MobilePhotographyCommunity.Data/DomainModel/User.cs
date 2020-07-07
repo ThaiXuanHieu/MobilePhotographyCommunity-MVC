@@ -34,6 +34,8 @@ namespace MobilePhotographyCommunity.Data.DomainModel
 
         public DateTime? DateOfBirth { get; set; }
 
+        public string PhoneNumber { get; set; }
+
         public string Avatar { get; set; }
 
         public DateTime? LastLogin { get; set; }
