@@ -187,6 +187,11 @@ label {
     cursor: pointer;
 }
 
+.btn-up {
+    margin: 10px 15px;
+    width: 510px;
+}
+
 .region-img-preview {
     position: relative;
     width: 100px;
@@ -396,6 +401,10 @@ label {
 
     .col-center {
         left: 0;
+    }
+
+    .btn-up {
+        width: 395px;
     }
 }
 
