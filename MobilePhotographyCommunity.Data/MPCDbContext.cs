@@ -17,11 +17,11 @@ namespace MobilePhotographyCommunity.Data.DomainModel
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Device> Devices { get; set; }
         public virtual DbSet<FriendRelationship> FriendRelationships { get; set; }
-        public virtual DbSet<FriendStatu> FriendStatus { get; set; }
         public virtual DbSet<JoinChallenge> JoinChallenges { get; set; }
         public virtual DbSet<Like> Likes { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<StatusFriend> StatusFriends { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
 
@@ -37,11 +37,6 @@ namespace MobilePhotographyCommunity.Data.DomainModel
                 .WithOptional(e => e.Challenge)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<FriendStatu>()
-                .HasMany(e => e.FriendRelationships)
-                .WithOptional(e => e.FriendStatu)
-                .WillCascadeOnDelete();
-
             modelBuilder.Entity<Post>()
                 .HasMany(e => e.Comments)
                 .WithOptional(e => e.Post)
@@ -55,6 +50,11 @@ namespace MobilePhotographyCommunity.Data.DomainModel
             modelBuilder.Entity<Role>()
                 .HasMany(e => e.UserRoles)
                 .WithOptional(e => e.Role)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<StatusFriend>()
+                .HasMany(e => e.FriendRelationships)
+                .WithOptional(e => e.StatusFriend)
                 .WillCascadeOnDelete();
 
             modelBuilder.Entity<User>()

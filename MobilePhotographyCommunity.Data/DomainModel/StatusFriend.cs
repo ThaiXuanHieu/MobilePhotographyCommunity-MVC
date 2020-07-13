@@ -6,10 +6,11 @@ namespace MobilePhotographyCommunity.Data.DomainModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class FriendStatu
+    [Table("StatusFriend")]
+    public partial class StatusFriend
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FriendStatu()
+        public StatusFriend()
         {
             FriendRelationships = new HashSet<FriendRelationship>();
         }

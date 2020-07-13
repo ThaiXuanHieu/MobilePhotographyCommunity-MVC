@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MobilePhotographyCommunity.Data.ViewModel.PostCategoryViewModel>
+<div class="category-box bg-white" style="display: block;">
+    <h4 class="title-box">Chủ đề</h4>
+    <div class="category">
+        @foreach (var item in Model)
+        {
+            <a href="/Category/Detail/@item.CategoryId" type="button" class="btn btn-primary">
+                @item.CategoryName <span class="badge">@item.Posts.Count()</span>
+            </a>
+        }
+
+        @*<a href="category.html" type="button" class="btn btn-primary">
+            Macro <span class="badge">35</span>
+        </a>
+        <a href="category.html" type="button" class="btn btn-primary">
+            Black & White <span class="badge">14</span>
+        </a>
+        <a href="category.html" type="button" class="btn btn-primary">
+            Lowkey <span class="badge">22</span>
+        </a>
+        <a href="category.html" type="button" class="btn btn-primary">
+            Phong cảnh <span class="badge">10</span>
+        </a>
+        <a href="category.html" type="button" class="btn btn-primary">
+            Mẫu ảnh <span class="badge">26</span>
+        </a>
+        <a href="category.html" type="button" class="btn btn-primary">
+            Bokeh <span class="badge">34</span>
+        </a>
+        <a href="category.html" type="button" class="btn btn-primary">
+            Ẩm thực <span class="badge">100</span>
+        </a>
+        *@
+        <a href="category.html" type="button" title="Xem thêm" class="btn btn-primary">
+            <i class="fal fa-ellipsis-h fa-lg"></i>
+        </a>
+    </div>
+</div>

@@ -82,16 +82,16 @@ namespace MobilePhotographyCommunity.Web.Controllers
             return View("Index");
         }
 
-        [ChildActionOnly]
-        public PartialViewResult LoginPartial()
-        {
-            return PartialView("_LoginPartial");
-        }
-        [ChildActionOnly]
-        public PartialViewResult SignupPartial()
-        {
-            return PartialView("_SignupPartial");
-        }
+        //[ChildActionOnly]
+        //public PartialViewResult LoginPartial()
+        //{
+        //    return PartialView("_LoginPartial");
+        //}
+        //[ChildActionOnly]
+        //public PartialViewResult SignupPartial()
+        //{
+        //    return PartialView("_SignupPartial");
+        //}
 
         public ActionResult UserProfile(int id)
         {

@@ -34,13 +34,14 @@ namespace MobilePhotographyCommunity.Data.DomainModel
 
         public DateTime? DateOfBirth { get; set; }
 
-        public string PhoneNumber { get; set; }
-
         public string Avatar { get; set; }
 
         public DateTime? LastLogin { get; set; }
 
         public bool? IsLocked { get; set; }
+
+        [StringLength(50)]
+        public string PhoneNumber { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FriendRelationship> FriendRelationships { get; set; }

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MobilePhotographyCommunity.Data.DomainModel.Challenge>
+
+<div class="challenge-box bg-white">
+    <h4 class="title-box">Thử thách</h4>
+    <table class="table">
+        <tbody>
+            @foreach (var item in Model)
+            {
+                //var status = item.StartDate;
+                <tr>
+                    <td>
+                        <a href="">@item.ChallengeName</a>
+                    </td>
+                    <td><a href=""><span class="label label-primary">Tham gia ngay</span></a></td>
+                </tr>
+            }
+            @*<tr>
+                    <td>
+                        <a href="">30 ngày cùng Dũng Lê Lần 2</a>
+                    </td>
+                    <td><a href=""><span class="label label-success">Đang diễn ra</span></a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="">14 ngày cùng Thiên nhiên</a>
+                    </td>
+                    <td><a href=""><span class="label label-warning">Sắp kết thúc</span></a></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="">30 ngày cùng Dũng Lê</a>
+                    </td>
+                    <td><a href=""><span class="label label-danger">Đã kết thúc</span></a></td>
+                </tr>*@
+            <tr style="text-align: center;">
+                <td colspan="2"><a class="view-more" href="">Xem thêm</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -20,7 +20,7 @@ namespace MobilePhotographyCommunity.Data.DomainModel
 
         public int? ActionUser { get; set; }
 
-        public virtual FriendStatu FriendStatu { get; set; }
+        public virtual StatusFriend StatusFriend { get; set; }
 
         public virtual User User { get; set; }
 

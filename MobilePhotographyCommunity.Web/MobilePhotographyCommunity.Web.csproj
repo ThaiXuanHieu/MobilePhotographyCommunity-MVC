@@ -148,7 +148,11 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ChallengeController.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -15158,7 +15162,15 @@
     <Content Include="UploadImage\Avatar\AvatarDefault-Female.png" />
     <Content Include="UploadImage\Avatar\AvatarDefault-Male.png" />
     <Content Include="UploadImage\Avatar\duongtang.jpg" />
+    <Content Include="UploadImage\Avatar\satang.jpg" />
     <Content Include="UploadImage\Avatar\thaixuanhieu.jpg" />
+    <Content Include="UploadImage\Avatar\tonngokhong.jpg" />
+    <Content Include="UploadImage\Avatar\trubatgioi.jpg" />
+    <Content Include="UploadImage\Photo\chanhduoinuoc.jpg" />
+    <Content Include="UploadImage\Photo\giotnuoc-vietnam.jpg" />
+    <Content Include="UploadImage\Photo\hoacuc.jpg" />
+    <Content Include="UploadImage\Photo\lycafe.jpg" />
+    <Content Include="UploadImage\Photo\tambiakinh.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -15175,11 +15187,16 @@
     <Content Include="Views\Account\_LoginPartial.cshtml" />
     <Content Include="Views\Account\_SignupPartial.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Challenge\_ChallengePartial.cshtml" />
+    <Content Include="Views\Category\_CategoryPartial.cshtml" />
+    <Content Include="Views\Friend\_HintFriendPartial.cshtml" />
+    <Content Include="Views\Friend\_ListFriendPartial.cshtml" />
+    <Content Include="Views\Category\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="UploadImage\Photo\" />
+    <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

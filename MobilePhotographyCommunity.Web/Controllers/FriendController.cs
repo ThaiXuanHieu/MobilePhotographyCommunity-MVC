@@ -1,5 +1,4 @@
-﻿using MobilePhotographyCommunity.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,19 +6,16 @@ using System.Web.Mvc;
 
 namespace MobilePhotographyCommunity.Web.Controllers
 {
-    public class HomeController : Controller
+    public class FriendController : Controller
     {
-        
-        public HomeController()
+        public FriendController()
         {
-            
-        }
 
+        }
+        // GET: Friend
         public ActionResult Index()
         {
             return View();
         }
-
-        
     }
 }

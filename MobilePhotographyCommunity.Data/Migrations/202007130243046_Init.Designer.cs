@@ -7,13 +7,13 @@ namespace MobilePhotographyCommunity.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class AddPhoneNumberToUser : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPhoneNumberToUser));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "202007070846412_AddPhoneNumberToUser"; }
+            get { return "202007130243046_Init"; }
         }
         
         string IMigrationMetadata.Source

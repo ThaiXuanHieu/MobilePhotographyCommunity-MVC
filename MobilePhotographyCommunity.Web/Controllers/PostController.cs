@@ -7,19 +7,18 @@ using System.Web.Mvc;
 
 namespace MobilePhotographyCommunity.Web.Controllers
 {
-    public class HomeController : Controller
+    public class PostController : Controller
     {
-        
-        public HomeController()
-        {
-            
-        }
+        private readonly IPostService postService;
 
+        public PostController(IPostService postService)
+        {
+            this.postService = postService;
+        }
+        // GET: Post
         public ActionResult Index()
         {
             return View();
         }
-
-        
     }
 }

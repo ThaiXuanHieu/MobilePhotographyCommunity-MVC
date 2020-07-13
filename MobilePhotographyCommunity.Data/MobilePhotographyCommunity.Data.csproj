@@ -58,17 +58,17 @@
     <Compile Include="DomainModel\Comment.cs" />
     <Compile Include="DomainModel\Device.cs" />
     <Compile Include="DomainModel\FriendRelationship.cs" />
-    <Compile Include="DomainModel\FriendStatu.cs" />
     <Compile Include="DomainModel\JoinChallenge.cs" />
     <Compile Include="DomainModel\Like.cs" />
-    <Compile Include="Migrations\202007070846412_AddPhoneNumberToUser.cs" />
-    <Compile Include="Migrations\202007070846412_AddPhoneNumberToUser.designer.cs">
-      <DependentUpon>202007070846412_AddPhoneNumberToUser.cs</DependentUpon>
+    <Compile Include="Migrations\202007130243046_Init.cs" />
+    <Compile Include="Migrations\202007130243046_Init.designer.cs">
+      <DependentUpon>202007130243046_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MPCDbContext.cs" />
     <Compile Include="DomainModel\Post.cs" />
     <Compile Include="DomainModel\Role.cs" />
+    <Compile Include="DomainModel\StatusFriend.cs" />
     <Compile Include="DomainModel\User.cs" />
     <Compile Include="DomainModel\UserRole.cs" />
     <Compile Include="Infrastructure\DatabaseFactory.cs" />
@@ -79,15 +79,19 @@
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
+    <Compile Include="Repositories\ChallengeRepository.cs" />
+    <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModel\PostCategoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007070846412_AddPhoneNumberToUser.resx">
-      <DependentUpon>202007070846412_AddPhoneNumberToUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007130243046_Init.resx">
+      <DependentUpon>202007130243046_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
