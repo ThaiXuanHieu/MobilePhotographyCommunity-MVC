@@ -58,6 +58,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 var check = userService.CheckAccountExists(model.UserName_S);
                 if(check)
                 {
+                    //var user = Mapper.Map<User>(model); if UserName not S then OK
                     User user = new User();
                     user.FirstName = model.FirstName;
                     user.LastName = model.LastName;

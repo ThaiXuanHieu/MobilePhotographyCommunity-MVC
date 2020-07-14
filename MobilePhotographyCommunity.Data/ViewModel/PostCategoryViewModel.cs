@@ -9,8 +9,9 @@ namespace MobilePhotographyCommunity.Data.ViewModel
 {
     public class PostCategoryViewModel
     {
-        public IEnumerable<Post> Posts { get; set; }
+        public IEnumerable<PostViewModel> Posts { get; set; }
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+        public IEnumerable<User> Users { get; set; }
     }
 }

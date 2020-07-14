@@ -15,6 +15,7 @@ namespace MobilePhotographyCommunity.Service
         User GetUser(string username, string passwordHash);
         User GetById(int id);
         bool CheckAccountExists(string username);
+        IEnumerable<User> GetAll();
     }
 
     public class UserService : IUserService
@@ -37,6 +38,11 @@ namespace MobilePhotographyCommunity.Service
         public bool CheckAccountExists(string username)
         {
             return userRepository.CheckAccountExists(username);
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            return userRepository.GetAll();
         }
 
         public User GetById(int id)

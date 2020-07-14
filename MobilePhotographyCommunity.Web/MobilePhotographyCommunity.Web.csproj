@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -147,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ChallengeController.cs" />
@@ -15166,11 +15170,17 @@
     <Content Include="UploadImage\Avatar\thaixuanhieu.jpg" />
     <Content Include="UploadImage\Avatar\tonngokhong.jpg" />
     <Content Include="UploadImage\Avatar\trubatgioi.jpg" />
+    <Content Include="UploadImage\Avatar\yuamikami.jpg" />
     <Content Include="UploadImage\Photo\chanhduoinuoc.jpg" />
+    <Content Include="UploadImage\Photo\duatrau.jpg" />
+    <Content Include="UploadImage\Photo\giotnuoc-malay.jpg" />
+    <Content Include="UploadImage\Photo\giotnuoc-thai.jpg" />
+    <Content Include="UploadImage\Photo\giotnuoc-uae.jpg" />
     <Content Include="UploadImage\Photo\giotnuoc-vietnam.jpg" />
     <Content Include="UploadImage\Photo\hoacuc.jpg" />
     <Content Include="UploadImage\Photo\lycafe.jpg" />
     <Content Include="UploadImage\Photo\tambiakinh.jpg" />
+    <Content Include="UploadImage\Photo\vudieubinhminh.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

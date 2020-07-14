@@ -22,6 +22,10 @@ namespace MobilePhotographyCommunity.Web
             container.RegisterType<IChallengeRepository, ChallengeRepository>();
             container.RegisterType<IPostService, PostService>();
             container.RegisterType<IPostRepository, PostRepository>();
+            container.RegisterType<ICommentService, CommentService>();
+            container.RegisterType<ICommentRepository, CommentRepository>();
+            container.RegisterType<ILikeService, LikeService>();
+            container.RegisterType<ILikeRepository, LikeRepository>();
             // register all your components with the container here
             // it is NOT necessary to register your controllers
 

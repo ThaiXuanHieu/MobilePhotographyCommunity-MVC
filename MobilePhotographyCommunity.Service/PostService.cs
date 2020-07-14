@@ -13,6 +13,7 @@ namespace MobilePhotographyCommunity.Service
     {
         int CountByCategoryId(int id);
         IEnumerable<Post> GetByCategoryId(int id);
+        IEnumerable<Post> GetAll();
     }
 
     public class PostService : IPostService
@@ -34,6 +35,11 @@ namespace MobilePhotographyCommunity.Service
         public int CountByCategoryId(int id)
         {
             return postRepository.CountByCategoryId(id);
+        }
+
+        public IEnumerable<Post> GetAll()
+        {
+            return postRepository.GetAll();
         }
     }
 }
