@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202007130243046_Init.designer.cs">
       <DependentUpon>202007130243046_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007150528004_addUserToCommentLike.cs" />
+    <Compile Include="Migrations\202007150528004_addUserToCommentLike.designer.cs">
+      <DependentUpon>202007150528004_addUserToCommentLike.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MPCDbContext.cs" />
     <Compile Include="DomainModel\Post.cs" />
@@ -85,6 +89,8 @@
     <Compile Include="Repositories\LikeRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModel\CommentViewModel.cs" />
+    <Compile Include="ViewModel\LikeViewModel.cs" />
     <Compile Include="ViewModel\PostCategoryViewModel.cs" />
     <Compile Include="ViewModel\PostViewModel.cs" />
   </ItemGroup>
@@ -95,6 +101,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202007130243046_Init.resx">
       <DependentUpon>202007130243046_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007150528004_addUserToCommentLike.resx">
+      <DependentUpon>202007150528004_addUserToCommentLike.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

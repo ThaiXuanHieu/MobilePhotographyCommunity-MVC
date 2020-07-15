@@ -7,15 +7,11 @@ using System.Threading.Tasks;
 
 namespace MobilePhotographyCommunity.Data.ViewModel
 {
-    public class PostViewModel
+    public class LikeViewModel
     {
-        public int PostId { get; set; }
+        public int LikeId { get; set; }
 
-        public int? CategoryId { get; set; }
-
-        public string Caption { get; set; }
-
-        public string Image { get; set; }
+        public int? PostId { get; set; }
 
         public int? CreatedBy { get; set; }
 
@@ -24,10 +20,8 @@ namespace MobilePhotographyCommunity.Data.ViewModel
         public int? ModifiedBy { get; set; }
 
         public DateTime? ModifiedTime { get; set; }
-        
-        public IEnumerable<Comment> Comments { get; set; }
-        
-        public IEnumerable<Like> Likes { get; set; }
+
+        public Post Post { get; set; }
 
         public User User { get; set; }
     }

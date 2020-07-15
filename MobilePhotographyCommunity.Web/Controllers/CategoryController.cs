@@ -24,6 +24,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
             this.postService = postService;
             this.commentService = commentService;
             this.likeService = likeService;
+            this.userService = userService;
         }
 
         public PartialViewResult CategoryPartial()
@@ -40,14 +41,20 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 foreach(var i in posts)
                 {
                     var postViewModel = new PostViewModel();
-                    postViewModel.PostId = i.PostId;
-                    postViewModel.CategoryId = i.CategoryId;
-                    postViewModel.Caption = i.Caption;
-                    postViewModel.Image = i.Image;
-                    postViewModel.CreatedBy = i.CreatedBy;
-                    postViewModel.CreatedTime = i.CreatedTime;
-                    postViewModel.Comments = i.Comments;
-                    postViewModel.Likes = i.Likes;
+                    //postViewModel.PostId = i.PostId;
+                    //postViewModel.CategoryId = i.CategoryId;
+                    //postViewModel.Caption = i.Caption;
+                    //postViewModel.Image = i.Image;
+                    //postViewModel.CreatedBy = i.CreatedBy;
+                    //postViewModel.CreatedTime = i.CreatedTime;
+                    //postViewModel.Comments = i.Comments;
+                    //postViewModel.Likes = i.Likes;
+                    postViewModel = Mapper.Map<PostViewModel>(i);
+                    foreach (var j in postViewModel.Comments)
+                    {
+                        j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
+                    }
+                    postViewModel.User = userService.GetById(Convert.ToInt32(i.CreatedBy));
                     postViewModels.Add(postViewModel);
                 }
                 postCategoryViewModel.Posts = postViewModels;
@@ -67,14 +74,20 @@ namespace MobilePhotographyCommunity.Web.Controllers
             foreach (var i in posts)
             {
                 var postViewModel = new PostViewModel();
-                postViewModel.PostId = i.PostId;
-                postViewModel.CategoryId = i.CategoryId;
-                postViewModel.Caption = i.Caption;
-                postViewModel.Image = i.Image;
-                postViewModel.CreatedBy = i.CreatedBy;
-                postViewModel.CreatedTime = i.CreatedTime;
-                postViewModel.Comments = i.Comments;
-                postViewModel.Likes = i.Likes;
+                //postViewModel.PostId = i.PostId;
+                //postViewModel.CategoryId = i.CategoryId;
+                //postViewModel.Caption = i.Caption;
+                //postViewModel.Image = i.Image;
+                //postViewModel.CreatedBy = i.CreatedBy;
+                //postViewModel.CreatedTime = i.CreatedTime;
+                //postViewModel.Comments = i.Comments;
+                //postViewModel.Likes = i.Likes;
+                postViewModel = Mapper.Map<PostViewModel>(i);
+                foreach (var j in postViewModel.Comments)
+                {
+                    j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
+                }
+                postViewModel.User = userService.GetById(Convert.ToInt32(i.CreatedBy));
                 postViewModels.Add(postViewModel);
             }
             postCategoryViewModel.Posts = postViewModels;

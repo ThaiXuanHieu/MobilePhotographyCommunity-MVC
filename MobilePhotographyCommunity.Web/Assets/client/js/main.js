@@ -19,10 +19,6 @@ function uploadAvatar(input) {
     }
 }
 
-function like(){
-    document.querySelector('.btn-like, .btn-like i').style.color = 'blue';
-}
-
 // Get the modal
 var modal = document.getElementById("modal-img");
 

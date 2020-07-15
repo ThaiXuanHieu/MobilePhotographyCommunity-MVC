@@ -23,6 +23,8 @@ namespace MobilePhotographyCommunity.Data.DomainModel
 
         public DateTime? ModifiedTime { get; set; }
 
-        public virtual Post Post { get; set; }
+        public Post Post { get; set; }
+
+        public User User { get; set; }
     }
 }

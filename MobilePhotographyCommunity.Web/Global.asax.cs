@@ -1,4 +1,5 @@
-﻿using MobilePhotographyCommunity.Web.AutoMapper;
+﻿using AutoMapper;
+using MobilePhotographyCommunity.Web.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace MobilePhotographyCommunity.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             UnityConfig.RegisterComponents();
-            AutoMapperConfiguration.Configure();
+            Mapper.Initialize(config: cfg => cfg.AddProfile<AutoMapperConfiguration>());
         }
     }
 }
