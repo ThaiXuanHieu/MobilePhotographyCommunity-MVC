@@ -15,7 +15,7 @@
 
                 <div class="title-box">Tạo bài viết</div>
                 <div class="mr-t-20">
-                    <a class="col-xs-2 mr-l-30" href="profile.html"><img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt=""></a>
+                    <a class="col-xs-2 mr-l-30" href="/Account/UserProfile/@Session["UserId"]"><img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt=""></a>
                     <div class="col-xs-10"><textarea class="post-caption-input form-control" name="" id="" placeholder="Bạn đang nghĩ gì?"></textarea></div>
                 </div>
                 <div class="upload-image" title="Thêm ảnh">
@@ -41,11 +41,11 @@
                 {
                     <div class="post bg-white">
                         <div class="auth">
-                            <a href="">
+                            <a href="/Account/UserProfile/@item.CreatedBy">
                                 <img class="user-avt" src="~/UploadImage/Avatar/@item.User.Avatar" alt="">
                                 <h3 class="auth-name" style="display: inline;">@item.User.FirstName @item.User.LastName</h3>
                             </a>
-                            <div class="created-date">@item.CreatedTime</div>
+                            <div class="created-date">@Convert.ToDateTime(item.CreatedTime).ToString("dd/MM/yyyy")</div>
 
                             <div class="dropdown post-option" style="float: right;">
                                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">
@@ -92,7 +92,7 @@
                         <div class="comment-box">
                             <div class="my-comment d-flex">
                                 <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
-                                    <a href="">
+                                    <a href="/Account/UserProfile/@Session["UserId"]">
                                         <img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt="">
                                     </a>
                                 </div>
@@ -108,10 +108,10 @@
                             {
                                 <div class="other-comment">
                                     <div class="commentedby">
-                                        <a href="#">
+                                        <a href="/Account/UserProfile/@i.User.UserId">
                                             <img class="user-avt" src="~/UploadImage/Avatar/@i.User.Avatar" alt="">
                                             <h4 class="name" style="display: inline;">@i.User.FirstName @i.User.LastName</h4>
-                                            <div class="commented-time">2 tuần</div>
+                                            <div class="commented-time">@Convert.ToDateTime(i.CreatedTime).ToString("dd/MM/yyyy")</div>
                                         </a>
                                     </div>
                                     <div class="comment-content">
