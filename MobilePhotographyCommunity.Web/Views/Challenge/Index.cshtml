@@ -1,0 +1,691 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="description-challenge container">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="frame-created-by bg-white">
+                <img class="created-by-challenge" src="~/Assets/client/img/user/hieuxt.png" alt="">
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <div class="date">
+                <i class="fal fa-calendar-alt"></i><span style="margin-right:30px;"> 20/07/2020 - 02/08/2020</span>
+                <i class="fal fa-users"></i><span style="margin-right:30px;"> 125 thành viên</span>
+                <button class="btn btn-join-now">Tham gia ngay</button>
+            </div>
+            <div class="challenge-name">
+                <h1>THỬ THÁCH #10: 14 ngày cùng Hiếu XT</h1>
+            </div>
+            <div class="description">
+                <span>Mô tả: </span><span>Mỗi ngày, tất cả thành viên tham gia thử thách sẽ đăng một hình ảnh về chủ đề con người Việt Nam tại trang này.</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="col-sm-3 col-left">
+            @Html.Action("ChallengePartial", "Challenge")
+
+            @Html.Action("CategoryPartial", "Category")
+        </div>
+        <div class="col-sm-6 col-center">
+            <div class="add-post-box bg-white">
+
+                <div class="title-box">Tạo bài viết</div>
+                <div class="mr-t-20">
+                    <a class="col-xs-2 mr-l-30" href="/Account/UserProfile/@Session["UserId"]"><img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt=""></a>
+                    <div class="col-xs-10"><textarea class="post-caption-input form-control" name="" id="" placeholder="Bạn đang nghĩ gì?"></textarea></div>
+                </div>
+                <div class="upload-image" title="Thêm ảnh">
+                    <label for="icon-input">
+                        <i class="fas fa-image fa-lg"></i>
+                        Ảnh/Video
+                    </label>
+                    <input id="icon-input" type="file" name="file" accept=".jpg, .png, *.jpeg"
+                           onchange="addImage(this)" />
+                </div>
+                <div class="region-img-preview" style="display: none;">
+                    <img id="img-preview" src="" alt="" width="100%">
+                    <div class="middle">
+                        <a href="#" style="color: black;"><i class="fal fa-trash-alt fa-lg"></i></a>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-up"><i class="fal fa-check"></i> Đăng</button>
+            </div>
+            <div class="post-box">
+                <div class="post bg-white">
+                    <div class="auth">
+                        <a href="">
+                            <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                            <h3 class="auth-name" style="display: inline;">Thái Xuân Hiếu</h3>
+                        </a>
+                        <div class="created-date">10/03/2020</div>
+
+                        <div class="dropdown post-option" style="float: right;">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <i class="fal fa-ellipsis-h fa-2x"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">Chỉnh sửa bài viết</a></li>
+                                <li><a href="#">Tắt thông báo bài viết</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Ẩn bài viết</a></li>
+                                <li><a href="#">Xóa khỏi dòng thời gian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="post-caption">Tôi yêu Việt Nam</div>
+                        <div class="post-img">
+                            <img class="photo" src="~/Assets/client/img/post-img/giotnuoc-vietnam.jpg" alt=""
+                                 width="100%">
+                        </div>
+                    </div>
+                    <div class="count-liked-commented">
+
+                    </div>
+                    <div class="post-action">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-xs-4">
+                                <a class="btn btn-like" onclick="like()">
+                                    <i class="fal fa-thumbs-up"></i> Thích
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn btn-comment">
+                                    <i class="fal fa-comment-alt"></i> Bình
+                                    luận
+                                </a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn btn-share">
+                                    <i class="fal fa-share-square"></i> Chia
+                                    sẻ
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="my-comment d-flex">
+                            <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
+                                <a href="">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                </a>
+                            </div>
+                            <div class="f-grow-15" style="flex-grow: 15;">
+
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Viết bình luận..."
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                    <h4 class="name" style="display: inline;">Thái Xuân Hiếu</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>Quá đẹp</span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                    <h4 class="name" style="display: inline;">An Pon</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>
+                                    Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                    của bức ảnh này
+                                </span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post bg-white">
+                    <div class="auth">
+                        <a href="profile.html">
+                            <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                            <h3 class="auth-name" style="display: inline;">An Pon</h3>
+                        </a>
+                        <div class="created-date">10/03/2020</div>
+                        <div class="dropdown post-option" style="float: right;">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <i class="fal fa-ellipsis-h fa-2x"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">Chỉnh sửa bài viết</a></li>
+                                <li><a href="#">Tắt thông báo bài viết</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Ẩn bài viết</a></li>
+                                <li><a href="#">Xóa khỏi dòng thời gian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="post-caption">Ai bảo chăn trâu là khổ chăn trâu sướng lắm chứ</div>
+                        <div class="post-img">
+                            <img class="photo" src="~/Assets/client/img/post-img/contrau.jpg" alt=""
+                                 width="100%">
+                        </div>
+                    </div>
+                    <div class="post-action">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-xs-4"><a class="btn"><i class="fal fa-thumbs-up"></i> Thích</a></div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-comment-alt"></i> Bình luận</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-share-square"></i> Chia sẻ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="my-comment d-flex">
+                            <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
+                                <a href="">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                </a>
+                            </div>
+                            <div class="f-grow-15" style="flex-grow: 15;">
+
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Viết bình luận..."
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                    <h4 class="name" style="display: inline;">Thái Xuân Hiếu</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>Quá đẹp</span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                    <h4 class="name" style="display: inline;">An Pon</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>
+                                    Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                    của bức ảnh này
+                                </span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post bg-white">
+                    <div class="auth">
+                        <a href="">
+                            <img class="user-avt" src="~/Assets/client/img/user/tonngokhong.jpg" alt="">
+                            <h3 class="auth-name" style="display: inline;">Tôn Ngộ Không</h3>
+                        </a>
+                        <div class="created-date">10/03/2020</div>
+                        <div class="dropdown post-option" style="float: right;">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <i class="fal fa-ellipsis-h fa-2x"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">Chỉnh sửa bài viết</a></li>
+                                <li><a href="#">Tắt thông báo bài viết</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Ẩn bài viết</a></li>
+                                <li><a href="#">Xóa khỏi dòng thời gian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="post-caption">Hoa cúc</div>
+                        <div class="post-img">
+                            <img class="photo" src="~/Assets/client/img/post-img/hoacuc.jpg" alt=""
+                                 width="100%">
+                        </div>
+                    </div>
+                    <div class="post-action">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-xs-4"><a class="btn"><i class="fal fa-thumbs-up"></i> Thích</a></div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-comment-alt"></i> Bình luận</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-share-square"></i> Chia sẻ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="my-comment d-flex">
+                            <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
+                                <a href="">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                </a>
+                            </div>
+                            <div class="f-grow-15" style="flex-grow: 15;">
+
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Viết bình luận..."
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                    <h4 class="name" style="display: inline;">Thái Xuân Hiếu</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>Quá đẹp</span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                    <h4 class="name" style="display: inline;">An Pon</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>
+                                    Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                    của bức ảnh này
+                                </span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post bg-white">
+                    <div class="auth">
+                        <a href="">
+                            <img class="user-avt" src="~/Assets/client/img/user/trubatgioi.jpg" alt="">
+                            <h3 class="auth-name" style="display: inline;">Trư Bát Giới</h3>
+                        </a>
+                        <div class="created-date">10/03/2020</div>
+                        <div class="dropdown post-option" style="float: right;">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <i class="fal fa-ellipsis-h fa-2x"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">Chỉnh sửa bài viết</a></li>
+                                <li><a href="#">Tắt thông báo bài viết</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Ẩn bài viết</a></li>
+                                <li><a href="#">Xóa khỏi dòng thời gian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="post-caption">Cafe</div>
+                        <div class="post-img">
+                            <img class="photo" src="~/Assets/client/img/post-img/lycafe.jpg" alt=""
+                                 width="100%">
+                        </div>
+                    </div>
+                    <div class="post-action">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-xs-4"><a class="btn"><i class="fal fa-thumbs-up"></i> Thích</a></div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-comment-alt"></i> Bình luận</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-share-square"></i> Chia sẻ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="my-comment d-flex">
+                            <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
+                                <a href="">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                </a>
+                            </div>
+                            <div class="f-grow-15" style="flex-grow: 15;">
+
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Viết bình luận..."
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                    <h4 class="name" style="display: inline;">Thái Xuân Hiếu</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>Quá đẹp</span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                    <h4 class="name" style="display: inline;">An Pon</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>
+                                    Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                    của bức ảnh này
+                                </span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="post bg-white">
+                    <div class="auth">
+                        <a href="">
+                            <img class="user-avt" src="~/Assets/client/img/user/satang.jpg" alt="">
+                            <h3 class="auth-name" style="display: inline;">Sa Tăng</h3>
+                        </a>
+                        <div class="created-date">10/03/2020</div>
+                        <div class="dropdown post-option" style="float: right;">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <i class="fal fa-ellipsis-h fa-2x"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">Chỉnh sửa bài viết</a></li>
+                                <li><a href="#">Tắt thông báo bài viết</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Ẩn bài viết</a></li>
+                                <li><a href="#">Xóa khỏi dòng thời gian</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="post-caption">Back & White</div>
+                        <div class="post-img">
+                            <img class="photo" src="~/Assets/client/img/post-img/black&white.jpg" alt=""
+                                 width="100%">
+                        </div>
+                    </div>
+                    <div class="post-action">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-xs-4"><a class="btn"><i class="fal fa-thumbs-up"></i> Thích</a></div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-comment-alt"></i> Bình luận</a>
+                            </div>
+                            <div class="col-xs-4">
+                                <a class="btn"><i class="fal fa-share-square"></i> Chia sẻ</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-box">
+                        <div class="my-comment d-flex">
+                            <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
+                                <a href="">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                </a>
+                            </div>
+                            <div class="f-grow-15" style="flex-grow: 15;">
+
+                                <div class="form-group">
+                                    <input type="text" name="" id="" placeholder="Viết bình luận..."
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
+                                    <h4 class="name" style="display: inline;">Thái Xuân Hiếu</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>Quá đẹp</span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-comment">
+                            <div class="commentedby">
+                                <a href="#">
+                                    <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                    <h4 class="name" style="display: inline;">An Pon</h4>
+                                    <div class="commented-time">2 tuần</div>
+                                </a>
+                            </div>
+                            <div class="comment-content">
+                                <span>
+                                    Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                    của bức ảnh này
+                                </span>
+                            </div>
+                            <div class="comment-option">
+                                <div class="dropdown post-option" style="float: right;">
+                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-right">
+
+            <div class="rankings-box bg-white">
+                <h4 class="title-box">Xếp hạng</h4>
+                <div class="overflow-auto">
+                    <ul>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">An pon</span><span class="label label-success">150 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/tonngokhong.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Tôn Ngộ Không</span><span class="label label-success">149 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/trubatgioi.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Trư Bát Giới</span><span class="label label-success">148 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/satang.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Sa tăng</span><span class="label label-success">147 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">An pon</span><span class="label label-success">146 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/tonngokhong.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Tôn Ngộ Không</span><span class="label label-success">145 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/trubatgioi.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Trư Bát Giới</span><span class="label label-success">144 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/satang.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Sa Tăng</span><span class="label label-success">143 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/satang.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Sa Tăng</span><span class="label label-success">142 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/satang.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Sa Tăng</span><span class="label label-success">141 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/satang.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Sa Tăng</span><span class="label label-success">140 Thích</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img class="user-avt" src="~/Assets/client/img/user/satang.jpg" alt=""
+                                     style=" width:40px; height:40px"><span class="member">Sa Tăng</span><span class="label label-success">139 Thích</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- The Modal -->
+<div id="modal-img" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img">
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="~/Assets/client/css/challenge.css">
+    <script src="~/Assets/client/js/main.js"></script>
+}
+

@@ -7575,6 +7575,7 @@
     <Content Include="Assets\admin\img\user\tonngokhong.jpg" />
     <Content Include="Assets\admin\img\user\trubatgioi.jpg" />
     <Content Include="Assets\admin\js\main.js" />
+    <Content Include="Assets\client\css\challenge.css" />
     <Content Include="Assets\client\css\style.css" />
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\css\all.css" />
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\css\all.min.css" />
@@ -15203,6 +15204,7 @@
     <Content Include="Views\Friend\_HintFriendPartial.cshtml" />
     <Content Include="Views\Friend\_ListFriendPartial.cshtml" />
     <Content Include="Views\Category\Detail.cshtml" />
+    <Content Include="Views\Challenge\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
