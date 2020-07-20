@@ -39,3 +39,15 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function () {
     modal.style.display = "none";
 }
+
+var descriptionChallenge = document.getElementsByClassName("description-challenge")[0];
+var colLeft = document.getElementsByClassName("col-left")[0];
+var colRight = document.getElementsByClassName("col-right")[0];
+var colCenter = document.getElementsByClassName("col-center")[0];
+var closeDescription = document.getElementsByClassName("close-description")[0];
+closeDescription.onclick = function () {
+    descriptionChallenge.style.display = 'none';
+    colLeft.style.marginTop = '70px';
+    colRight.style.marginTop = '70px';
+    colCenter.style.marginTop = '70px';
+}
