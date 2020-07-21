@@ -132,31 +132,31 @@
                                 </div>
                             }
                             @*<div class="other-comment">
-            <div class="commentedby">
-                <a href="#">
-                    <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
-                    <h4 class="name" style="display: inline;">An Pon</h4>
-                    <div class="commented-time">2 tuần</div>
-                </a>
-            </div>
-            <div class="comment-content">
-                <span>
-                    Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
-                    của bức ảnh này
-                </span>
-            </div>
-            <div class="comment-option">
-                <div class="dropdown post-option" style="float: right;">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                        <i class="fal fa-ellipsis-v fa-2x"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-right">
-                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
-                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
+                                    <div class="commentedby">
+                                        <a href="#">
+                                            <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                            <h4 class="name" style="display: inline;">An Pon</h4>
+                                            <div class="commented-time">2 tuần</div>
+                                        </a>
+                                    </div>
+                                    <div class="comment-content">
+                                        <span>
+                                            Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                            của bức ảnh này
+                                        </span>
+                                    </div>
+                                    <div class="comment-option">
+                                        <div class="dropdown post-option" style="float: right;">
+                                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                                <i class="fal fa-ellipsis-v fa-2x"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                                <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
                             <a href="#">Xem thêm bình luận</a>
                         </div>
                     </div>
@@ -573,12 +573,28 @@
         </div>
     </div>
 </section>
-<div id="modal-img" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img">
+<!-- The Modal -->
+<div class="mikes-modal" id="myModal">
+    <img class="img-modal" src="">
+    <div class="description">
+        <h1>Auth</h1>
+        <p>Content</p>
+    </div>
 </div>
+<script>
+    $(document).ready(function () {
+        var img = $(".img-modal")
+        $(".photo").each(function (index) {
+            $(this).off("click").on("click", function () {
+                $("#myModal").mikesModal();
+                img.attr("src", $(this).attr("src"));
+            });
+        });
+    });
+</script>
 
 @section Scripts {
     <script src="~/Assets/client/js/main.js"></script>
+    <script src="~/Assets/client/js/mikes-modal.min.js"></script>
 }
 

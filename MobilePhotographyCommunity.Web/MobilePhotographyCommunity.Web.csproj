@@ -7576,6 +7576,7 @@
     <Content Include="Assets\admin\img\user\trubatgioi.jpg" />
     <Content Include="Assets\admin\js\main.js" />
     <Content Include="Assets\client\css\challenge.css" />
+    <Content Include="Assets\client\css\mikes-modal.css" />
     <Content Include="Assets\client\css\style.css" />
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\css\all.css" />
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\css\all.min.css" />
@@ -15013,6 +15014,7 @@
     <Content Include="Assets\client\img\user\tonngokhong.jpg" />
     <Content Include="Assets\client\img\user\trubatgioi.jpg" />
     <Content Include="Assets\client\js\main.js" />
+    <Content Include="Assets\client\js\mikes-modal.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

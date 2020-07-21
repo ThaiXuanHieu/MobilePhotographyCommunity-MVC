@@ -20,11 +20,11 @@
             <div class="challenge-name">
                 <h1>THỬ THÁCH #10: 14 ngày cùng Hiếu XT</h1>
             </div>
-            <div class="description">
+            <div class="description-detail">
                 <span>Mô tả: </span><span>Mỗi ngày, tất cả thành viên tham gia thử thách sẽ đăng một hình ảnh về chủ đề con người Việt Nam tại trang này.</span>
             </div>
         </div>
-        <span class="close-description">&times;</span>
+        <span class="close-description" onclick="closeDescription()">&times;</span>
     </div>
 </section>
 <section>
@@ -680,13 +680,28 @@
     </div>
 </section>
 <!-- The Modal -->
-<div id="modal-img" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img">
+<div class="mikes-modal" id="myModal">
+    <img class="img-modal" src="">
+    <div class="description">
+        <h1>Test</h1>
+        <p>Content</p>
+    </div>
 </div>
+<script>
+    $(document).ready(function () {
+        var img = $(".img-modal")
+        $(".photo").each(function (index) {
+            $(this).off("click").on("click", function () {
+                $("#myModal").mikesModal();
+                img.attr("src", $(this).attr("src"));
+            });
+        });
+    });
+</script>
 
 @section Scripts {
     <link rel="stylesheet" href="~/Assets/client/css/challenge.css">
     <script src="~/Assets/client/js/main.js"></script>
+    <script src="~/Assets/client/js/mikes-modal.min.js"></script>
 }
 
