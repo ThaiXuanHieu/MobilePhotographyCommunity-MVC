@@ -11,16 +11,11 @@
         text-decoration: none;
     }
 
-    .mikes-modal img {
-        float: left;
-    }
-
-    .mikes-modal .description {
-        width: 300px;
+    .mikes-modal .detail-post {
+        width: 350px;
         float: right;
         text-align: left;
-        padding: 10px 30px;
-        overflow-y: auto;
+        padding: 10px;
     }
 
     .mikes-modal .close {

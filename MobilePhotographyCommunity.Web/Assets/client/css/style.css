@@ -280,17 +280,17 @@ label {
         color: #606770;
     }
 
-.my-comment {
+.post .my-comment {
     display: flex;
     align-items: baseline;
     padding: 5px 0px;
 }
 
-    .my-comment input[type=text] {
-        max-width: 435px;
-        white-space: pre-wrap;
-        overflow-wrap: break-word;
-    }
+.my-comment input[type=text] {
+    max-width: 435px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
 
 .comment-box .other-comment {
     position: relative;
@@ -567,3 +567,68 @@ label {
         flex-direction: column;
     }
 }
+
+.fixed-bar {
+    display: none;
+    position: fixed;
+    left: 1%;
+    bottom: 5%;
+}
+
+    .fixed-bar a {
+        display: block;
+        text-align: center;
+        padding: 16px;
+        background-color: white;
+        font-size: 16px;
+        margin: 10px 0px;
+        border-radius: 50%;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58,59,69,.15);
+    }
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 600px) {
+
+    .fixed-bar {
+        display: block;
+    }
+}
+
+.form-center {
+    width: 350px;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+    .form-center form {
+        background-color: white;
+        border-radius: 5px;
+        padding: 30px;
+        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+    }
+
+.btn-center {
+    text-align: center;
+    margin-top: 5px;
+}
+
+    .btn-center .btn-send-code {
+        width: 100%;
+        font-size: 20px;
+    }
+
+.detail-post .my-comment {
+    display: flex;
+    padding: 5px 0px;
+}
+
+.detail-post .auth {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+    .detail-post .auth .created-date {
+        position: absolute;
+        top: 30px;
+        left: 55px;
+    }
