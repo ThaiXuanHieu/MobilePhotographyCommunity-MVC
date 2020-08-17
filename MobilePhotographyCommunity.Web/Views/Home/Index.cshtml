@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MobilePhotographyCommunity.Data.ViewModel.PostViewModel>
+﻿@using MobilePhotographyCommunity.Common
+@model IEnumerable<MobilePhotographyCommunity.Data.ViewModel.PostViewModel>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -15,7 +16,7 @@
 
                 <div class="title-box">Tạo bài viết</div>
                 <div class="mr-t-20">
-                    <a class="col-xs-2 mr-l-30" href="/Account/UserProfile/@Session["UserId"]"><img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt=""></a>
+                    <a class="col-xs-2 mr-l-30" href="/Account/UserProfile/@Session[UserSession.UserId]"><img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt=""></a>
                     <div class="col-xs-10"><textarea class="post-caption-input form-control" name="" id="" placeholder="Bạn đang nghĩ gì?"></textarea></div>
                 </div>
                 <div class="upload-image" title="Thêm ảnh">
@@ -92,8 +93,8 @@
                         <div class="comment-box">
                             <div class="my-comment d-flex">
                                 <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
-                                    <a href="/Account/UserProfile/@Session["UserId"]">
-                                        <img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt="">
+                                    <a href="/Account/UserProfile/@Session[UserSession.UserId]">
+                                        <img class="user-avt" src="~/UploadImage/Avatar/@Session[UserSession.Avatar]" alt="">
                                     </a>
                                 </div>
                                 <div class="f-grow-15" style="flex-grow: 15;">

@@ -39,9 +39,9 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 }
                 else
                 {
-                    Session["UserId"] = user.UserId;
-                    Session["FullName"] = user.FirstName + " " + user.LastName;
-                    Session["Avatar"] = user.Avatar;
+                    Session[UserSession.UserId] = user.UserId;
+                    Session[UserSession.FullName] = user.FirstName + " " + user.LastName;
+                    Session[UserSession.Avatar] = user.Avatar;
                     return Redirect("/Home/Index");
                 }
             }
@@ -69,9 +69,9 @@ namespace MobilePhotographyCommunity.Web.Controllers
                     user.Avatar = "AvatarDefault-Male.png";
                     userService.Add(user);
 
-                    Session["UserId"] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).UserId;
-                    Session["FullName"] = model.FirstName + " " + model.LastName;
-                    Session["Avatar"] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).Avatar;
+                    Session[UserSession.UserId] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).UserId;
+                    Session[UserSession.FullName] = model.FirstName + " " + model.LastName;
+                    Session[UserSession.Avatar] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).Avatar;
                     return Redirect("/Home/Index");
                 }
                 else

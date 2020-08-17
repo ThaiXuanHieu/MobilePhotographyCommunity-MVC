@@ -1,9 +1,8 @@
-﻿
+﻿@using MobilePhotographyCommunity.Common
 @{
-                /**/
+    ViewBag.Title = "Index";
 
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="description-challenge container">
@@ -41,7 +40,7 @@
 
                 <div class="title-box">Tạo bài viết</div>
                 <div class="mr-t-20">
-                    <a class="col-xs-2 mr-l-30" href="/Account/UserProfile/@Session["UserId"]"><img class="user-avt" src="~/UploadImage/Avatar/@Session["Avatar"]" alt=""></a>
+                    <a class="col-xs-2 mr-l-30" href="/Account/UserProfile/@Session[UserSession.UserId]"><img class="user-avt" src="~/UploadImage/Avatar/@Session[UserSession.Avatar]" alt=""></a>
                     <div class="col-xs-10"><textarea class="post-caption-input form-control" name="" id="" placeholder="Bạn đang nghĩ gì?"></textarea></div>
                 </div>
                 <div class="upload-image" title="Thêm ảnh">
