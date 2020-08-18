@@ -54,11 +54,14 @@
                                     <i class="fal fa-ellipsis-h fa-2x"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="#">Chỉnh sửa bài viết</a></li>
+                                    @if (Convert.ToInt32(Session[UserSession.UserId]) == item.CreatedBy)
+                                    {
+                                        <li><a href="#" class="btn-edit-post" data-id="@item.PostId">Chỉnh sửa bài viết</a></li>
+                                        <li><a href="#" class="btn-delete-post" data-id="@item.PostId">Xóa khỏi dòng thời gian</a></li>
+                                    }
                                     <li><a href="#">Tắt thông báo bài viết</a></li>
                                     <li class="divider"></li>
                                     <li><a href="#">Ẩn bài viết</a></li>
-                                    <li><a href="#">Xóa khỏi dòng thời gian</a></li>
                                 </ul>
                             </div>
                         </div>

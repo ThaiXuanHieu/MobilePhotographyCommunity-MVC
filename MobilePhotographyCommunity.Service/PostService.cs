@@ -11,9 +11,14 @@ namespace MobilePhotographyCommunity.Service
 {
     public interface IPostService
     {
+        void Add(Post post);
+        void Update(Post post);
+        void Delete(int postId);
         int CountByCategoryId(int id);
         IEnumerable<Post> GetByCategoryId(int id);
         IEnumerable<Post> GetAll();
+        IEnumerable<Post> GetAllPost();
+        Post GetById(int postId);
     }
 
     public class PostService : IPostService
@@ -40,6 +45,31 @@ namespace MobilePhotographyCommunity.Service
         public IEnumerable<Post> GetAll()
         {
             return postRepository.GetAll();
+        }
+
+        public void Add(Post post)
+        {
+            postRepository.Add(post);
+        }
+
+        public IEnumerable<Post> GetAllPost()
+        {
+            return postRepository.GetAllPost();
+        }
+
+        public Post GetById(int postId)
+        {
+            return postRepository.GetById(postId);
+        }
+
+        public void Update(Post post)
+        {
+            postRepository.Update(post);
+        }
+
+        public void Delete(int postId)
+        {
+            postRepository.Delete(postId);
         }
     }
 }

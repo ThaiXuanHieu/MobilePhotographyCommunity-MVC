@@ -15157,6 +15157,7 @@
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\webfonts\fa-solid-900.woff" />
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\controller\homeController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -15183,6 +15184,7 @@
     <Content Include="UploadImage\Photo\giotnuoc-vietnam.jpg" />
     <Content Include="UploadImage\Photo\hoacuc.jpg" />
     <Content Include="UploadImage\Photo\lycafe.jpg" />
+    <Content Include="UploadImage\Photo\phongcanh.jpg" />
     <Content Include="UploadImage\Photo\tambiakinh.jpg" />
     <Content Include="UploadImage\Photo\vudieubinhminh.jpg" />
     <Content Include="Web.config" />
@@ -15207,6 +15209,7 @@
     <Content Include="Views\Friend\_ListFriendPartial.cshtml" />
     <Content Include="Views\Category\Detail.cshtml" />
     <Content Include="Views\Challenge\Index.cshtml" />
+    <Content Include="Views\Shared\_MikesModal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

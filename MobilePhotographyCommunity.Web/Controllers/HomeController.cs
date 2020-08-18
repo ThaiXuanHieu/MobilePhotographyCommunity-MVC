@@ -22,7 +22,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
         public ActionResult Index()
         {
             var postViewModels = new List<PostViewModel>();
-            var posts = postService.GetAll();
+            var posts = postService.GetAllPost();
             foreach (var i in posts)
             {
                 var postViewModel = new PostViewModel();
