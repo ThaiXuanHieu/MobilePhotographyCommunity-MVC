@@ -89,6 +89,7 @@
     <Compile Include="Repositories\LikeRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModel\ChallengeViewModel.cs" />
     <Compile Include="ViewModel\CommentViewModel.cs" />
     <Compile Include="ViewModel\LikeViewModel.cs" />
     <Compile Include="ViewModel\PostCategoryViewModel.cs" />

@@ -35,7 +35,7 @@
     $(".btn-edit-post").on("click", function () {
         var postId = $(this).data("id");
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "/Post/LoadDetailPost",
             data: {
                 postId: postId,

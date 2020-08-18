@@ -1,5 +1,6 @@
 ﻿using MobilePhotographyCommunity.Common;
 using MobilePhotographyCommunity.Data.DomainModel;
+using MobilePhotographyCommunity.Data.ViewModel;
 using MobilePhotographyCommunity.Service;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace MobilePhotographyCommunity.Web.Controllers
     public class PostController : Controller
     {
         private readonly IPostService postService;
+        private readonly IUserService userService;
 
-        public PostController(IPostService postService)
+        public PostController(IPostService postService, IUserService userService)
         {
             this.postService = postService;
+            this.userService = userService;
         }
         // GET: Post
         public ActionResult Index()
@@ -127,6 +130,13 @@ namespace MobilePhotographyCommunity.Web.Controllers
             }
             
             return Json(new { status = status });
+        }
+
+        public JsonResult ShowPost(int postId)
+        {
+            var postViewModels = new PostViewModel();
+            var post = postService.GetById(postId);
+            return Json(new { status = true });
         }
     }
 }

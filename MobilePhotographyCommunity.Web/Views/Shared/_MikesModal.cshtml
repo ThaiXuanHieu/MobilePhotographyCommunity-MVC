@@ -71,6 +71,15 @@
         $(this).off("click").on("click", function () {
             $("#myModal").mikesModal();
             img.attr("src", $(this).attr("src"));
+            //var postId = $(this).data("id");
+            //$.ajax({
+            //    type: "GET",
+            //    url: "/Post/ShowPost",
+            //    data: {
+            //        postId: postId,
+            //    },
+            //    contentType
+            //});
         });
     });
 </script>
