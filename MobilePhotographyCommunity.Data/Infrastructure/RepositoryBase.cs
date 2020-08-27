@@ -65,6 +65,7 @@ namespace MobilePhotographyCommunity.Data.Infrastructure
 
         public virtual T GetById(int id)
         {
+            context.Configuration.ProxyCreationEnabled = false;
             return dbSet.Find(id);
         }
 

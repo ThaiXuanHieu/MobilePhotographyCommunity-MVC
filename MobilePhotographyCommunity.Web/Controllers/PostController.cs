@@ -1,4 +1,5 @@
-﻿using MobilePhotographyCommunity.Common;
+﻿using AutoMapper;
+using MobilePhotographyCommunity.Common;
 using MobilePhotographyCommunity.Data.DomainModel;
 using MobilePhotographyCommunity.Data.ViewModel;
 using MobilePhotographyCommunity.Service;
@@ -113,7 +114,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
             {
                 status = false;
             }
-            return Json(new { data = post, status = true }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = post, status = status }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult DeletePost(int postId)
@@ -134,9 +135,26 @@ namespace MobilePhotographyCommunity.Web.Controllers
 
         public JsonResult ShowPost(int postId)
         {
-            var postViewModels = new PostViewModel();
-            var post = postService.GetById(postId);
-            return Json(new { status = true });
+            bool status = false;
+            var postViewModel = new PostViewModel();
+            try
+            {
+                var post = postService.GetById(postId);
+                postViewModel = Mapper.Map<PostViewModel>(post);
+                foreach (var j in postViewModel.Comments)
+                {
+                    // Commented by
+                    j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
+                }
+                // Auth
+                postViewModel.User = userService.GetById(Convert.ToInt32(post.CreatedBy));
+                status = true;
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+            return Json( new { data = postViewModel, status = status }, JsonRequestBehavior.AllowGet);
         }
     }
 }
