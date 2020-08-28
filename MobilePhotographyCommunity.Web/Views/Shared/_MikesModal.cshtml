@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="comment-box">
+        <div class="comment-box" id="comment-box-modal">
             <div class="my-comment d-flex">
                 <div class="f-grow-1" style="flex-grow: 1; padding-left: 5px">
                     <a href="/Account/UserProfile/@Session[UserSession.UserId]">
@@ -43,7 +43,10 @@
                     </div>
                 </div>
             </div>
-            <div class="other-comment">
+            <div class="other-comment-modal">
+
+            </div>
+            @*<div class="other-comment">
                 <div class="commentedby">
                     <a href="#">
                         <img class="user-avt" src="~/Assets/client/img/user/hieuxt.png" alt="">
@@ -66,7 +69,7 @@
                 <div class="comment-content">
                     <span>Đây, đây là đỉnh cao</span>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
 </div>
@@ -92,7 +95,22 @@
                         $("#avt-auth-modal").attr("src", "/UploadImage/Avatar/" + data.User.Avatar);
                         $("#post-caption-modal").text(data.Caption);
                         $("#created-date-modal").text(GetDate(data.CreatedTime));
-
+                        var otherComment = "";
+                        $.each(data.Comments, function (i, item) {
+                            otherComment += "<div class='other-comment'>"
+                                + "<div class='commentedby'>"
+                                + "<a href='#'>"
+                                + "<img class='user-avt' src='/UploadImage/Avatar/" + item.User.Avatar + "' alt=''>"
+                                + "<h4 class='name' style='display: inline;'>" + " " + item.User.FirstName + " " + item.User.LastName + "</h4>"
+                                + "<div class='commented-time'>" + GetDate(item.CreatedTime) + "</div>"
+                                + "</a>"
+                                + "</div>"
+                                + "<div class='comment-content'>"
+                                + "<span>" + item.Content + "</span>"
+                                + "</div>"
+                                + "</div>"
+                        });
+                        $("#comment-box-modal").append($(".other-comment-modal").html(otherComment));
                     }
                 }
             });

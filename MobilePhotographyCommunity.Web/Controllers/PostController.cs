@@ -16,11 +16,15 @@ namespace MobilePhotographyCommunity.Web.Controllers
     {
         private readonly IPostService postService;
         private readonly IUserService userService;
+        private readonly ICommentService commentService;
+        private readonly ILikeService likeService;
 
-        public PostController(IPostService postService, IUserService userService)
+        public PostController(IPostService postService, IUserService userService, ICommentService commentService, ILikeService likeService)
         {
             this.postService = postService;
             this.userService = userService;
+            this.commentService = commentService;
+            this.likeService = likeService;
         }
         // GET: Post
         public ActionResult Index()
@@ -141,6 +145,8 @@ namespace MobilePhotographyCommunity.Web.Controllers
             {
                 var post = postService.GetById(postId);
                 postViewModel = Mapper.Map<PostViewModel>(post);
+                postViewModel.Comments = commentService.GetByPostId(postId);
+                postViewModel.Likes = likeService.GetByPostId(postId);
                 foreach (var j in postViewModel.Comments)
                 {
                     // Commented by

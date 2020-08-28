@@ -21,7 +21,8 @@ namespace MobilePhotographyCommunity.Data.Repositories
 
         public IEnumerable<Like> GetByPostId(int id)
         {
-            return Context.Likes.Where(x => x.PostId == id);
+            Context.Configuration.ProxyCreationEnabled = false;
+            return Context.Likes.Where(x => x.PostId == id).ToList();
         }
     }
 }
