@@ -1,6 +1,7 @@
 ﻿@using MobilePhotographyCommunity.Common
 @model IEnumerable<MobilePhotographyCommunity.Data.ViewModel.PostViewModel>
 @{
+    ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section>
@@ -39,6 +40,10 @@
                 <button class="btn btn-primary btn-up"><i class="fal fa-check"></i> Đăng</button>
             </div>
             <div class="post-box">
+                @if (Model.Count() == 0)
+                {
+                    <div style="text-align: center">Chúng tôi không thể tìm thấy bài đăng nào gần đây</div>
+                }
                 @foreach (var item in Model)
                 {
                     <div class="post bg-white">
@@ -136,31 +141,31 @@
                                 </div>
                             }
                             @*<div class="other-comment">
-                                    <div class="commentedby">
-                                        <a href="#">
-                                            <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
-                                            <h4 class="name" style="display: inline;">An Pon</h4>
-                                            <div class="commented-time">2 tuần</div>
-                                        </a>
-                                    </div>
-                                    <div class="comment-content">
-                                        <span>
-                                            Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
-                                            của bức ảnh này
-                                        </span>
-                                    </div>
-                                    <div class="comment-option">
-                                        <div class="dropdown post-option" style="float: right;">
-                                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                                                <i class="fal fa-ellipsis-v fa-2x"></i>
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-menu-right">
-                                                <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
-                                                <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>*@
+                        <div class="commentedby">
+                            <a href="#">
+                                <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                <h4 class="name" style="display: inline;">An Pon</h4>
+                                <div class="commented-time">2 tuần</div>
+                            </a>
+                        </div>
+                        <div class="comment-content">
+                            <span>
+                                Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                của bức ảnh này
+                            </span>
+                        </div>
+                        <div class="comment-option">
+                            <div class="dropdown post-option" style="float: right;">
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                    <i class="fal fa-ellipsis-v fa-2x"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                    <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>*@
                             <a href="#">Xem thêm bình luận</a>
                         </div>
                     </div>

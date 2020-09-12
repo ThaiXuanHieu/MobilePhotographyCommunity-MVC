@@ -18,7 +18,11 @@
                 <div class="title-box">Tạo bài viết</div>
                 <div class="mr-t-20">
                     <a class="col-xs-2 mr-l-30" href="/Account/UserProfile/@Session[UserSession.UserId]"><img class="user-avt" src="~/UploadImage/Avatar/@Session[UserSession.Avatar]" alt=""></a>
-                    <div class="col-xs-10"><textarea class="post-caption-input form-control" name="" id="" placeholder="Bạn đang nghĩ gì?"></textarea></div>
+                    <input type="hidden" id="postId" value="0" />
+                    <div class="col-xs-10"><textarea class="post-caption-input form-control" name="" id="post-caption-input" placeholder="Bạn đang nghĩ gì?"></textarea></div>
+                </div>
+                <div class="category">
+                    <input type="hidden" value="@Model.CategoryId" id="categoryId"/>
                 </div>
                 <div class="upload-image" title="Thêm ảnh">
                     <label for="icon-input">
@@ -39,6 +43,10 @@
                 <button class="btn btn-primary btn-up"><i class="fal fa-check"></i> Đăng</button>
             </div>
             <div class="post-box">
+                @if(Model.Posts.Count() == 0)
+                {
+                    <div style="text-align: center">Chúng tôi không thể tìm thấy bài đăng nào gần đây</div>
+                }
                 @foreach (var item in Model.Posts)
                 {
                     <div class="post bg-white">
@@ -657,6 +665,7 @@
 @section Scripts {
     <script src="~/Assets/client/js/main.js"></script>
     <script src="~/Assets/client/js/mikes-modal.min.js"></script>
+    <script src="~/Scripts/controller/categoryController.js"></script>
     <script>
         function deleteImgPreview() {
             $("#img-preview").attr("src", "");

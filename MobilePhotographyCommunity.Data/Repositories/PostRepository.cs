@@ -24,7 +24,7 @@ namespace MobilePhotographyCommunity.Data.Repositories
 
         public IEnumerable<Post> GetByCategoryId(int id)
         {
-            return Context.Posts.Where(x => x.CategoryId == id);
+            return Context.Posts.Where(x => x.CategoryId == id).OrderByDescending(x => x.PostId);
         }
 
         public int CountByCategoryId(int id)
