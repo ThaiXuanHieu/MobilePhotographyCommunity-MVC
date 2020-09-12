@@ -15157,6 +15157,7 @@
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\webfonts\fa-solid-900.woff" />
     <Content Include="Assets\client\fonts\fontawesome-pro-5.11.2-web\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\controller\categoryController.js" />
     <Content Include="Scripts\controller\detailPost.js" />
     <Content Include="Scripts\controller\homeController.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

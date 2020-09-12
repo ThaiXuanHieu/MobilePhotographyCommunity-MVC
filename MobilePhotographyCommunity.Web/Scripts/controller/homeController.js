@@ -11,7 +11,7 @@
 
         formData.append("PostId", postId);
         formData.append("Caption", captionPost);
-        
+
         $.ajax({
             type: "POST",
             url: "/Post/SavePost",
@@ -81,4 +81,5 @@
             }
         });
     });
+    
 });

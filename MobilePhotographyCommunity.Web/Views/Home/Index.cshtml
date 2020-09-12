@@ -31,7 +31,7 @@
                 <div class="region-img-preview" style="display: none;">
                     <img id="img-preview" src="" alt="" width="100%">
                     <div class="middle">
-                        <a href="#" style="color: black;">
+                        <a href="javascript:deleteImgPreview();" style="color: black;">
                             <i class="fal fa-trash-alt fa-lg"></i>
                         </a>
                     </div>
@@ -181,4 +181,10 @@
     <script src="~/Assets/client/js/main.js"></script>
     <script src="~/Assets/client/js/mikes-modal.min.js"></script>
     <script src="~/Scripts/controller/homeController.js"></script>
+    <script>
+        function deleteImgPreview() {
+            $("#img-preview").attr("src", "");
+            $(".region-img-preview").css("display", "none");
+        }
+    </script>
 }
