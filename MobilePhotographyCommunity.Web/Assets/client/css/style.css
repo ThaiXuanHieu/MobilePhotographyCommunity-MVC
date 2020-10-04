@@ -19,9 +19,9 @@ body {
 
 .box-right {
     padding: 10px 20px;
-    border: 1px solid #999;
     border-radius: 5px;
     width: 365px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
 }
 
     .box-right a {
@@ -45,6 +45,7 @@ body {
     position: fixed;
     width: 100%;
     z-index: 1030;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
 }
 
     #header .search-box,
@@ -110,8 +111,10 @@ body {
 .category-box,
 .post,
 .hint-friend-box,
-.list-friend-box {
+.list-friend-box,
+.rankings-box {
     border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
 }
 
 .challenge-box,
