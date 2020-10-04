@@ -186,6 +186,10 @@ body {
     display: none;
 }
 
+.upload-image i {
+    color: #5cb85c;
+}
+
 .upload-image i,
 label {
     cursor: pointer;
