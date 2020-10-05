@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <div class="top-row px-4">
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle text-decoration-none" data-toggle="dropdown">
+                <i class="fas fa-user"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" style="z-index: 100; position: absolute;">
+                <a class="dropdown-item" href="#">Trang cá nhân</a>
+                <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+    <div class="content px-4">
+
+        <h1 class="title-content">Trang chủ</h1>
+        <div class="select-date">
+            <select class="form-control">
+                <option value="">Ngày hôm nay</option>
+                <option value="">Tuần</option>
+                <option value="">Tháng</option>
+                <option value="">Năm</option>
+            </select>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="ov-box ov-user">
+                    <h2 class="title-box">Người dùng</h2>
+                    <div style="color: #36b9cc;">
+                        <i class="fas fa-users fa-4x"></i>
+                        <span style="float: right; font-size: 45px;">+25</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ov-box ov-challenge">
+                    <h2 class="title-box">Thử thách</h2>
+                    <div style="color: #1cc88a;">
+                        <i class="fas fa-running fa-4x"></i>
+                        <span style="float: right; font-size: 45px;">+10</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ov-box ov-feedback">
+                    <h2 class="title-box">Phản hồi</h2>
+                    <div style="color: #e74a3b;">
+                        <i class="fas fa-comment-alt-edit fa-4x"></i>
+                        <span style="float: right; font-size: 45px;">+15</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ov-box ov-post">
+                    <h2 class="title-box">Bài viết</h2>
+                    <div style="color: #f6c23e;">
+                        <i class="fas fa-poll-h fa-4x"></i>
+                        <span style="float: right; font-size: 45px;">+125</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ov-box ov-like">
+                    <h2 class="title-box">Yêu thích</h2>
+                    <div style="color: #4e73df;">
+                        <i class="fas fa-thumbs-up fa-4x"></i>
+                        <span style="float: right; font-size: 45px;">+490</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="ov-box ov-comment">
+                    <h2 class="title-box">Bình luận</h2>
+                    <div style="color: #858796;">
+                        <i class="fas fa-comment-alt fa-4x"></i>
+                        <span style="float: right; font-size: 45px;">+385</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
