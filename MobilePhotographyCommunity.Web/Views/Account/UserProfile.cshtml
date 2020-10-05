@@ -31,14 +31,14 @@
                         <span class="is-admin"><i class="fal fa-check-circle"></i></span>
                     </div>
                     <div class="status-friend">
-                        <a href="#" class="btn btn-default"><i class="fal fa-user-plus"></i> Kết bạn</a>
-                        <a href="#" class="btn btn-default">
+                        <a href="#" class="btn btn-primary"><i class="fal fa-user-plus"></i> Kết bạn</a>
+                        <a href="#" class="btn btn-info">
                             <i class="fal fa-sign-out-alt"></i> Đã gửi lời mời kết
                             bạn
                         </a>
                         <a href="#" class="btn btn-default"><i class="fal fa-check"></i> Bạn bè</a>
-                        <a href="#" class="btn btn-default"><i class="fal fa-signal"></i> Theo dõi</a>
-                        <a href="#" class="btn btn-default" style="display:none"><i class="fal fa-check"></i> Đang theo dõi</a>
+                        <a href="#" class="btn btn-primary"><i class="fal fa-signal"></i> Theo dõi</a>
+                        <a href="#" class="btn btn-default"><i class="fal fa-check"></i> Đang theo dõi</a>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
@@ -72,8 +72,58 @@
                         </a>
                     </ul>
                 </div>
-                <div class="update-profile" title="Cập nhật trang cá nhân">
-                    <a href="#" style="color: black;"><i class="fal fa-edit fa-lg"></i></a>
+                <div class="update-profile">
+                    <a href="#" style="color: black;" data-toggle="modal" data-target="#modal-update-user-profile" title="Cập nhật trang cá nhân"><i class="fal fa-edit fa-lg"></i></a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="modal-update-user-profile" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Cập nhật trang cá nhân</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="" method="post">
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="">Họ:</label>
+                                                <input type="text" name="" id="" class="form-control">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="">Tên:</label>
+                                                <input type="text" name="" id="" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 form-group">
+                                                <label for="">Ngày sinh:</label>
+                                                <input type="date" name="" id="" class="form-control">
+                                            </div>
+                                            <div class="col-md-6 form-group">
+                                                <label for="">Số điện thoại:</label>
+                                                <input type="text" name="" id="" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Giới tính:</label>
+                                            <label for="rdMale" style="padding: 0px 10px">
+                                                <input type="radio" name="gender" id="rdMale"> Nam
+                                            </label>
+                                            <label for="rdFemale">
+                                                <input type="radio" name="gender" id="rdFemale"> Nữ
+                                            </label>
+                                        </div>
+                                        <input type="submit" class="btn btn-success" value="Lưu">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

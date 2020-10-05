@@ -141,6 +141,7 @@
         </div>
     </header>
     @RenderBody()
+    <button onclick="scrollToTop()" id="btnScroll" title="Go to top"><i class="fas fa-arrow-up"></i></button>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
