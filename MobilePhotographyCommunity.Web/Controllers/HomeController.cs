@@ -13,10 +13,15 @@ namespace MobilePhotographyCommunity.Web.Controllers
     {
         private readonly IPostService postService;
         private readonly IUserService userService;
-        public HomeController(IPostService postService, IUserService userService)
+        private readonly ICommentService commentService;
+        private readonly ILikeService likeService;
+
+        public HomeController(IPostService postService, IUserService userService, ICommentService commentService, ILikeService likeService)
         {
             this.postService = postService;
             this.userService = userService;
+            this.commentService = commentService;
+            this.likeService = likeService;
         }
 
         public ActionResult Index()
@@ -32,10 +37,12 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 //postViewModel.Image = i.Image;
                 //postViewModel.CreatedBy = i.CreatedBy;
                 //postViewModel.CreatedTime = i.CreatedTime;
-                //postViewModel.Comments = i.Comments;
-                //postViewModel.Likes = i.Likes;
                 postViewModel = Mapper.Map<PostViewModel>(i);
                 foreach(var j in postViewModel.Comments)
+                {
+                    j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
+                }
+                foreach (var j in postViewModel.Likes)
                 {
                     j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
                 }

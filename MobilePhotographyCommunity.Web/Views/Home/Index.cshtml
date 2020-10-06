@@ -1,5 +1,6 @@
 ﻿@using MobilePhotographyCommunity.Common
-@model IEnumerable<MobilePhotographyCommunity.Data.ViewModel.PostViewModel>
+@using MobilePhotographyCommunity.Data.ViewModel
+@model IEnumerable<PostViewModel>
 @{
     ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -75,8 +76,40 @@
                             <div class="post-img"><img class="photo" src="~/UploadImage/Photo/@item.Image" alt="" data-id="@item.PostId" width="100%"></div>
                         </div>
                         <div class="count-liked-commented" style="margin-top: 10px">
-                            <a href="#" style="float:left">@item.Likes.Where(x => x.PostId == item.PostId).Count() Thích</a>
-                            <a href="#" style="float:right"> @item.Comments.Where(x => x.PostId == item.PostId).Count() Bình luận</a>
+                            @{
+                                var listLike = item.Likes.Where(x => x.PostId == item.PostId);
+                                var likeCount = listLike.Count();
+                                var commentCount = item.Comments.Where(x => x.PostId == item.PostId).Count();
+                                if (listLike.Count() > 0)
+                                {
+                                    <div class="dropup">
+                                        <a href="#" style="float:left" data-toggle="dropdown">@likeCount Thích</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var i in listLike)
+                                            {
+                                                <li>
+                                                    <a href="/Account/UserProfile/@i.User.UserId">
+                                                        <img class="user-avt" src="~/UploadImage/Avatar/@i.User.Avatar" alt=""
+                                                             style=" width:40px; height:40px">
+                                                        <span class="fullname" style="display: inline;">@i.User.FirstName @i.User.LastName</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            @*<li>
+                                                <a href="">
+                                                    <img class="user-avt" src="~/Assets/client/img/user/tonngokhong.jpg" alt=""
+                                                         style=" width:40px; height:40px">
+                                                    <span class="fullname" style="display: inline;">Tôn Ngộ Không</span>
+                                                </a>
+                                            </li>*@
+                                        </ul>
+                                    </div>
+                                }
+                                if (commentCount > 0)
+                                {
+                                    <a href="#" style="float:right"> @commentCount Bình luận</a>
+                                }
+                            }
                         </div>
                         <div class="post-action" style="clear:both">
                             <div class="row" style="text-align: center;">
@@ -141,31 +174,31 @@
                                 </div>
                             }
                             @*<div class="other-comment">
-                        <div class="commentedby">
-                            <a href="#">
-                                <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
-                                <h4 class="name" style="display: inline;">An Pon</h4>
-                                <div class="commented-time">2 tuần</div>
-                            </a>
-                        </div>
-                        <div class="comment-content">
-                            <span>
-                                Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
-                                của bức ảnh này
-                            </span>
-                        </div>
-                        <div class="comment-option">
-                            <div class="dropdown post-option" style="float: right;">
-                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                                    <i class="fal fa-ellipsis-v fa-2x"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
-                                    <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>*@
+                                    <div class="commentedby">
+                                        <a href="#">
+                                            <img class="user-avt" src="~/Assets/client/img/user/anpon.jpg" alt="">
+                                            <h4 class="name" style="display: inline;">An Pon</h4>
+                                            <div class="commented-time">2 tuần</div>
+                                        </a>
+                                    </div>
+                                    <div class="comment-content">
+                                        <span>
+                                            Đây, đây là đỉnh cao, đỉnh cao của sự thăng hoa tuyệt vời
+                                            của bức ảnh này
+                                        </span>
+                                    </div>
+                                    <div class="comment-option">
+                                        <div class="dropdown post-option" style="float: right;">
+                                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                                <i class="fal fa-ellipsis-v fa-2x"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                                <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>*@
                             <a href="#">Xem thêm bình luận</a>
                         </div>
                     </div>

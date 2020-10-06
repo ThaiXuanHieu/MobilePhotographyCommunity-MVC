@@ -53,10 +53,10 @@ namespace MobilePhotographyCommunity.Web.Controllers
                     //postViewModel.Comments = i.Comments;
                     //postViewModel.Likes = i.Likes;
                     postViewModel = Mapper.Map<PostViewModel>(i);
-                    foreach (var j in postViewModel.Comments)
-                    {
-                        j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
-                    }
+                    //foreach (var j in postViewModel.Comments)
+                    //{
+                    //    j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
+                    //}
                     postViewModel.User = userService.GetById(Convert.ToInt32(i.CreatedBy));
                     postViewModels.Add(postViewModel);
                 }
@@ -87,6 +87,10 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 //postViewModel.Likes = i.Likes;
                 postViewModel = Mapper.Map<PostViewModel>(i);
                 foreach (var j in postViewModel.Comments)
+                {
+                    j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
+                }
+                foreach (var j in postViewModel.Likes)
                 {
                     j.User = userService.GetById(Convert.ToInt32(j.CreatedBy));
                 }

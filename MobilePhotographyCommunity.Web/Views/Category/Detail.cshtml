@@ -22,7 +22,7 @@
                     <div class="col-xs-10"><textarea class="post-caption-input form-control" name="" id="post-caption-input" placeholder="Bạn đang nghĩ gì?"></textarea></div>
                 </div>
                 <div class="category">
-                    <input type="hidden" value="@Model.CategoryId" id="categoryId"/>
+                    <input type="hidden" value="@Model.CategoryId" id="categoryId" />
                 </div>
                 <div class="upload-image" title="Thêm ảnh">
                     <label for="icon-input">
@@ -43,7 +43,7 @@
                 <button class="btn btn-primary btn-up"><i class="fal fa-check"></i> Đăng</button>
             </div>
             <div class="post-box">
-                @if(Model.Posts.Count() == 0)
+                @if (Model.Posts.Count() == 0)
                 {
                     <div style="text-align: center">Chúng tôi không thể tìm thấy bài đăng nào gần đây</div>
                 }
@@ -78,8 +78,41 @@
                             <div class="post-img"><img class="photo" src="~/UploadImage/Photo/@item.Image" alt="" width="100%"></div>
                         </div>
                         <div class="count-liked-commented" style="margin-top: 10px">
-                            <a href="#" style="float:left">@item.Likes.Where(x => x.PostId == item.PostId).Count() Thích</a>
-                            <a href="#" style="float:right"> @item.Comments.Where(x => x.PostId == item.PostId).Count() Bình luận</a>
+                            @{
+                                var listLike = item.Likes.Where(x => x.PostId == item.PostId);
+                                var likeCount = listLike.Count();
+                                var commentCount = item.Comments.Where(x => x.PostId == item.PostId).Count();
+                                if (listLike.Count() > 0)
+                                {
+                                    <div class="dropup">
+                                        <a href="#" style="float:left" data-toggle="dropdown">@likeCount Thích</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var i in listLike)
+                                            {
+                                                <li>
+                                                    <a href="/Account/UserProfile/@i.User.UserId">
+                                                        <img class="user-avt" src="~/UploadImage/Avatar/@i.User.Avatar" alt=""
+                                                             style=" width:40px; height:40px">
+                                                        <span class="fullname" style="display: inline;">@i.User.FirstName @i.User.LastName</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                            @*<li>
+                                                    <a href="">
+                                                        <img class="user-avt" src="~/Assets/client/img/user/tonngokhong.jpg" alt=""
+                                                             style=" width:40px; height:40px">
+                                                        <span class="fullname" style="display: inline;">Tôn Ngộ Không</span>
+                                                    </a>
+                                                </li>*@
+                                        </ul>
+                                    </div>
+                                }
+                                if (commentCount > 0)
+                                {
+                                    <a href="#" style="float:right"> @commentCount Bình luận</a>
+                                }
+                            }
+
                         </div>
                         <div class="post-action" style="clear:both">
                             <div class="row" style="text-align: center;">
