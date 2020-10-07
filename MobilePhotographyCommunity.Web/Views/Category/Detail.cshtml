@@ -117,9 +117,18 @@
                         <div class="post-action" style="clear:both">
                             <div class="row" style="text-align: center;">
                                 <div class="col-xs-4">
-                                    <a class="btn btn-like">
-                                        <i class="fal fa-thumbs-up"></i> Thích
-                                    </a>
+                                    @if (item.Likes.Where(x => x.PostId == item.PostId && x.User.UserId == Convert.ToInt32(Session[UserSession.UserId])).Count() > 0)
+                                    {
+                                        <a class="btn btn-like" style="color: #337ab7">
+                                            <i class="fal fa-thumbs-up"></i> Thích
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-like">
+                                            <i class="fal fa-thumbs-up"></i> Thích
+                                        </a>
+                                    }
                                 </div>
                                 <div class="col-xs-4">
                                     <a class="btn btn-comment">

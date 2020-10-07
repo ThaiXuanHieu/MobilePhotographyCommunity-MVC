@@ -96,12 +96,12 @@
                                                 </li>
                                             }
                                             @*<li>
-                                                <a href="">
-                                                    <img class="user-avt" src="~/Assets/client/img/user/tonngokhong.jpg" alt=""
-                                                         style=" width:40px; height:40px">
-                                                    <span class="fullname" style="display: inline;">Tôn Ngộ Không</span>
-                                                </a>
-                                            </li>*@
+                                                    <a href="">
+                                                        <img class="user-avt" src="~/Assets/client/img/user/tonngokhong.jpg" alt=""
+                                                             style=" width:40px; height:40px">
+                                                        <span class="fullname" style="display: inline;">Tôn Ngộ Không</span>
+                                                    </a>
+                                                </li>*@
                                         </ul>
                                     </div>
                                 }
@@ -114,9 +114,19 @@
                         <div class="post-action" style="clear:both">
                             <div class="row" style="text-align: center;">
                                 <div class="col-xs-4">
-                                    <a class="btn btn-like">
-                                        <i class="fal fa-thumbs-up"></i> Thích
-                                    </a>
+                                    @if (item.Likes.Where(x => x.PostId == item.PostId && x.User.UserId == Convert.ToInt32(Session[UserSession.UserId])).Count() > 0)
+                                    {
+                                        <a class="btn btn-like" style="color: #337ab7">
+                                            <i class="fal fa-thumbs-up"></i> Thích
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-like">
+                                            <i class="fal fa-thumbs-up"></i> Thích
+                                        </a>
+                                    }
+
                                 </div>
                                 <div class="col-xs-4">
                                     <a class="btn btn-comment">
