@@ -182,12 +182,8 @@ body {
     border-radius: 18px;
 }
 
-.upload-image > input {
+.upload-image #icon-input {
     display: none;
-}
-
-.upload-image i {
-    color: #5cb85c;
 }
 
 .upload-image i,
