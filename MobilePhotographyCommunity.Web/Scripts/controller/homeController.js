@@ -4,8 +4,8 @@
         var captionPost = $("#post-caption-input").val();
         var postId = $("#postId").val();
         var formData = new FormData();
-
-        if (photos.length == 0) {
+        
+        if ($("#img-preview").attr("src") == "") {
             $(".err-msg").text("Bạn chưa chọn ảnh");
             return;
         }
@@ -38,6 +38,7 @@
     });
 
     $(".btn-edit-post").on("click", function () {
+        $(".err-msg").text("");
         var postId = $(this).data("id");
         $.ajax({
             type: "GET",

@@ -5,7 +5,7 @@
         var postId = $("#postId").val();
         var categoryId = $("#categoryId").val();
 
-        if (photos.length == 0) {
+        if ($("#img-preview").attr("src") == "") {
             $(".err-msg").text("Bạn chưa chọn ảnh");
             return;
         }
@@ -41,6 +41,7 @@
     });
 
     $(".btn-edit-post").on("click", function () {
+        $(".err-msg").text("");
         var postId = $(this).data("id");
         $.ajax({
             type: "GET",
