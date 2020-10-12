@@ -4,6 +4,12 @@
         var captionPost = $("#post-caption-input").val();
         var postId = $("#postId").val();
         var categoryId = $("#categoryId").val();
+
+        if (photos.length == 0) {
+            $(".err-msg").text("Bạn chưa chọn ảnh");
+            return;
+        }
+
         var formData = new FormData();
 
         for (var i = 0; i < photos.length; i++) {
