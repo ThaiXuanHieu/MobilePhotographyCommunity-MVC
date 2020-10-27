@@ -37,7 +37,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
             int userId = (int)Session[UserSession.UserId];
             bool status = false;
             string fileName = "";
-            if(Convert.ToInt32(Request.Form[0]) == 0)
+            if (Convert.ToInt32(Request.Form[0]) == 0)
             {
                 if (Request.Files.Count > 0)
                 {
@@ -106,7 +106,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
                     status = false;
                 }
             }
-            
+
             return Json(new { status = status });
         }
 
@@ -114,7 +114,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
         {
             bool status = true;
             var post = postService.GetById(postId);
-            if(post == null)
+            if (post == null)
             {
                 status = false;
             }
@@ -133,7 +133,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
             {
                 status = false;
             }
-            
+
             return Json(new { status = status });
         }
 
@@ -160,7 +160,44 @@ namespace MobilePhotographyCommunity.Web.Controllers
             {
                 status = false;
             }
-            return Json( new { data = postViewModel, status = status }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = postViewModel, status = status }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult LikePost(int postId)
+        {
+            bool stt = false;
+            var likes = likeService.GetByPostId(postId);
+
+            if (likes.Count() > 0)
+            {
+                var unlike = likes.Where(x => x.PostId == postId && x.CreatedBy == Convert.ToInt32(Session[UserSession.UserId])).FirstOrDefault();
+                if (unlike != null)
+                {
+                    likeService.Delete(unlike);
+                    stt = false;
+
+                }
+                else
+                {
+                    var like = new Like();
+                    like.PostId = postId;
+                    like.CreatedBy = Convert.ToInt32(Session[UserSession.UserId]);
+                    likeService.Add(like);
+                    stt = true;
+                }
+            }
+            else
+            {
+                // first like
+                var like = new Like();
+                like.PostId = postId;
+                like.CreatedBy = Convert.ToInt32(Session[UserSession.UserId]);
+                likeService.Add(like);
+                stt = true;
+            }
+
+            return Json(new { status = stt });
+
         }
     }
 }

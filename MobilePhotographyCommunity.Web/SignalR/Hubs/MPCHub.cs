@@ -10,7 +10,8 @@ namespace MobilePhotographyCommunity.Web.SignalR.Hubs
     {
         public void Send(string name, string message)
         {
-            Clients.All.addNewMessageToPage(name, message);
+            IHubContext context = GlobalHost.ConnectionManager.GetHubContext<MPCHub>();
+            context.Clients.All.displayStatus();
         }
     }
 }

@@ -92,4 +92,29 @@
         });
     });
 
+    $(".btn-like").on("click", function () {
+        const postId = $(this).data("id");
+        var self = $(this);
+        $.ajax({
+            type: "POST",
+            url: "/Post/LikePost",
+            data: {
+                postId: postId,
+            },
+            dataType: "json",
+            success: function (response) {
+                if (response.status) {
+                    self.css("color", "#337ab7");
+                    window.location.reload();
+                } else {
+                    self.css("color", "");
+                    window.location.reload();
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
 });

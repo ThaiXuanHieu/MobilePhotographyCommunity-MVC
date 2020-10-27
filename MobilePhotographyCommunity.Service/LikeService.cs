@@ -13,6 +13,9 @@ namespace MobilePhotographyCommunity.Service
     {
         Like GetById(int id);
         IEnumerable<Like> GetByPostId(int id);
+        void Update(Like like);
+        void Add(Like like);
+        void Delete(Like like);
     }
 
     public class LikeService : ILikeService
@@ -26,6 +29,16 @@ namespace MobilePhotographyCommunity.Service
             this.unitOfWork = unitOfWork;
         }
 
+        public void Add(Like like)
+        {
+            likeRepository.Add(like);
+        }
+
+        public void Delete(Like like)
+        {
+            likeRepository.Delete(like);
+        }
+
         public Like GetById(int id)
         {
             return likeRepository.GetById(id);
@@ -34,6 +47,11 @@ namespace MobilePhotographyCommunity.Service
         public IEnumerable<Like> GetByPostId(int id)
         {
             return likeRepository.GetByPostId(id);
+        }
+
+        public void Update(Like like)
+        {
+            likeRepository.Update(like);
         }
     }
 }

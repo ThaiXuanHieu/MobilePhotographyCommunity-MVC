@@ -128,13 +128,13 @@
                                 <div class="col-xs-4">
                                     @if (item.Likes.Where(x => x.PostId == item.PostId && x.User.UserId == Convert.ToInt32(Session[UserSession.UserId])).Count() > 0)
                                     {
-                                        <a class="btn btn-like" style="color: #337ab7">
+                                        <a class="btn btn-like" data-id="@item.PostId" style="color: #337ab7">
                                             <i class="fal fa-thumbs-up"></i> Thích
                                         </a>
                                     }
                                     else
                                     {
-                                        <a class="btn btn-like">
+                                        <a class="btn btn-like" data-id="@item.PostId">
                                             <i class="fal fa-thumbs-up"></i> Thích
                                         </a>
                                     }

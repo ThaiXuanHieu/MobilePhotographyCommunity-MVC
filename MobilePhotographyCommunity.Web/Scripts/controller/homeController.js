@@ -4,7 +4,7 @@
         var captionPost = $("#post-caption-input").val();
         var postId = $("#postId").val();
         var formData = new FormData();
-        
+
         if ($("#img-preview").attr("src") == "") {
             $(".err-msg").text("Bạn chưa chọn ảnh");
             return;
@@ -87,5 +87,30 @@
             }
         });
     });
-    
+
+    $(".btn-like").on("click", function () {
+        const postId = $(this).data("id");
+        var self = $(this);
+        $.ajax({
+            type: "POST",
+            url: "/Post/LikePost",
+            data: {
+                postId: postId,
+            },
+            dataType: "json",
+            success: function (response) {
+                if (response.status) {
+                    self.css("color", "#337ab7");
+                    window.location.reload();
+                } else {
+                    self.css("color", "");
+                    window.location.reload();
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    });
+
 });
