@@ -194,7 +194,6 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 likeService.Add(like);
                 stt = true;
             }
-
             return Json(new { data = likes, status = stt });
 
         }

@@ -94,7 +94,7 @@
                                 if (listLike.Count() > 0)
                                 {
                                     <div class="dropup">
-                                        <a href="#" style="float:left" data-toggle="dropdown">@likeCount Thích</a>
+                                        <a href="#" style="float:left" data-toggle="dropdown" data-id="@item.PostId" class="like-count">@likeCount Thích</a>
                                         <ul class="dropdown-menu">
                                             @foreach (var i in listLike)
                                             {

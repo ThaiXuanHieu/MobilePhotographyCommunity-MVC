@@ -108,7 +108,7 @@
                             $(this).text(likeCount + " Thích");
                         }
                     });
-                    
+
                 } else {
                     var likes = response.data;
                     var likeCount = likes.length - 1;
@@ -122,7 +122,6 @@
                             }
                         }
                     });
-
                 }
             },
             error: function (err) {
