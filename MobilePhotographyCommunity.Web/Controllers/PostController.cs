@@ -167,7 +167,6 @@ namespace MobilePhotographyCommunity.Web.Controllers
         {
             bool stt = false;
             var likes = likeService.GetByPostId(postId);
-
             if (likes.Count() > 0)
             {
                 var unlike = likes.Where(x => x.PostId == postId && x.CreatedBy == Convert.ToInt32(Session[UserSession.UserId])).FirstOrDefault();
@@ -196,7 +195,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 stt = true;
             }
 
-            return Json(new { status = stt });
+            return Json(new { data = likes, status = stt });
 
         }
     }

@@ -100,11 +100,29 @@
             dataType: "json",
             success: function (response) {
                 if (response.status) {
+                    var likes = response.data;
+                    var likeCount = likes.length + 1;
                     self.css("color", "#337ab7");
-                    window.location.reload();
+                    $(".like-count").each(function (index) {
+                        if ($(this).data("id") == postId) {
+                            $(this).text(likeCount + " Thích");
+                        }
+                    });
+                    
                 } else {
+                    var likes = response.data;
+                    var likeCount = likes.length - 1;
                     self.css("color", "");
-                    window.location.reload();
+                    $(".like-count").each(function (index) {
+                        if ($(this).data("id") == postId) {
+                            if (likeCount <= 0) {
+                                $(this).text("");
+                            } else {
+                                $(this).text(likeCount + " Thích");
+                            }
+                        }
+                    });
+
                 }
             },
             error: function (err) {
