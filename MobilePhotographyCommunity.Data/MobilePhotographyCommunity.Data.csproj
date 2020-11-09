@@ -94,6 +94,7 @@
     <Compile Include="ViewModel\LikeViewModel.cs" />
     <Compile Include="ViewModel\PostCategoryViewModel.cs" />
     <Compile Include="ViewModel\PostViewModel.cs" />
+    <Compile Include="ViewModel\UserProfileVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

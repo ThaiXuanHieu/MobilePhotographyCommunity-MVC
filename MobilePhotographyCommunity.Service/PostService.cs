@@ -19,6 +19,7 @@ namespace MobilePhotographyCommunity.Service
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetAllPost();
         Post GetById(int postId);
+        IEnumerable<Post> GetByUserId(int id);
     }
 
     public class PostService : IPostService
@@ -70,6 +71,11 @@ namespace MobilePhotographyCommunity.Service
         public void Delete(int postId)
         {
             postRepository.Delete(postId);
+        }
+
+        public IEnumerable<Post> GetByUserId(int id)
+        {
+            return postRepository.GetByUserId(id);
         }
     }
 }

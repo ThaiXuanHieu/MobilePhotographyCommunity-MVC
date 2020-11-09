@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MobilePhotographyCommunity.Common;
 using MobilePhotographyCommunity.Data.DomainModel;
+using MobilePhotographyCommunity.Data.ViewModel;
 using MobilePhotographyCommunity.Service;
 
 namespace MobilePhotographyCommunity.Web.Controllers
@@ -12,10 +13,12 @@ namespace MobilePhotographyCommunity.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IUserService userService;
+        private readonly IPostService postService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IPostService postService)
         {
             this.userService = userService;
+            this.postService = postService;
         }
 
         // GET: Account
@@ -97,7 +100,11 @@ namespace MobilePhotographyCommunity.Web.Controllers
         public ActionResult UserProfile(int id)
         {
             var user = userService.GetById(id);
-            return View(user);
+            var post = postService.GetByUserId(id);
+            var userProfileVm = new UserProfileVm();
+            userProfileVm.Users = user;
+            userProfileVm.Posts = post;
+            return View(userProfileVm);
         }
 
         public ActionResult Logout()
