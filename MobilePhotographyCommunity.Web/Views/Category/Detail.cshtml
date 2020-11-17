@@ -89,8 +89,9 @@
                         <div class="count-liked-commented" style="margin-top: 10px">
                             @{
                                 var listLike = item.Likes.Where(x => x.PostId == item.PostId);
+                                var listComment = item.Comments.Where(x => x.PostId == item.PostId);
                                 var likeCount = listLike.Count();
-                                var commentCount = item.Comments.Where(x => x.PostId == item.PostId).Count();
+                                var commentCount = listComment.Count();
                                 if (listLike.Count() > 0)
                                 {
                                     <div class="dropup">
@@ -169,45 +170,52 @@
                                     </div>
                                 </div>
                             </div>
-                            @foreach (var i in item.Comments.Where(x => x.PostId == item.PostId))
+                            @foreach (var i in listComment)
                             {
-                            <div class="other-comment">
-                                <div class="detail-comment">
-                                    <div class="commentedby">
-                                        <a href="/Account/UserProfile/@i.User.UserId">
-                                            <img class="user-avt" src="~/UploadImage/Avatar/@i.User.Avatar" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="comment-content">
-                                        <a href="/Account/UserProfile/@i.User.UserId">
-                                            <h4 class="name">@i.User.FirstName @i.User.LastName</h4>
-                                        </a>
-                                        <span>
-                                            @i.Content
-                                        </span>
-                                    </div>
+                                <div class="other-comment">
+                                    <div class="detail-comment">
+                                        <div class="commentedby">
+                                            <a href="/Account/UserProfile/@i.User.UserId">
+                                                <img class="user-avt" src="~/UploadImage/Avatar/@i.User.Avatar" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="comment-content">
+                                            <a href="/Account/UserProfile/@i.User.UserId">
+                                                <h4 class="name">@i.User.FirstName @i.User.LastName</h4>
+                                            </a>
+                                            <span>
+                                                @i.Content
+                                            </span>
+                                        </div>
 
-                                </div>
-                                <div class="action-comment">
-                                    <span>Thích</span>
-                                    <span>&nbsp;·&nbsp;Trả lời</span>
-                                    <span>&nbsp;·&nbsp;@Convert.ToDateTime(i.CreatedTime).ToString("dd/MM/yyyy")</span>
-                                </div>
-                                <div class="comment-option">
-                                    <div class="dropdown post-option" style="float: right;">
-                                        <a class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="fal fa-ellipsis-v fa-2x"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
-                                            <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
-                                        </ul>
+                                    </div>
+                                    <div class="action-comment">
+                                        <span>Thích</span>
+                                        <span>&nbsp;·&nbsp;Trả lời</span>
+                                        <span>&nbsp;·&nbsp;@Convert.ToDateTime(i.CreatedTime).ToString("dd/MM/yyyy")</span>
+                                    </div>
+                                    <div class="comment-option">
+                                        <div class="dropdown post-option" style="float: right;">
+                                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="fal fa-ellipsis-v fa-2x"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                                <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
                             }
-                            
-                            <a href="#">Xem thêm bình luận</a>
+                            @if (commentCount == 0)
+                            {
+
+                            }
+                            else
+                            {
+                                <a href="#">Xem thêm bình luận</a>
+                            }
                         </div>
                     </div>
                 }
