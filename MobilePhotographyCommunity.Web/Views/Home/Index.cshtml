@@ -87,8 +87,9 @@
                         <div class="count-liked-commented" style="margin-top: 10px">
                             @{
                                 var listLike = item.Likes.Where(x => x.PostId == item.PostId);
+                                var listComment = item.Comments.Where(x => x.PostId == item.PostId);
                                 var likeCount = listLike.Count();
-                                var commentCount = item.Comments.Where(x => x.PostId == item.PostId).Count();
+                                var commentCount = listComment.Count();
                                 if (listLike.Count() > 0)
                                 {
                                     <div class="dropup">
@@ -167,7 +168,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @foreach (var i in item.Comments.Where(x => x.PostId == item.PostId))
+                            @foreach (var i in listComment)
                             {
                                 <div class="other-comment">
                                     <div class="detail-comment">
@@ -224,6 +225,7 @@
                                             </div>
                                         </div>*@
                                 </div>
+
                             }
                             @*<div class="other-comment">
                                     <div class="commentedby">
@@ -251,7 +253,14 @@
                                         </div>
                                     </div>
                                 </div>*@
-                            <a href="#">Xem thêm bình luận</a>
+                            @if (commentCount == 0)
+                            {
+
+                            }
+                            else
+                            {
+                                <a href="#">Xem thêm bình luận</a>
+                            }
                         </div>
                     </div>
                 }
