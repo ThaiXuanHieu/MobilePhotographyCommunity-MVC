@@ -197,5 +197,26 @@ namespace MobilePhotographyCommunity.Web.Controllers
             return Json(new { data = likes, status = stt });
 
         }
+
+        public JsonResult Comment(int postId, string content)
+        {
+            bool status = false;
+            var comment = new Comment();
+            comment.PostId = postId;
+            comment.Content = content;
+            comment.CreatedBy = Convert.ToInt32(Session[UserSession.UserId]);
+            comment.CreatedTime = DateTime.Now;
+            comment.User = userService.GetById(Convert.ToInt32(comment.CreatedBy));
+            try
+            {
+                commentService.Add(comment);
+                status = true;
+            }
+            catch (Exception)
+            {
+                status = false;
+            }
+            return Json(new { data = comment, status = status });
+        }
     }
 }

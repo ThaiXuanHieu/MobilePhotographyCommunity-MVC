@@ -319,6 +319,7 @@ label {
     border-radius: 15px;
     padding: 5px 10px;
     position: relative;
+    box-sizing: border-box;
 }
 
 .action-comment {

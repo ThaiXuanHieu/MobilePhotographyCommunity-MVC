@@ -13,6 +13,7 @@ namespace MobilePhotographyCommunity.Service
     {
         Comment GetById(int id);
         IEnumerable<Comment> GetByPostId(int id);
+        void Add(Comment model);
     }
 
     public class CommentService : ICommentService
@@ -24,6 +25,11 @@ namespace MobilePhotographyCommunity.Service
         {
             this.commentRepository = commentRepository;
             this.unitOfWork = unitOfWork;
+        }
+
+        public void Add(Comment model)
+        {
+            commentRepository.Add(model);
         }
 
         public Comment GetById(int id)
