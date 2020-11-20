@@ -165,7 +165,7 @@
 
                                     <div class="form-group rg-comment" style="position: relative">
                                         <input type="text" name="" id="" placeholder="Viết bình luận..."
-                                               class="form-control comment-content" data-id="@item.PostId">
+                                               class="comment-content-inp form-control" data-id="@item.PostId">
                                         <a class="btn btn-primary btn-send-comment" data-id="@item.PostId" style="position: absolute; top: 0; right: 0;">Đăng</a>
                                     </div>
                                 </div>
@@ -236,6 +236,7 @@
         <script src="~/Assets/client/js/main.js"></script>
         <script src="~/Assets/client/js/mikes-modal.min.js"></script>
         <script src="~/Scripts/controller/categoryController.js"></script>
+        <script src="~/Scripts/controller/common.js"></script>
         <script>
             function deleteImgPreview() {
                 $("#img-preview").attr("src", "");
