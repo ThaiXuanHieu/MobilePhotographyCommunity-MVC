@@ -70,68 +70,68 @@
         });
     });
 
-    $(".btn-delete-post").on("click", function () {
-        var postId = $(this).data("id");
-        $.ajax({
-            type: "POST",
-            url: "/Post/DeletePost",
-            data: {
-                postId: postId,
-            },
-            dataType: "json",
-            success: function (response) {
-                if (response.status) {
-                    window.location.reload();
-                } else {
-                    console.log("Lỗi");
-                }
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    });
+    //$(".btn-delete-post").on("click", function () {
+    //    var postId = $(this).data("id");
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Post/DeletePost",
+    //        data: {
+    //            postId: postId,
+    //        },
+    //        dataType: "json",
+    //        success: function (response) {
+    //            if (response.status) {
+    //                window.location.reload();
+    //            } else {
+    //                console.log("Lỗi");
+    //            }
+    //        },
+    //        error: function (err) {
+    //            console.log(err);
+    //        }
+    //    });
+    //});
 
-    $(".btn-like").on("click", function () {
-        const postId = $(this).data("id");
-        var self = $(this);
-        $.ajax({
-            type: "POST",
-            url: "/Post/LikePost",
-            data: {
-                postId: postId,
-            },
-            dataType: "json",
-            success: function (response) {
-                if (response.status) {
-                    var likes = response.data;
-                    var likeCount = likes.length + 1;
-                    self.css("color", "#337ab7");
-                    $(".like-count").each(function (index) {
-                        if ($(this).data("id") == postId) {
-                            $(this).text(likeCount + " Thích");
-                        }
-                    });
+    //$(".btn-like").on("click", function () {
+    //    const postId = $(this).data("id");
+    //    var self = $(this);
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Post/LikePost",
+    //        data: {
+    //            postId: postId,
+    //        },
+    //        dataType: "json",
+    //        success: function (response) {
+    //            if (response.status) {
+    //                var likes = response.data;
+    //                var likeCount = likes.length + 1;
+    //                self.css("color", "#337ab7");
+    //                $(".like-count").each(function (index) {
+    //                    if ($(this).data("id") == postId) {
+    //                        $(this).text(likeCount + " Thích");
+    //                    }
+    //                });
 
-                } else {
-                    var likes = response.data;
-                    var likeCount = likes.length - 1;
-                    self.css("color", "");
-                    $(".like-count").each(function (index) {
-                        if ($(this).data("id") == postId) {
-                            if (likeCount <= 0) {
-                                $(this).text("");
-                            } else {
-                                $(this).text(likeCount + " Thích");
-                            }
-                        }
-                    });
-                }
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        });
-    });
+    //            } else {
+    //                var likes = response.data;
+    //                var likeCount = likes.length - 1;
+    //                self.css("color", "");
+    //                $(".like-count").each(function (index) {
+    //                    if ($(this).data("id") == postId) {
+    //                        if (likeCount <= 0) {
+    //                            $(this).text("");
+    //                        } else {
+    //                            $(this).text(likeCount + " Thích");
+    //                        }
+    //                    }
+    //                });
+    //            }
+    //        },
+    //        error: function (err) {
+    //            console.log(err);
+    //        }
+    //    });
+    //});
 
 });
