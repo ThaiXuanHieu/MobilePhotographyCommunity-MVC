@@ -206,7 +206,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
             comment.Content = content;
             comment.CreatedBy = Convert.ToInt32(Session[UserSession.UserId]);
             comment.CreatedTime = DateTime.Now;
-            comment.User = userService.GetById(Convert.ToInt32(comment.CreatedBy));
+            
             try
             {
                 commentService.Add(comment);
@@ -216,6 +216,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
             {
                 status = false;
             }
+            comment.User = userService.GetById(Convert.ToInt32(comment.CreatedBy));
             return Json(new { data = comment, status = status });
         }
     }
