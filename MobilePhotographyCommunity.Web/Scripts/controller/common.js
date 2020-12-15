@@ -85,7 +85,7 @@
                     var otherComment = "<div class='other-comment'>"
                         + "<div class='detail-comment'> "
                         + "<div class='commentedby'>"
-                        + "<a href='/Account/UserProfile/" + data.User.UserId + "'>"
+                        + "<a href='/Account/UserProfile/'" + data.User.UserId + ">"
                         + "<img class='user-avt' src='/UploadImage/Avatar/" + data.User.Avatar + "' alt=''>"
                         + "</a>"
                         + "</div>"
