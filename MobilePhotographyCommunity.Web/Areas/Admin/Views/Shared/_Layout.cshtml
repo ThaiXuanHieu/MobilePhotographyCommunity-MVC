@@ -89,7 +89,24 @@
             </div>
         </div>
 
-        @RenderBody()
+        
+        <div class="main">
+            <div class="top-row px-4">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle text-decoration-none" data-toggle="dropdown">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="#">Trang cá nhân</a>
+                        <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Đăng xuất</a>
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+
     </app>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
