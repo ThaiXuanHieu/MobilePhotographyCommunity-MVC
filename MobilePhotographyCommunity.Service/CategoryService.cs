@@ -12,7 +12,10 @@ namespace MobilePhotographyCommunity.Service
         IEnumerable<CategoryVm> GetCategories();
         IEnumerable<Category> GetAll();
         Category GetById(int id);
+        CategoryVm GetCategoryVm(int id);
         void Add(CategoryVm categoryVm);
+        void Update(CategoryVm categoryVm);
+        void Delete(int id);
     }
 
     public class CategoryService : ICategoryService
@@ -35,7 +38,19 @@ namespace MobilePhotographyCommunity.Service
             category.Description = categoryVm.Description;
             category.CreatedBy = categoryVm.CreatedBy;
             category.CreatedTime = categoryVm.CreatedTime;
+            category.MetaTitle = categoryVm.MetaTitle;
             categoryRepository.Add(category);
+        }
+
+        public void Update(CategoryVm categoryVm)
+        {
+            var category = categoryRepository.GetById(categoryVm.CategoryId);
+            category.CategoryName = categoryVm.CategoryName;
+            category.Description = categoryVm.Description;
+            category.ModifiedBy = categoryVm.ModifiedBy;
+            category.ModifiedTime = categoryVm.ModifiedTime;
+            category.MetaTitle = categoryVm.MetaTitle;
+            categoryRepository.Update(category);
         }
 
         public IEnumerable<Category> GetAll()
@@ -67,6 +82,23 @@ namespace MobilePhotographyCommunity.Service
             }
 
             return categoriesVm;
+        }
+
+        public CategoryVm GetCategoryVm(int id)
+        {
+            var category = categoryRepository.GetById(id);
+            var categoryVm = new CategoryVm();
+            categoryVm.CategoryId = category.CategoryId;
+            categoryVm.CategoryName = category.CategoryName;
+            categoryVm.Description = category.Description;
+            categoryVm.CreatedBy = category.CreatedBy;
+            categoryVm.CreatedTime = category.CreatedTime;
+            return categoryVm;
+        }
+
+        public void Delete(int id)
+        {
+            categoryRepository.Delete(id);
         }
     }
 }

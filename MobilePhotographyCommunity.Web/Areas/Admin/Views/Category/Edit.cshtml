@@ -1,15 +1,17 @@
 ﻿@using MobilePhotographyCommunity.Data.ViewModel
 @model CategoryVm
 @{
-    ViewBag.Title = "Thêm chủ đề";
+    ViewBag.Title = "Chỉnh sửa chủ đề";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="content px-4">
-    <h1 class="title-content">Thêm chủ đề</h1>
-    
-    <form action="/Admin/Category/Add" method="post">
+    <h1 class="title-content">Chỉnh sửa chủ đề</h1>
+
+    <form action="/Admin/Category/Edit" method="post">
+        <div class="form-group">
+            @Html.HiddenFor(m => m.CategoryId)
+        </div>
         <div class="form-group">
             <label for="">Tên chủ đề:</label>
             @Html.EditorFor(m => m.CategoryName, new { htmlAttributes = new { @class = "form-control" } })

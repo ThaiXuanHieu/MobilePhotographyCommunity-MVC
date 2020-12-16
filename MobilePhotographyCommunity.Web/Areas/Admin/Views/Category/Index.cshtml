@@ -1,7 +1,7 @@
 ﻿@using MobilePhotographyCommunity.Data.ViewModel
 @model IEnumerable<CategoryVm>
 @{
-    ViewBag.Title = "Quản lý danh mục bài viết";
+    ViewBag.Title = "Quản lý chủ đề";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,6 +13,12 @@
         </a>
 
     </div>
+    @if (ViewBag.Message != null)
+    {
+        <div id="msgAlert" class="alert alert-success" role="alert" style="margin-top: 20px;">
+            <i class="fas fa-check"></i> @ViewBag.Message
+        </div>
+    }
     <div class="row">
         <div class="col-md-12 mt-2">
             <div class="search-box float-right">
@@ -55,25 +61,55 @@
                         <td>@Convert.ToDateTime(item.CreatedTime).ToString("dd/MM/yyyy")</td>
                         <td><input type="checkbox" name="" id=""></td>
                         <td>
-                            <a href="" class="btn btn-warning" title="Sửa"><i class="fal fa-edit"></i></a>
-                            <a href="" class="btn btn-danger" title="Xóa"><i class="fal fa-trash-alt"></i></a>
-                            <label class="switch" title="Hiển thị trang chủ">
-                                <input type="checkbox" checked>
-                                <span class="slider round"></span>
-                            </label>
+                            <a href="/Admin/Category/Edit/@item.CategoryId" class="btn btn-warning" title="Sửa"><i class="fal fa-edit"></i></a>
+                            <a data-toggle="modal" data-target="#delete-@item.CategoryId" class="btn btn-danger" title="Xóa"><i class="fal fa-trash-alt"></i></a>
+
                         </td>
                     </tr>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="delete-@item.CategoryId">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Xác nhận</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Xóa chủ đề @item.CategoryName
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <a href="/Admin/Category/Delete/@item.CategoryId" class="btn btn-success">Đồng ý</a>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 }
 
-                
+
             </tbody>
         </table>
     </div>
     @*<ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Trước</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item active"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
-    </ul>*@
+            <li class="page-item"><a class="page-link" href="#">Trước</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
+        </ul>*@
 </div>
+
+@section Scripts{
+    <script>
+        setTimeout(function () {
+            $('#msgAlert').fadeOut('slow');
+        }, 2000);
+    </script>
+}

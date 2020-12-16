@@ -19,6 +19,10 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
         // GET: Admin/Category
         public ActionResult Index()
         {
+            if(TempData["result"] != null)
+            {
+                ViewBag.Message = TempData["result"];
+            }
             return View(categoryService.GetCategories());
         }
 
@@ -39,6 +43,37 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
             categoryVm.CreatedTime = DateTime.Now;
             categoryVm.MetaTitle = StringHelper.VNDecode(categoryVm.CategoryName);
             categoryService.Add(categoryVm);
+            TempData["result"] = "Thêm thành công";
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var categoryVm = categoryService.GetCategoryVm(id);
+            return View(categoryVm);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CategoryVm categoryVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(categoryVm);
+            }
+            categoryVm.ModifiedBy = Convert.ToInt32(Session[UserSession.UserId]);
+            categoryVm.ModifiedTime = DateTime.Now;
+            categoryVm.MetaTitle = StringHelper.VNDecode(categoryVm.CategoryName);
+            categoryService.Update(categoryVm);
+            TempData["result"] = "Cập nhật thành công";
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            categoryService.Delete(id);
+            TempData["result"] = "Xóa thành công";
             return RedirectToAction("Index");
         }
     }
