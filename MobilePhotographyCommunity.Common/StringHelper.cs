@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MobilePhotographyCommunity.Common
 {
-    class StringHelper
+    public class StringHelper
     {
         public static string VNDecode(string s)
         {

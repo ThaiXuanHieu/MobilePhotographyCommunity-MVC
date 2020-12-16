@@ -8,39 +8,10 @@
 <div class="content px-4">
     <h1 class="title-content">Chủ đề</h1>
     <div class="create-update-category-region mt-2">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-category">
+        <a href="/Admin/Category/Add" class="btn btn-primary">
             <i class="fal fa-plus"></i> Thêm mới
-        </button>
+        </a>
 
-        <!-- Modal -->
-        <div class="modal fade" id="modal-category" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Thêm mới/Chỉnh sửa chủ đề</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <label for="">Tên chủ đề:</label>
-                                <input type="text" name="" id="" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Mô tả:</label>
-                                <input type="text" name="" id="" class="form-control">
-                            </div>
-                            <input type="submit" class="btn btn-success" value="Lưu">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-md-12 mt-2">
@@ -98,11 +69,11 @@
             </tbody>
         </table>
     </div>
-    <ul class="pagination">
+    @*<ul class="pagination">
         <li class="page-item"><a class="page-link" href="#">Trước</a></li>
         <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item active"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
-    </ul>
+    </ul>*@
 </div>

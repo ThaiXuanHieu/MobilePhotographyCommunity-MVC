@@ -62,7 +62,7 @@ namespace MobilePhotographyCommunity.Data.Infrastructure
         {
             return dbSet.ToList();
         }
-
+        
         public virtual T GetById(int id)
         {
             context.Configuration.ProxyCreationEnabled = false;
@@ -73,7 +73,7 @@ namespace MobilePhotographyCommunity.Data.Infrastructure
         {
             return dbSet.Where(predicate).ToList();
         }
-
+        
         public virtual void Update(T entity)
         {
             dbSet.Attach(entity);

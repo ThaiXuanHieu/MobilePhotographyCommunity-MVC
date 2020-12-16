@@ -10,7 +10,7 @@ namespace MobilePhotographyCommunity.Data.Repositories
 {
     public interface ICategoryRepository : IRepository<Category>
     {
-
+        IEnumerable<Category> GetAllSort();
     }
 
     public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
@@ -18,6 +18,11 @@ namespace MobilePhotographyCommunity.Data.Repositories
         public CategoryRepository(IDatabaseFactory databaseFactory) : base(databaseFactory)
         {
 
+        }
+
+        public IEnumerable<Category> GetAllSort()
+        {
+            return Context.Categories.OrderByDescending(x => x.CategoryId).ToList();
         }
     }
 }

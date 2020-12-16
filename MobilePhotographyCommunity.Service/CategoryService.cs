@@ -12,6 +12,7 @@ namespace MobilePhotographyCommunity.Service
         IEnumerable<CategoryVm> GetCategories();
         IEnumerable<Category> GetAll();
         Category GetById(int id);
+        void Add(CategoryVm categoryVm);
     }
 
     public class CategoryService : ICategoryService
@@ -27,6 +28,16 @@ namespace MobilePhotographyCommunity.Service
             this.unitOfWork = unitOfWork;
         }
 
+        public void Add(CategoryVm categoryVm)
+        {
+            var category = new Category();
+            category.CategoryName = categoryVm.CategoryName;
+            category.Description = categoryVm.Description;
+            category.CreatedBy = categoryVm.CreatedBy;
+            category.CreatedTime = categoryVm.CreatedTime;
+            categoryRepository.Add(category);
+        }
+
         public IEnumerable<Category> GetAll()
         {
             return categoryRepository.GetAll();
@@ -39,7 +50,7 @@ namespace MobilePhotographyCommunity.Service
 
         public IEnumerable<CategoryVm> GetCategories()
         {
-            var categories = categoryRepository.GetAll();
+            var categories = categoryRepository.GetAllSort();
             var categoriesVm = new List<CategoryVm>();
             foreach(var item in categories)
             {
