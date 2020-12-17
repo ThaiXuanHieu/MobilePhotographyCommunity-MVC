@@ -17,13 +17,16 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
             this.categoryService = categoryService;
         }
         // GET: Admin/Category
-        public ActionResult Index()
+        public ActionResult Index(int? pageIndex, int pageSize = 5)
         {
             if(TempData["result"] != null)
             {
                 ViewBag.Message = TempData["result"];
             }
-            return View(categoryService.GetCategories());
+
+            var categoryVm = categoryService.GetCategories(pageIndex, pageSize);
+            ViewBag.PageNum = categoryService.GetAll().Count();
+            return View(categoryVm);
         }
 
         [HttpGet]

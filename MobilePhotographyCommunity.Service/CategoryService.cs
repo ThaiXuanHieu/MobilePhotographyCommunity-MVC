@@ -9,7 +9,7 @@ namespace MobilePhotographyCommunity.Service
 {
     public interface ICategoryService
     {
-        IEnumerable<CategoryVm> GetCategories();
+        IEnumerable<CategoryVm> GetCategories(int? pageIndex, int pageSize);
         IEnumerable<Category> GetAll();
         Category GetById(int id);
         CategoryVm GetCategoryVm(int id);
@@ -63,9 +63,9 @@ namespace MobilePhotographyCommunity.Service
             return categoryRepository.GetById(id);
         }
 
-        public IEnumerable<CategoryVm> GetCategories()
+        public IEnumerable<CategoryVm> GetCategories(int? pageIndex, int pageSize)
         {
-            var categories = categoryRepository.GetAllSort();
+            var categories = categoryRepository.GetAllPaging(pageIndex, pageSize);
             var categoriesVm = new List<CategoryVm>();
             foreach(var item in categories)
             {
