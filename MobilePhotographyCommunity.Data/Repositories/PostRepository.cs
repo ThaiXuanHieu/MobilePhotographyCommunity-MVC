@@ -3,8 +3,6 @@ using MobilePhotographyCommunity.Data.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MobilePhotographyCommunity.Data.Repositories
 {
@@ -13,6 +11,7 @@ namespace MobilePhotographyCommunity.Data.Repositories
         int CountByCategoryId(int id);
         IEnumerable<Post> GetByCategoryId(int id);
         IEnumerable<Post> GetAllPost();
+        IEnumerable<Post> GetAllPostPaging(int? pageIndex, int pageSize);
         IEnumerable<Post> GetByUserId(int id);
     }
 
@@ -41,6 +40,11 @@ namespace MobilePhotographyCommunity.Data.Repositories
         public IEnumerable<Post> GetByUserId(int id)
         {
             return Context.Posts.Where(x => x.CreatedBy == id).OrderByDescending(x => x.CreatedTime).ToList();
+        }
+
+        public IEnumerable<Post> GetAllPostPaging(int? pageIndex, int pageSize)
+        {
+            return Context.Posts.OrderByDescending(x => x.PostId).Skip(Convert.ToInt32(pageIndex) * pageSize).Take(pageSize).ToList();
         }
     }
 }

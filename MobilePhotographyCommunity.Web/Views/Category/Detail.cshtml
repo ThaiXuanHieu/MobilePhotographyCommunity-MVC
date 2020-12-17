@@ -58,7 +58,7 @@
                 }
                 @foreach (var item in Model.Posts)
                 {
-                    <div class="post bg-white">
+                    <div class="post bg-white" id="@item.PostId">
                         <div class="auth">
                             <a href="/Account/UserProfile/@item.CreatedBy">
                                 <img class="user-avt" src="~/UploadImage/Avatar/@item.User.Avatar" alt="">

@@ -1,18 +1,13 @@
 ﻿@using MobilePhotographyCommunity.Data.ViewModel
-@model IEnumerable<CategoryVm>
+@model IEnumerable<PostViewModel>
 @{
-    ViewBag.Title = "Quản lý chủ đề";
+    ViewBag.Title = "Quản lý bài viết";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="content px-4">
-    <h1 class="title-content">Chủ đề</h1>
-    <div class="create-update-category-region mt-2">
-        <a href="/Admin/Category/Add" class="btn btn-primary">
-            <i class="fal fa-plus"></i> Thêm mới
-        </a>
+    <h1 class="title-content">Bài viết</h1>
 
-    </div>
     @if (ViewBag.Message != null)
     {
         <div id="msgAlert" class="alert alert-success" role="alert" style="margin-top: 20px;">
@@ -39,8 +34,9 @@
         <table class="table table-hover table-bordered">
             <thead>
                 <tr>
-                    <th width="190px">Tên chủ đề</th>
-                    <th>Mô tả</th>
+                    <th width="190px">Tiêu đề</th>
+                    <th width="190px">Số Like</th>
+                    <th width="190px">Số Comment</th>
                     <th width="200px">Người tạo</th>
                     <th width="105px">Ngày tạo</th>
                     <th width="90px"><input type="checkbox" name="" id=""> Chọn</th>
@@ -51,8 +47,9 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.CategoryName</td>
-                        <td>@item.Description</td>
+                        <td>@item.Caption</td>
+                        <td>@item.Likes.Count()</td>
+                        <td>@item.Comments.Count()</td>
                         <td>
                             <img src="~/UploadImage/Avatar/@item.User.Avatar" alt=""
                                  style="width: 40px; height: 40px; border-radius: 50%;">
@@ -61,13 +58,20 @@
                         <td>@Convert.ToDateTime(item.CreatedTime).ToString("dd/MM/yyyy")</td>
                         <td><input type="checkbox" name="" id=""></td>
                         <td>
-                            <a href="/Admin/Category/Edit/@item.CategoryId" class="btn btn-warning" title="Sửa"><i class="fal fa-edit"></i></a>
-                            <a data-toggle="modal" data-target="#delete-@item.CategoryId" class="btn btn-danger" title="Xóa"><i class="fal fa-trash-alt"></i></a>
+                            @if (item.CategoryId != null)
+                            {
+                                <a href="~/Category/Detail/@item.CategoryId#@item.PostId" class="btn btn-info" target="_blank" title="Chi tiết"><i class="fal fa-info"></i></a>
+                            }
+                            else
+                            {
+                                <a href="~/Home/Index#@item.PostId" class="btn btn-info" target="_blank" title="Chi tiết"><i class="fal fa-info"></i></a>
+                            }
+                            <a data-toggle="modal" data-target="#delete-@item.PostId" class="btn btn-danger" title="Xóa"><i class="fal fa-trash-alt"></i></a>
 
                         </td>
                     </tr>
                     <!-- The Modal -->
-                    <div class="modal fade" id="delete-@item.CategoryId">
+                    <div class="modal fade" id="delete-@item.PostId">
                         <div class="modal-dialog">
                             <div class="modal-content">
 
@@ -79,12 +83,12 @@
 
                                 <!-- Modal body -->
                                 <div class="modal-body">
-                                    Xóa chủ đề @item.CategoryName?
+                                    Xóa bài viết này?
                                 </div>
 
                                 <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <a href="/Admin/Category/Delete/@item.CategoryId" class="btn btn-success">Đồng ý</a>
+                                    <a href="/Admin/Post/Delete/@item.PostId" class="btn btn-success">Đồng ý</a>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy bỏ</button>
                                 </div>
 
@@ -102,7 +106,7 @@
         <ul class="pagination">
             @for (int i = 0; i < ViewBag.PageNum / 5; i++)
             {
-            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Category", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
+                <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
             }
         </ul>
     }
@@ -111,18 +115,11 @@
         <ul class="pagination">
             @for (int i = 0; i < (ViewBag.PageNum / 5) + 1; i++)
             {
-            <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Category", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
+                <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
             }
         </ul>
     }
 
-    @*<ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Trước</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
-        </ul>*@
 </div>
 
 @section Scripts{
@@ -132,3 +129,4 @@
         }, 2000);
     </script>
 }
+

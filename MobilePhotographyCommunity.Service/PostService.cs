@@ -1,11 +1,9 @@
 ﻿using MobilePhotographyCommunity.Data.DomainModel;
 using MobilePhotographyCommunity.Data.Infrastructure;
 using MobilePhotographyCommunity.Data.Repositories;
+using MobilePhotographyCommunity.Data.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MobilePhotographyCommunity.Service
 {
@@ -18,6 +16,7 @@ namespace MobilePhotographyCommunity.Service
         IEnumerable<Post> GetByCategoryId(int id);
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetAllPost();
+        IEnumerable<PostViewModel> GetAllPostPaging(int? pageIndex, int pageSize);
         Post GetById(int postId);
         IEnumerable<Post> GetByUserId(int id);
     }
@@ -25,12 +24,19 @@ namespace MobilePhotographyCommunity.Service
     public class PostService : IPostService
     {
         private readonly IPostRepository postRepository;
+        private readonly ICommentRepository commentRepository;
+        private readonly ILikeRepository likeRepository;
         private readonly IUnitOfWork unitOfWork;
+        private readonly IUserRepository userRepository;
 
-        public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork)
+        public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork, ICommentRepository commentRepository, ILikeRepository likeRepository,
+            IUserRepository userRepository)
         {
             this.postRepository = postRepository;
             this.unitOfWork = unitOfWork;
+            this.commentRepository = commentRepository;
+            this.likeRepository = likeRepository;
+            this.userRepository = userRepository;
         }
 
         public IEnumerable<Post> GetByCategoryId(int id)
@@ -76,6 +82,28 @@ namespace MobilePhotographyCommunity.Service
         public IEnumerable<Post> GetByUserId(int id)
         {
             return postRepository.GetByUserId(id);
+        }
+
+        public IEnumerable<PostViewModel> GetAllPostPaging(int? pageIndex, int pageSize)
+        {
+            var postVms = new List<PostViewModel>();
+            var posts = postRepository.GetAllPostPaging(pageIndex, pageSize);
+            foreach(var item in posts)
+            {
+                var postVm = new PostViewModel();
+                postVm.PostId = item.PostId;
+                postVm.Caption = item.Caption;
+                postVm.CategoryId = item.CategoryId;
+                postVm.CreatedBy = item.CreatedBy;
+                postVm.CreatedTime = item.CreatedTime;
+                postVm.Comments = commentRepository.GetByPostId(item.PostId);
+                postVm.Likes = likeRepository.GetByPostId(item.PostId);
+                postVm.User = userRepository.GetById(Convert.ToInt32(item.CreatedBy));
+
+                postVms.Add(postVm);
+            }
+
+            return postVms;
         }
     }
 }
