@@ -176,6 +176,7 @@
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="AutoMapper\AutoMapperConfiguration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ChallengeController.cs" />
     <Compile Include="Controllers\FriendController.cs" />
@@ -15249,6 +15250,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Post\" />
   </ItemGroup>
   <ItemGroup>

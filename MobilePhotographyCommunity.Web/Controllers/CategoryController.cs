@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace MobilePhotographyCommunity.Web.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private readonly ICategoryService categoryService;
         private readonly IPostService postService;

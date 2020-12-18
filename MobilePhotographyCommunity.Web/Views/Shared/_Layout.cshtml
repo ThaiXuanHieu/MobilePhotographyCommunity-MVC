@@ -1,4 +1,8 @@
-﻿@using MobilePhotographyCommunity.Common
+﻿@using MobilePhotographyCommunity.Data.DomainModel
+@using MobilePhotographyCommunity.Common
+@{ 
+    var roles = (List<UserRole>)Session[UserSession.Role];
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,8 +133,11 @@
                                 aria-labelledby="setting-dropdown">
                                 <li><a href="#"><i class="fal fa-cog"></i> Cài đặt</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="fal fa-comment-alt-edit"></i> Phản hồi</a></li>
-                                <li class="divider"></li>
+                                @if (roles.Count() > 1)
+                                {
+                                    <li><a href="/Admin/Home/Index"><i class="fal fa-tachometer-alt-slow"></i> Dashboard</a></li>
+                                    <li class="divider"></li>
+                                }
                                 <li><a href="/Account/Logout"><i class="fal fa-sign-out-alt"></i> Đăng xuất</a></li>
                             </ul>
                             <!-- End Option -->

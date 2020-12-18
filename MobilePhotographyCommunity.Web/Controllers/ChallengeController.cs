@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MobilePhotographyCommunity.Web.Controllers
 {
-    public class ChallengeController : Controller
+    public class ChallengeController : BaseController
     {
         private readonly IChallengeService challengeService;
         public ChallengeController(IChallengeService challengeService)

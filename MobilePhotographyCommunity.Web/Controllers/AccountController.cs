@@ -14,11 +14,16 @@ namespace MobilePhotographyCommunity.Web.Controllers
     {
         private readonly IUserService userService;
         private readonly IPostService postService;
+        private readonly IUserRoleService userRoleService;
+        private readonly IRoleService roleService;
 
-        public AccountController(IUserService userService, IPostService postService)
+        public AccountController(IUserService userService, IPostService postService, IUserRoleService userRoleService,
+            IRoleService roleService)
         {
             this.userService = userService;
             this.postService = postService;
+            this.userRoleService = userRoleService;
+            this.roleService = roleService;
         }
 
         // GET: Account
@@ -42,9 +47,12 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 }
                 else
                 {
+                    var roles = userRoleService.GetByUserId(user.UserId);
+
                     Session[UserSession.UserId] = user.UserId;
                     Session[UserSession.FullName] = user.FirstName + " " + user.LastName;
                     Session[UserSession.Avatar] = user.Avatar;
+                    Session[UserSession.Role] = roles;
                     return Redirect("/Home/Index");
                 }
             }
@@ -72,9 +80,15 @@ namespace MobilePhotographyCommunity.Web.Controllers
                     user.Avatar = "AvatarDefault-Male.png";
                     userService.Add(user);
 
-                    Session[UserSession.UserId] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).UserId;
+                    var _user = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S));
+                    var userRole = new UserRole();
+                    userRole.UserId = _user.UserId;
+                    userRole.RoleId = roleService.GetByName(Common.Role.MEMBER).First().RoleId;
+                    userRoleService.Add(userRole);
+
+                    Session[UserSession.UserId] = _user.UserId;
                     Session[UserSession.FullName] = model.FirstName + " " + model.LastName;
-                    Session[UserSession.Avatar] = userService.GetUser(model.UserName_S, PasswordHashMD5.MD5Hash(model.Password_S)).Avatar;
+                    Session[UserSession.Avatar] = _user.Avatar;
                     return Redirect("/Home/Index");
                 }
                 else

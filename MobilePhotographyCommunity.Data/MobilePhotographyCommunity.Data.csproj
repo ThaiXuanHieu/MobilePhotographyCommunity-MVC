@@ -88,7 +88,9 @@
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\LikeRepository.cs" />
     <Compile Include="Repositories\PostRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\UserRoleRepository.cs" />
     <Compile Include="ViewModel\CategoryVm.cs" />
     <Compile Include="ViewModel\ChallengeViewModel.cs" />
     <Compile Include="ViewModel\CommentViewModel.cs" />

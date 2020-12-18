@@ -11,5 +11,6 @@ namespace MobilePhotographyCommunity.Common
         public static string UserId = "UserId";
         public static string FullName = "FullName";
         public static string Avatar = "Avatar";
+        public static string Role = "Role";
     }
 }
