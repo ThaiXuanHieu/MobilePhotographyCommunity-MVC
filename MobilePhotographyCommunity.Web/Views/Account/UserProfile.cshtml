@@ -1,4 +1,5 @@
 ﻿@using MobilePhotographyCommunity.Common
+@using MobilePhotographyCommunity.Data.DomainModel
 @model MobilePhotographyCommunity.Data.ViewModel.UserProfileVm
 @{
     ViewBag.Title = Model.Users.FirstName + " " + Model.Users.LastName;
@@ -28,7 +29,11 @@
                 <div class="user-info">
                     <div class="user-name">
                         <span>@Model.Users.FirstName @Model.Users.LastName</span>
-                        <span class="is-admin"><i class="fal fa-check-circle"></i></span>
+                        @if (ViewBag.IsAdmin)
+                        {
+                            <span class="is-admin"><i class="fal fa-check-circle"></i></span>
+                        }
+
                     </div>
                     <div class="status-friend">
                         <a href="#" class="btn btn-primary"><i class="fal fa-user-plus"></i> Kết bạn</a>
@@ -140,7 +145,7 @@
             <div class="tab-content">
                 <div id="grid-photo-user" class="tab-pane fade in active">
 
-                    @for (int i = 0; i < Model.Posts.Count() / 2; i++)
+                    @for (int i = 0; i <= Model.Posts.Count() / 2; i++)
                     {
                         <div class="d-flex" style="justify-content: flex-start; padding: 0 90px">
                             @foreach (var item in Model.Posts.Skip(i * 3).Take(3))
@@ -197,7 +202,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div id="album" class="tab-pane fade">
 

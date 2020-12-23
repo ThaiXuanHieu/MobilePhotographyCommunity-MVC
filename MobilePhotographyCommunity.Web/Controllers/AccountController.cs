@@ -114,6 +114,15 @@ namespace MobilePhotographyCommunity.Web.Controllers
         public ActionResult UserProfile(int id)
         {
             var user = userService.GetById(id);
+            var userRole = userRoleService.GetByUserId(id);
+            if(userRole.Count() > 1)
+            {
+                ViewBag.IsAdmin = true;
+            }
+            else
+            {
+                ViewBag.IsAdmin = false;
+            }
             var post = postService.GetByUserId(id);
             var userProfileVm = new UserProfileVm();
             userProfileVm.Users = user;
