@@ -131,13 +131,15 @@
                             <!-- Open Option -->
                             <ul class="setting-box dropdown-menu dropdown-menu-right"
                                 aria-labelledby="setting-dropdown">
-                                <li><a href="#"><i class="fal fa-cog"></i> Cài đặt</a></li>
-                                <li class="divider"></li>
                                 @if (roles.Count() > 1)
                                 {
-                                    <li><a href="/Admin/Home/Index"><i class="fal fa-tachometer-alt-slow"></i> Dashboard</a></li>
+                                    <li><a href="/Admin/Home/Index"><i class="fal fa-tachometer-alt-slow"></i> Bảng điều khiển</a></li>
                                     <li class="divider"></li>
                                 }
+                                <li><a href="#"><i class="fal fa-cog"></i> Cài đặt</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="fal fa-lock"></i> Đổi mật khẩu</a></li>
+                                <li class="divider"></li>
                                 <li><a href="/Account/Logout"><i class="fal fa-sign-out-alt"></i> Đăng xuất</a></li>
                             </ul>
                             <!-- End Option -->

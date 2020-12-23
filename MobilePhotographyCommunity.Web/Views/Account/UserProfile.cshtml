@@ -11,18 +11,7 @@
         <div class="row user">
             <div class="col-xs-4 avt-box">
                 <div class="bg-white center">
-                    <a href="#">
-                        <img src="~/UploadImage/Avatar/@Model.Users.Avatar" alt="" id="avatar">
-                    </a>
-                </div>
-                <div>
-                    <div class="upload-avatar" title="Tải ảnh lên">
-                        <label for="icon-input">
-                            <i class="fas fa-camera fa-lg"></i>
-                        </label>
-                        <input id="icon-input" type="file" name="file" accept=".jpg, .png, *.jpeg"
-                               onchange="uploadAvatar(this)" />
-                    </div>
+                    <img src="~/UploadImage/Avatar/@Model.Users.Avatar" alt="" id="avatar">
                 </div>
             </div>
             <div class="col-xs-8 detail-info">
@@ -78,57 +67,88 @@
                     </ul>
                 </div>
                 <div class="update-profile">
-                    <a href="#" style="color: black;" data-toggle="modal" data-target="#modal-update-user-profile" title="Cập nhật trang cá nhân"><i class="fal fa-edit fa-lg"></i></a>
-                    <!-- Modal -->
-                    <div class="modal fade" id="modal-update-user-profile" role="dialog">
-                        <div class="modal-dialog">
+                    @if (Model.Users.UserId == Convert.ToInt32(Session[UserSession.UserId]))
+                    {
+                        <a href="#" style="color: black;" data-toggle="modal" data-target="#modal-update-user-profile" title="Cập nhật trang cá nhân"><i class="fal fa-edit fa-lg"></i></a>
 
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Cập nhật trang cá nhân</h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="" method="post">
-                                        <div class="row">
-                                            <div class="col-md-6 form-group">
-                                                <label for="">Họ:</label>
-                                                <input type="text" name="" id="" class="form-control">
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-update-user-profile" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Cập nhật trang cá nhân</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/Account/UpdateProfile" method="post" id="frm-userProfile" enctype="multipart/form-data">
+                                            <div class="row text-center">
+                                                <div class="avt-box">
+                                                    <div class="bg-white center">
+                                                        <img src="~/UploadImage/Avatar/@Model.Users.Avatar" alt="" id="avatarUpdate">
+                                                    </div>
+                                                    <div>
+                                                        <div class="upload-avatar" title="Tải ảnh lên">
+                                                            <label for="icon-input">
+                                                                <i class="fas fa-camera fa-lg"></i>
+                                                            </label>
+                                                            <input id="icon-input" type="file" name="file" accept=".jpg, .png, *.jpeg"
+                                                                   onchange="uploadAvatar(this)" />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6 form-group">
-                                                <label for="">Tên:</label>
-                                                <input type="text" name="" id="" class="form-control">
+                                            <div class="row">
+                                                <div class="col-md-6 form-group">
+                                                    <label for="">Họ:</label>
+                                                    <input type="text" name="FirstName" id="firstName" value="@Model.Users.FirstName" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <label for="">Tên:</label>
+                                                    <input type="text" name="LastName" id="lastName" value="@Model.Users.LastName" class="form-control">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6 form-group">
-                                                <label for="">Ngày sinh:</label>
-                                                <input type="date" name="" id="" class="form-control">
+                                            <div class="row">
+                                                <div class="col-md-6 form-group">
+                                                    <label for="">Ngày sinh:</label>
+                                                    <input type="date" name="DateOfBirth" id="dateOfBirth" value="@string.Format("{0:yyyy-MM-dd}", Model.Users.DateOfBirth)" class="form-control">
+                                                </div>
+                                                <div class="col-md-6 form-group">
+                                                    <label for="">Số điện thoại:</label>
+                                                    <input type="text" name="PhoneNumber" id="phoneNumber" value="@Model.Users.PhoneNumber" class="form-control">
+                                                </div>
                                             </div>
-                                            <div class="col-md-6 form-group">
-                                                <label for="">Số điện thoại:</label>
-                                                <input type="text" name="" id="" class="form-control">
+                                            <div class="form-group">
+                                                <label>Giới tính:</label>
+                                                @if (Model.Users.Gender == true)
+                                                {
+                                                    <label for="rdMale" style="padding: 0px 10px">
+                                                        <input type="radio" name="Gender" id="rdMale" checked="checked"> Nam
+                                                    </label>
+                                                    <label for="rdFemale">
+                                                        <input type="radio" name="Gender" id="rdFemale"> Nữ
+                                                    </label>
+                                                }
+                                                else
+                                                {
+                                                    <label for="rdMale" style="padding: 0px 10px">
+                                                        <input type="radio" name="Gender" id="rdMale"> Nam
+                                                    </label>
+                                                    <label for="rdFemale">
+                                                        <input type="radio" name="Gender" id="rdFemale" checked="checked"> Nữ
+                                                    </label>
+                                                }
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Giới tính:</label>
-                                            <label for="rdMale" style="padding: 0px 10px">
-                                                <input type="radio" name="gender" id="rdMale"> Nam
-                                            </label>
-                                            <label for="rdFemale">
-                                                <input type="radio" name="gender" id="rdFemale"> Nữ
-                                            </label>
-                                        </div>
-                                        <input type="submit" class="btn btn-success" value="Lưu">
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-success" id="btn-updateProfile">Lưu</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
         </div>
@@ -167,41 +187,7 @@
                     }
                 </div>
                 <div id="photo-challenge" class="tab-pane fade">
-                    <div class="d-flex" style="justify-content: flex-start; padding: 0 90px">
-                        <div class="">
-                            <div class="photo-box">
-                                <a href="#">
-                                    <img class="photo-user photo" src="~/Assets/client/img/post-img/chuonchuon-new.jpg" alt="">
-                                    <div class="middle">
-                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
-                                        <span><i class="fal fa-comment-alt"></i> 50</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div id="center">
-                            <div class="photo-box">
-                                <a href="#">
-                                    <img class="photo-user photo" src="~/Assets/client/img/post-img/ongmat.jpg" alt="">
-                                    <div class="middle">
-                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
-                                        <span><i class="fal fa-comment-alt"></i> 50</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="photo-box">
-                                <a href="#">
-                                    <img class="photo-user photo" src="~/Assets/client/img/post-img/nhahoca.jpg" alt="">
-                                    <div class="middle">
-                                        <span><i class="fal fa-thumbs-up"></i> 455</span>
-                                        <span><i class="fal fa-comment-alt"></i> 50</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </div>
                 <div id="album" class="tab-pane fade">
@@ -217,4 +203,5 @@
 @section Scripts {
     <script src="~/Assets/client/js/main.js"></script>
     <script src="~/Assets/client/js/mikes-modal.min.js"></script>
+    <script src="~/Scripts/controller/updateProfile.js"></script>
 }

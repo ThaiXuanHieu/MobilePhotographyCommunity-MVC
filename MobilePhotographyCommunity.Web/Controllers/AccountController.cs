@@ -130,6 +130,11 @@ namespace MobilePhotographyCommunity.Web.Controllers
             return View(userProfileVm);
         }
 
+        public ActionResult UpdateProfile(User model, HttpPostedFileBase file)
+        {
+            return View();
+        }
+
         public ActionResult Logout()
         {
             Session.Clear();

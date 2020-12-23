@@ -15189,8 +15189,8 @@
     <Content Include="Scripts\controller\categoryController.js" />
     <Content Include="Scripts\controller\challenge.js" />
     <Content Include="Scripts\controller\common.js" />
-    <Content Include="Scripts\controller\detailPost.js" />
     <Content Include="Scripts\controller\homeController.js" />
+    <Content Include="Scripts\controller\updateProfile.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />

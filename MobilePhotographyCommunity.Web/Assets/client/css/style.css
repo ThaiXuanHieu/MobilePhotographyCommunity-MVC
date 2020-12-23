@@ -443,7 +443,6 @@ label {
 }
 
 .avt-box .center {
-    width: 210px;
     height: 210px;
     padding: 10px;
     border-radius: 50%;
@@ -458,8 +457,8 @@ label {
 
 .avt-box i {
     position: absolute;
-    right: 25%;
-    bottom: 10%;
+    right: 35%;
+    bottom: 15%;
     color: black;
 }
 

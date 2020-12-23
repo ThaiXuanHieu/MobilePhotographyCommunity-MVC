@@ -13,7 +13,7 @@ function uploadAvatar(input) {
     if (input.files && input.files[0]) {
         var filerdr = new FileReader();
         filerdr.onload = function (e) {
-            document.getElementById("avatar").src = e.target.result;
+            document.getElementById("avatarUpdate").src = e.target.result;
         }
         filerdr.readAsDataURL(input.files[0]);
     }
