@@ -83,6 +83,9 @@
                                     </div>
                                     <div class="modal-body">
                                         <form action="/Account/UpdateProfile" method="post" id="frm-userProfile" enctype="multipart/form-data">
+                                            <div class="form-group">
+                                                <input type="hidden" name="UserId" value="@Session[UserSession.UserId]"/>
+                                            </div>
                                             <div class="row text-center">
                                                 <div class="avt-box">
                                                     <div class="bg-white center">
@@ -124,19 +127,19 @@
                                                 @if (Model.Users.Gender == true)
                                                 {
                                                     <label for="rdMale" style="padding: 0px 10px">
-                                                        <input type="radio" name="Gender" id="rdMale" checked="checked"> Nam
+                                                        <input type="radio" name="Gender" id="rdMale" value="True" checked="checked"> Nam
                                                     </label>
                                                     <label for="rdFemale">
-                                                        <input type="radio" name="Gender" id="rdFemale"> Nữ
+                                                        <input type="radio" name="Gender" value="False" id="rdFemale"> Nữ
                                                     </label>
                                                 }
                                                 else
                                                 {
                                                     <label for="rdMale" style="padding: 0px 10px">
-                                                        <input type="radio" name="Gender" id="rdMale"> Nam
+                                                        <input type="radio" name="Gender" value="True" id="rdMale"> Nam
                                                     </label>
                                                     <label for="rdFemale">
-                                                        <input type="radio" name="Gender" id="rdFemale" checked="checked"> Nữ
+                                                        <input type="radio" name="Gender" value="False" id="rdFemale" checked="checked"> Nữ
                                                     </label>
                                                 }
                                             </div>

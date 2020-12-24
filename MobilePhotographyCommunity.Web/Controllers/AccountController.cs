@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -37,10 +38,10 @@ namespace MobilePhotographyCommunity.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LoginByCredentials(UserLoginModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 User user = userService.GetUser(model.UserName, PasswordHashMD5.MD5Hash(model.Password));
-                if(user == null)
+                if (user == null)
                 {
                     TempData["statusLogin"] = false;
                     TempData["messageLogin"] = "Tài khoản không tồn tại. Vui lòng kiểm tra lại.";
@@ -67,7 +68,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
             if (ModelState.IsValid)
             {
                 var check = userService.CheckAccountExists(model.UserName_S);
-                if(check)
+                if (check)
                 {
                     //var user = Mapper.Map<User>(model); if UserName not S then OK
                     User user = new User();
@@ -115,7 +116,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
         {
             var user = userService.GetById(id);
             var userRole = userRoleService.GetByUserId(id);
-            if(userRole.Count() > 1)
+            if (userRole.Count() > 1)
             {
                 ViewBag.IsAdmin = true;
             }
@@ -132,7 +133,28 @@ namespace MobilePhotographyCommunity.Web.Controllers
 
         public ActionResult UpdateProfile(User model, HttpPostedFileBase file)
         {
-            return View();
+            var user = userService.GetById(model.UserId);
+            if (file == null)
+            {
+                user.Avatar = user.Avatar;
+            }
+            else
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/UploadImage/Avatar"), fileName);
+                user.Avatar = fileName;
+                file.SaveAs(path);
+                Session[UserSession.Avatar] = fileName;
+
+            }
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Gender = model.Gender;
+            user.DateOfBirth = model.DateOfBirth;
+            user.PhoneNumber = model.PhoneNumber;
+            userService.Update(user);
+            
+            return RedirectToAction("UserProfile", new { id = user.UserId });
         }
 
         public ActionResult Logout()
