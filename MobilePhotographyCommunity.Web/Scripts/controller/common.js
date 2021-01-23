@@ -42,6 +42,7 @@
                             $(this).text(likeCount + " Thích");
                         }
                     });
+                    window.location.reload();
 
                 } else {
                     var likes = response.data;
@@ -56,6 +57,7 @@
                             }
                         }
                     });
+                    window.location.reload();
                 }
             },
             error: function (err) {
@@ -114,6 +116,7 @@
 
                     $(".all-comment[data-id = " + postId + "]").prepend(otherComment);
                     $(".rg-comment").find("[data-id = " + postId + "]").val("");
+                    $(".commentCount[data-id=" + postId + "]").text(parseInt($(".commentCount[data-id=" + postId + "]").text().charAt(0)) + 1 + " Bình luận");
                 }
             },
             error: function (err) {
