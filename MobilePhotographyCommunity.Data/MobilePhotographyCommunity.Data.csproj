@@ -98,6 +98,7 @@
     <Compile Include="ViewModel\PostCategoryViewModel.cs" />
     <Compile Include="ViewModel\PostViewModel.cs" />
     <Compile Include="ViewModel\UserProfileVm.cs" />
+    <Compile Include="ViewModel\UserVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

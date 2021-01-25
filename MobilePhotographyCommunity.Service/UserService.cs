@@ -1,6 +1,7 @@
 ﻿using MobilePhotographyCommunity.Data.DomainModel;
 using MobilePhotographyCommunity.Data.Infrastructure;
 using MobilePhotographyCommunity.Data.Repositories;
+using MobilePhotographyCommunity.Data.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace MobilePhotographyCommunity.Service
     {
         void Add(User model);
         void Update(User user);
+        void Delete(int id);
         User GetUser(string username, string passwordHash);
         User GetById(int id);
         bool CheckAccountExists(string username);
         IEnumerable<User> GetAll();
+        IEnumerable<UserVm> GetAllPaging(int? pageIndex, int pageSize = 5);
     }
 
     public class UserService : IUserService
@@ -41,9 +44,30 @@ namespace MobilePhotographyCommunity.Service
             return userRepository.CheckAccountExists(username);
         }
 
+        public void Delete(int id)
+        {
+            userRepository.Delete(id);
+        }
+
         public IEnumerable<User> GetAll()
         {
             return userRepository.GetAll();
+        }
+
+        public IEnumerable<UserVm> GetAllPaging(int? pageIndex, int pageSize = 5)
+        {
+            var users = userRepository.GetAllPaging(pageIndex, pageSize);
+            return users.Select(x => new UserVm
+            {
+                UserId = x.UserId,
+                UserName = x.UserName,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Avatar = x.Avatar,
+                DateOfBirth = x.DateOfBirth,
+                Gender = x.Gender
+            }
+            );
         }
 
         public User GetById(int id)

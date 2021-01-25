@@ -12,6 +12,7 @@ namespace MobilePhotographyCommunity.Data.Repositories
     {
         User GetUser(string username, string passwordHash);
         bool CheckAccountExists(string username);
+        IEnumerable<User> GetAllPaging(int? pageIndex, int pageSize = 5);
     }
 
     public class UserRepository : RepositoryBase<User>, IUserRepository
@@ -27,6 +28,11 @@ namespace MobilePhotographyCommunity.Data.Repositories
             if (user == null)
                 return true;
             return false;
+        }
+
+        public IEnumerable<User> GetAllPaging(int? pageIndex, int pageSize = 5)
+        {
+            return Context.Users.OrderByDescending(x => x.UserId).Skip(Convert.ToInt32(pageIndex) * pageSize).Take(pageSize).ToList();
         }
 
         public User GetUser(string username, string passwordHash)
