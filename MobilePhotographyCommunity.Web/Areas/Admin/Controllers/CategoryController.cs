@@ -44,6 +44,7 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
             }
             categoryVm.CreatedBy = Convert.ToInt32(Session[UserSession.UserId]);
             categoryVm.CreatedTime = DateTime.Now;
+            categoryVm.Status = true;
             categoryVm.MetaTitle = StringHelper.VNDecode(categoryVm.CategoryName);
             categoryService.Add(categoryVm);
             TempData["result"] = "Thêm thành công";
@@ -78,6 +79,22 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
             categoryService.Delete(id);
             TempData["result"] = "Xóa thành công";
             return RedirectToAction("Index");
+        }
+
+        public JsonResult UpdateStatus(int id, bool status)
+        {
+            bool stt = false;
+            try
+            {
+                categoryService.UpdateStatus(id, status);
+                stt = true;
+            }
+            catch (Exception)
+            {
+                stt = false;
+            }
+
+            return Json(new { status = stt });
         }
     }
 }

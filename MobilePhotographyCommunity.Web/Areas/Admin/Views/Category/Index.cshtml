@@ -16,7 +16,7 @@
     @if (ViewBag.Message != null)
     {
         <div id="msgAlert" class="alert alert-success" role="alert" style="margin-top: 20px;">
-            <i class="fas fa-check"></i> @ViewBag.Message
+            <i class="fas fa-check"></i> <span id="msg">@ViewBag.Message</span>
         </div>
     }
     <div class="row">
@@ -44,28 +44,44 @@
                     <th width="200px">Người tạo</th>
                     <th width="105px">Ngày tạo</th>
                     <th width="90px"><input type="checkbox" name="" id=""> Chọn</th>
+                    <th>Hiển thị</th>
                     <th width="180px">Chức năng</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>@item.CategoryName</td>
-                        <td>@item.Description</td>
-                        <td>
-                            <img src="~/UploadImage/Avatar/@item.User.Avatar" alt=""
-                                 style="width: 40px; height: 40px; border-radius: 50%;">
-                            <span>@item.User.FirstName @item.User.LastName</span>
-                        </td>
-                        <td>@Convert.ToDateTime(item.CreatedTime).ToString("dd/MM/yyyy")</td>
-                        <td><input type="checkbox" name="" id=""></td>
-                        <td>
-                            <a href="/Admin/Category/Edit/@item.CategoryId" class="btn btn-warning" title="Sửa"><i class="fal fa-edit"></i></a>
-                            <a data-toggle="modal" data-target="#delete-@item.CategoryId" class="btn btn-danger" title="Xóa"><i class="fal fa-trash-alt"></i></a>
+                <tr>
+                    <td>@item.CategoryName</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <img src="~/UploadImage/Avatar/@item.User.Avatar" alt=""
+                             style="width: 40px; height: 40px; border-radius: 50%;">
+                        <span>@item.User.FirstName @item.User.LastName</span>
+                    </td>
+                    <td>@Convert.ToDateTime(item.CreatedTime).ToString("dd/MM/yyyy")</td>
+                    <td><input type="checkbox" name="" id=""></td>
+                    <td>
+                        <label class="switch switch-3d switch-success">
+                            @if (item.Status == true)
+                            {
+                                <input type="checkbox" value="true" data-id="@item.CategoryId" class="switch-input" checked="checked">
+                            }
+                            else
+                            {
+                                <input type="checkbox" value="true" data-id="@item.CategoryId" class="switch-input">
+                            }
+                            <span class="switch-label"></span>
+                            <span class="switch-handle"></span>
+                        </label>
+                    </td>
 
-                        </td>
-                    </tr>
+                    <td>
+                        <a href="/Admin/Category/Edit/@item.CategoryId" class="btn btn-warning" title="Sửa"><i class="fal fa-edit"></i></a>
+                        <a data-toggle="modal" data-target="#delete-@item.CategoryId" class="btn btn-danger" title="Xóa"><i class="fal fa-trash-alt"></i></a>
+
+                    </td>
+                </tr>
                     <!-- The Modal -->
                     <div class="modal fade" id="delete-@item.CategoryId">
                         <div class="modal-dialog">
@@ -131,4 +147,6 @@
             $('#msgAlert').fadeOut('slow');
         }, 2000);
     </script>
+
+    <script src="~/Scripts/controller/admin/category.js"></script>
 }

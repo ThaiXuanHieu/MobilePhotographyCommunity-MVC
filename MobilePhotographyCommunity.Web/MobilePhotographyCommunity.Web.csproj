@@ -7598,6 +7598,8 @@
     <Content Include="Assets\admin\vendor\fontawesome\webfonts\fa-light-300.svg" />
     <Content Include="Assets\admin\vendor\fontawesome\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\admin\vendor\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\admin\vendor\SweetAlert\css\sweetalert.css" />
+    <Content Include="Assets\admin\vendor\SweetAlert\js\sweetalert.js" />
     <Content Include="Assets\client\css\challenge.css" />
     <Content Include="Assets\client\css\mikes-modal.css" />
     <Content Include="Assets\client\css\style.css" />
@@ -15188,6 +15190,7 @@
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\controller\admin\category.js" />
     <Content Include="Scripts\controller\categoryController.js" />
     <Content Include="Scripts\controller\challenge.js" />
     <Content Include="Scripts\controller\common.js" />

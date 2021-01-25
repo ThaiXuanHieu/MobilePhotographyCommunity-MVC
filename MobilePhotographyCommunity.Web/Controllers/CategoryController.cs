@@ -32,7 +32,7 @@ namespace MobilePhotographyCommunity.Web.Controllers
 
         public PartialViewResult CategoryPartial()
         {
-            var categories = categoryService.GetAll();
+            var categories = categoryService.GetByStatus();
             var postCategoryViewModels = new List<PostCategoryViewModel>();
             foreach (var item in categories)
             {

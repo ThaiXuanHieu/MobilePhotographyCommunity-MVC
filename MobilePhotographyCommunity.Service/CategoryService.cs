@@ -12,9 +12,11 @@ namespace MobilePhotographyCommunity.Service
         IEnumerable<CategoryVm> GetCategories(int? pageIndex, int pageSize);
         IEnumerable<Category> GetAll();
         Category GetById(int id);
+        IEnumerable<Category> GetByStatus();
         CategoryVm GetCategoryVm(int id);
         void Add(CategoryVm categoryVm);
         void Update(CategoryVm categoryVm);
+        void UpdateStatus(int id, bool status);
         void Delete(int id);
     }
 
@@ -39,6 +41,7 @@ namespace MobilePhotographyCommunity.Service
             category.CreatedBy = categoryVm.CreatedBy;
             category.CreatedTime = categoryVm.CreatedTime;
             category.MetaTitle = categoryVm.MetaTitle;
+            category.Status = categoryVm.Status;
             categoryRepository.Add(category);
         }
 
@@ -51,6 +54,11 @@ namespace MobilePhotographyCommunity.Service
             category.ModifiedTime = categoryVm.ModifiedTime;
             category.MetaTitle = categoryVm.MetaTitle;
             categoryRepository.Update(category);
+        }
+
+        public IEnumerable<Category> GetByStatus()
+        {
+            return categoryRepository.GetByStatus();
         }
 
         public IEnumerable<Category> GetAll()
@@ -77,6 +85,7 @@ namespace MobilePhotographyCommunity.Service
                 categoryVm.CreatedTime = item.CreatedTime;
                 categoryVm.ModifiedBy = item.ModifiedBy;
                 categoryVm.ModifiedTime = item.ModifiedTime;
+                categoryVm.Status = item.Status;
                 categoryVm.User = userRepository.GetById(Convert.ToInt32(item.CreatedBy));
                 categoriesVm.Add(categoryVm);
             }
@@ -93,12 +102,20 @@ namespace MobilePhotographyCommunity.Service
             categoryVm.Description = category.Description;
             categoryVm.CreatedBy = category.CreatedBy;
             categoryVm.CreatedTime = category.CreatedTime;
+            categoryVm.Status = category.Status;
             return categoryVm;
         }
 
         public void Delete(int id)
         {
             categoryRepository.Delete(id);
+        }
+
+        public void UpdateStatus(int id, bool status)
+        {
+            var category = categoryRepository.GetById(id);
+            category.Status = status;
+            categoryRepository.Update(category);
         }
     }
 }
