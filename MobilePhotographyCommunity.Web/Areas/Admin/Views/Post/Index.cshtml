@@ -48,8 +48,8 @@
                 {
                     <tr>
                         <td>@item.Caption</td>
-                        <td>@item.Likes.Count()</td>
-                        <td>@item.Comments.Count()</td>
+                        <td>@item.Likes.Count() <i class="fas fa-thumbs-up" style="color:dodgerblue"></i></td>
+                        <td>@item.Comments.Count() <i class="fas fa-comment-alt" style="color:gray"></i></td>
                         <td>
                             <img src="~/UploadImage/Avatar/@item.User.Avatar" alt=""
                                  style="width: 40px; height: 40px; border-radius: 50%;">
