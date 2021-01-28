@@ -116,7 +116,10 @@
 
                     $(".all-comment[data-id = " + postId + "]").prepend(otherComment);
                     $(".rg-comment").find("[data-id = " + postId + "]").val("");
-                    $(".commentCount[data-id=" + postId + "]").text(parseInt($(".commentCount[data-id=" + postId + "]").text().charAt(0)) + 1 + " Bình luận");
+                    if ($(".commentCount[data-id=" + postId + "]").length > 0) {
+                        $(".commentCount[data-id=" + postId + "]").text(parseInt($(".commentCount[data-id=" + postId + "]").text().charAt(0)) + 1 + " Bình luận");
+                    }
+                    
                 }
             },
             error: function (err) {

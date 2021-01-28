@@ -7,7 +7,6 @@
 
         if ($("#img-preview").attr("src") == "") {
             $(".err-msg").text("Bạn chưa chọn ảnh");
-            return;
         }
 
         for (var i = 0; i < photos.length; i++) {

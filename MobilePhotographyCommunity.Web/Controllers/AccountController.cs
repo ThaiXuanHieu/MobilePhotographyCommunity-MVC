@@ -86,10 +86,11 @@ namespace MobilePhotographyCommunity.Web.Controllers
                     userRole.UserId = _user.UserId;
                     userRole.RoleId = roleService.GetByName(Common.Role.MEMBER).First().RoleId;
                     userRoleService.Add(userRole);
-
+                    var roles = userRoleService.GetByUserId(_user.UserId);
                     Session[UserSession.UserId] = _user.UserId;
                     Session[UserSession.FullName] = model.FirstName + " " + model.LastName;
                     Session[UserSession.Avatar] = _user.Avatar;
+                    Session[UserSession.Role] = roles;
                     return Redirect("/Home/Index");
                 }
                 else

@@ -345,8 +345,8 @@ label {
 
 .other-comment .comment-option {
     position: absolute;
-    right: -10px;
-    top: 20px;
+    right: 0px;
+    top: 15px;
     cursor: pointer;
 }
 
