@@ -10,6 +10,7 @@ namespace MobilePhotographyCommunity.Data.Repositories
     {
         IEnumerable<Category> GetAllPaging(int? pageIndex, int pageSize);
         IEnumerable<Category> GetByStatus();
+        IEnumerable<Category> Search(string str);
     }
 
     public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
@@ -27,6 +28,11 @@ namespace MobilePhotographyCommunity.Data.Repositories
         public IEnumerable<Category> GetByStatus()
         {
             return Context.Categories.Where(x => x.Status == true).ToList();
+        }
+
+        public IEnumerable<Category> Search(string str)
+        {
+            return Context.Categories.Where(x => x.CategoryName.Contains(str)).ToList();
         }
     }
 }

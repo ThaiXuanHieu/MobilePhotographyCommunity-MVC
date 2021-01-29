@@ -41,5 +41,11 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult Search(string str)
+        {
+            var users = userService.Search(str);
+            return View("Index", users);
+        }
     }
 }

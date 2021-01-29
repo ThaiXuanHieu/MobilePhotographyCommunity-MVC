@@ -20,6 +20,7 @@ namespace MobilePhotographyCommunity.Service
         bool CheckAccountExists(string username);
         IEnumerable<User> GetAll();
         IEnumerable<UserVm> GetAllPaging(int? pageIndex, int pageSize = 5);
+        IEnumerable<UserVm> Search(string str);
     }
 
     public class UserService : IUserService
@@ -78,6 +79,22 @@ namespace MobilePhotographyCommunity.Service
         public User GetUser(string username, string passwordHash)
         {
             return userRepository.GetUser(username, passwordHash);
+        }
+
+        public IEnumerable<UserVm> Search(string str)
+        {
+            var users = userRepository.Search(str);
+            return users.Select(x => new UserVm
+            {
+                UserId = x.UserId,
+                UserName = x.UserName,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Avatar = x.Avatar,
+                DateOfBirth = x.DateOfBirth,
+                Gender = x.Gender
+            }
+            );
         }
 
         public void Update(User user)

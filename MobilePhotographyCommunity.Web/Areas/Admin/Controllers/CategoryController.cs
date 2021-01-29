@@ -96,5 +96,11 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
 
             return Json(new { status = stt });
         }
+
+        public ActionResult Search(string str)
+        {
+            var categories = categoryService.Search(str);
+            return View("Index", categories);
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace MobilePhotographyCommunity.Data.Repositories
         User GetUser(string username, string passwordHash);
         bool CheckAccountExists(string username);
         IEnumerable<User> GetAllPaging(int? pageIndex, int pageSize = 5);
+        IEnumerable<User> Search(string str);
     }
 
     public class UserRepository : RepositoryBase<User>, IUserRepository
@@ -38,6 +39,11 @@ namespace MobilePhotographyCommunity.Data.Repositories
         public User GetUser(string username, string passwordHash)
         {
             return Context.Users.Where(u => u.UserName.Equals(username) && u.PasswordHash.Equals(passwordHash)).FirstOrDefault();
+        }
+
+        public IEnumerable<User> Search(string str)
+        {
+            return Context.Users.Where(u => (u.FirstName + " " + u.LastName).ToLower().Contains(str.ToLower()));
         }
     }
 }

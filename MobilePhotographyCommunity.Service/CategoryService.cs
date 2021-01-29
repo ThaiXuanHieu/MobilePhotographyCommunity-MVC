@@ -4,12 +4,14 @@ using MobilePhotographyCommunity.Data.Repositories;
 using MobilePhotographyCommunity.Data.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MobilePhotographyCommunity.Service
 {
     public interface ICategoryService
     {
         IEnumerable<CategoryVm> GetCategories(int? pageIndex, int pageSize);
+        IEnumerable<CategoryVm> Search(string str);
         IEnumerable<Category> GetAll();
         Category GetById(int id);
         IEnumerable<Category> GetByStatus();
@@ -75,7 +77,7 @@ namespace MobilePhotographyCommunity.Service
         {
             var categories = categoryRepository.GetAllPaging(pageIndex, pageSize);
             var categoriesVm = new List<CategoryVm>();
-            foreach(var item in categories)
+            foreach (var item in categories)
             {
                 var categoryVm = new CategoryVm();
                 categoryVm.CategoryId = item.CategoryId;
@@ -116,6 +118,22 @@ namespace MobilePhotographyCommunity.Service
             var category = categoryRepository.GetById(id);
             category.Status = status;
             categoryRepository.Update(category);
+        }
+
+        public IEnumerable<CategoryVm> Search(string str)
+        {
+            var categories = categoryRepository.Search(str);
+            return categories.Select(x => new CategoryVm
+            {
+                CategoryId = x.CategoryId,
+                CategoryName = x.CategoryName,
+                Description = x.Description,
+                CreatedBy = x.CreatedBy,
+                CreatedTime = x.CreatedTime,
+                Status = x.Status,
+                User = userRepository.GetById(Convert.ToInt32(x.CreatedBy))
+            }
+            );
         }
     }
 }
