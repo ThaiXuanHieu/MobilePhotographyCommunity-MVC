@@ -84,7 +84,7 @@
                             <div class="post-caption">@item.Caption</div>
                             <div class="post-img"><img class="photo" src="~/UploadImage/Photo/@item.Image" alt="" data-id="@item.PostId" width="100%"></div>
                         </div>
-                        <div class="count-liked-commented" style="margin-top: 10px">
+                        <div class="count-liked-commented" data-id="@item.PostId" style="margin-top: 10px">
                             @{
                                 var listLike = item.Likes.Where(x => x.PostId == item.PostId);
                                 var listComment = item.Comments.Where(x => x.PostId == item.PostId);

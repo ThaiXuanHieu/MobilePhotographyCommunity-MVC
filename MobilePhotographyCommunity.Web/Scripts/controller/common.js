@@ -118,6 +118,8 @@
                     $(".rg-comment").find("[data-id = " + postId + "]").val("");
                     if ($(".commentCount[data-id=" + postId + "]").length > 0) {
                         $(".commentCount[data-id=" + postId + "]").text(parseInt($(".commentCount[data-id=" + postId + "]").text().charAt(0)) + 1 + " Bình luận");
+                    } else {
+                        $(".count-liked-commented[data-id=" + postId + "]").append("<a href='#' class='commentCount' data-id='" + postId + "' style='float: right'>1 Bình luận</a>");
                     }
                     
                 }
