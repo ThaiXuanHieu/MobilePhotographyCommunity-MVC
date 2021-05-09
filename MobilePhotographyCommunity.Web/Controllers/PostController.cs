@@ -194,6 +194,11 @@ namespace MobilePhotographyCommunity.Web.Controllers
                 likeService.Add(like);
                 stt = true;
             }
+            likes = likeService.GetByPostId(postId);
+            foreach(var item in likes)
+            {
+                item.User = userService.GetById(Convert.ToInt32(item.CreatedBy));
+            }
             return Json(new { data = likes, status = stt });
 
         }

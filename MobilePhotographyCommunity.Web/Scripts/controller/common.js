@@ -24,6 +24,7 @@
 
     $(".btn-like").on("click", function () {
         const postId = $(this).data("id");
+        var dropdownLiked = $("#dropdown-liked-" + postId).empty();
         var self = $(this);
         $.ajax({
             type: "POST",
@@ -35,29 +36,58 @@
             success: function (response) {
                 if (response.status) {
                     var likes = response.data;
-                    var likeCount = likes.length + 1;
+                    var likeCount = likes.length;
                     self.css("color", "#337ab7");
-                    $(".like-count").each(function (index) {
-                        if ($(this).data("id") == postId) {
-                            $(this).text(likeCount + " Thích");
-                        }
-                    });
-                    window.location.reload();
+                    $("#like-count-" + postId).text(likeCount + " Thích");
 
+                    if (dropdownLiked.length == 0) {
+                        var listLiked = "<div class='dropup'>"
+                            + "<a href='#' style='float: left' data-toggle='dropdown' data-id='" + postId + "' id='like-count-" + postId + "'>" + likeCount + " Thích</a>"
+                            + "<ul class='dropdown-menu' id='dropdown-liked-" + postId + "' data-id='" + postId + "'>"
+                        $.each(likes, function (index, value) {
+                            listLiked += "<li>"
+                                + "<a href = '/Account/UserProfile/" + value.User.UserId + "'>"
+                                + "<img class='user-avt mr-3' src='/UploadImage/Avatar/" + value.User.Avatar + "' alt='' style=' width:40px; height:40px'>"
+                                + "<span class='fullname' style='display: inline;'>" + value.User.FirstName + " " + value.User.LastName + "</span > "
+                                + "</a>"
+                                + "</li>"
+                        })
+
+                        listLiked += "</ul>"
+                            + "</div> ";
+                        $("#count-liked-commented-" + postId).prepend(listLiked);
+                    } else {
+                        var listLiked = "";
+                        $.each(likes, function (index, value) {
+                            listLiked += "<li>"
+                                + "<a href = '/Account/UserProfile/" + value.User.UserId + "'>"
+                                + "<img class='user-avt mr-3' src='/UploadImage/Avatar/" + value.User.Avatar + "' alt='' style=' width:40px; height:40px'>"
+                                + "<span class='fullname' style='display: inline;'>" + value.User.FirstName + " " + value.User.LastName + "</span > "
+                                + "</a>"
+                                + "</li>"
+                        })
+                        dropdownLiked.append(listLiked);
+                    }
                 } else {
                     var likes = response.data;
-                    var likeCount = likes.length - 1;
-                    self.css("color", "");
-                    $(".like-count").each(function (index) {
-                        if ($(this).data("id") == postId) {
-                            if (likeCount <= 0) {
-                                $(this).text("");
-                            } else {
-                                $(this).text(likeCount + " Thích");
-                            }
-                        }
-                    });
-                    window.location.reload();
+                    var likeCount = likes.length;
+                    if (likeCount == 0) {
+                        self.css("color", "");
+                        $("#count-liked-commented-" + postId).children(".dropup").remove();
+                    } else {
+                        self.css("color", "");
+                        $("#like-count-" + postId).text(likeCount + " Thích");
+                        var listLiked = "";
+                        $.each(likes, function (index, value) {
+                            listLiked += "<li>"
+                                + "<a href = '/Account/UserProfile/" + value.User.UserId + "'>"
+                                + "<img class='user-avt mr-3' src='/UploadImage/Avatar/" + value.User.Avatar + "' alt='' style=' width:40px; height:40px'>"
+                                + "<span class='fullname' style='display: inline;'>" + value.User.FirstName + " " + value.User.LastName + "</span > "
+                                + "</a>"
+                                + "</li>"
+                        })
+                        dropdownLiked.append(listLiked);
+                    }
                 }
             },
             error: function (err) {
@@ -119,9 +149,9 @@
                     if ($(".commentCount[data-id=" + postId + "]").length > 0) {
                         $(".commentCount[data-id=" + postId + "]").text(parseInt($(".commentCount[data-id=" + postId + "]").text().charAt(0)) + 1 + " Bình luận");
                     } else {
-                        $(".count-liked-commented[data-id=" + postId + "]").append("<a href='#' class='commentCount' data-id='" + postId + "' style='float: right'>1 Bình luận</a>");
+                        $("#count-liked-commented-" + postId).append("<a href='#' class='commentCount' data-id='" + postId + "' style='float: right'>1 Bình luận</a>");
                     }
-                    
+
                 }
             },
             error: function (err) {

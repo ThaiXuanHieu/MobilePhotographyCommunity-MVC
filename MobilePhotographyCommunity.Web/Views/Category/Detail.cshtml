@@ -86,7 +86,7 @@
                             <div class="post-caption">@item.Caption</div>
                             <div class="post-img"><img class="photo" src="~/UploadImage/Photo/@item.Image" alt="" data-id="@item.PostId" width="100%"></div>
                         </div>
-                        <div class="count-liked-commented" data-id="@item.PostId" style="margin-top: 10px">
+                        <div id="count-liked-commented-@item.PostId" data-id="@item.PostId" style="margin-top: 10px">
                             @{
                                 var listLike = item.Likes.Where(x => x.PostId == item.PostId);
                                 var listComment = item.Comments.Where(x => x.PostId == item.PostId);
@@ -95,13 +95,13 @@
                                 if (listLike.Count() > 0)
                                 {
                                     <div class="dropup">
-                                        <a href="#" style="float:left" data-toggle="dropdown" data-id="@item.PostId" class="like-count">@likeCount Thích</a>
-                                        <ul class="dropdown-menu">
+                                        <a href="#" style="float:left" data-toggle="dropdown" data-id="@item.PostId" id="like-count-@item.PostId">@likeCount Thích</a>
+                                        <ul class="dropdown-menu" id="dropdown-liked-@item.PostId" data-id="@item.PostId">
                                             @foreach (var i in listLike)
                                             {
                                                 <li>
                                                     <a href="/Account/UserProfile/@i.User.UserId">
-                                                        <img class="user-avt" src="~/UploadImage/Avatar/@i.User.Avatar" alt=""
+                                                        <img class="user-avt mr-3" src="~/UploadImage/Avatar/@i.User.Avatar" alt=""
                                                              style=" width:40px; height:40px">
                                                         <span class="fullname" style="display: inline;">@i.User.FirstName @i.User.LastName</span>
                                                     </a>
