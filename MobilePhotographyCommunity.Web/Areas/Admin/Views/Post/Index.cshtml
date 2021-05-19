@@ -104,19 +104,23 @@
     @if (ViewBag.PageNum % 2 == 0)
     {
         <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = 0, pageSize = 5 })">Trước</a></li>
             @for (int i = 0; i < ViewBag.PageNum / 5; i++)
             {
                 <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
             }
+            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
         </ul>
     }
     else
     {
         <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = 0, pageSize = 5 })">Trước</a></li>
             @for (int i = 0; i < (ViewBag.PageNum / 5) + 1; i++)
             {
                 <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
             }
+            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
         </ul>
     }
 

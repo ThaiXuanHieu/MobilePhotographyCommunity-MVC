@@ -163,5 +163,10 @@ namespace MobilePhotographyCommunity.Web.Controllers
             Session.Clear();
             return RedirectToAction("Index", "Account");
         }
+
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
     }
 }

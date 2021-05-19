@@ -15003,7 +15003,7 @@
     <Content Include="Assets\client\img\page\bphone-camera.png" />
     <Content Include="Assets\client\img\page\camera-phone.png" />
     <Content Include="Assets\client\img\page\frame-phone.png" />
-    <Content Include="Assets\client\img\page\icon.png" />
+    <Content Include="Assets\client\img\page\icon-camera.jpg" />
     <Content Include="Assets\client\img\page\logo.png" />
     <Content Include="Assets\client\img\post-img\2ban-chuonchuon.jpg" />
     <Content Include="Assets\client\img\post-img\baibien.jpg" />
@@ -15250,6 +15250,7 @@
     <Content Include="Views\Category\Detail.cshtml" />
     <Content Include="Views\Challenge\Index.cshtml" />
     <Content Include="Views\Shared\_MikesModal.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

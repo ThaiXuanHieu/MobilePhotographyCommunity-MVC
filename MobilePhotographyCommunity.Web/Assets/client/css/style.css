@@ -616,18 +616,17 @@ label {
     }
 }
 
-.form-center {
-    width: 350px;
-    margin: 0 auto;
-    padding-top: 200px;
+.forgot-password-container {
+    margin-top: 200px;
+    
 }
 
-    .form-center form {
-        background-color: white;
-        border-radius: 5px;
-        padding: 30px;
-        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
-    }
+.form-center {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15);
+    padding: 30px;
+}
 
 .btn-center {
     text-align: center;

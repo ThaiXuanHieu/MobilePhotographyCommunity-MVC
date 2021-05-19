@@ -11,7 +11,7 @@ namespace MobilePhotographyCommunity.Web.SignalR.Hubs
         public void Send(string name, string message)
         {
             IHubContext context = GlobalHost.ConnectionManager.GetHubContext<MPCHub>();
-            context.Clients.All.displayStatus();
+            context.Clients.All.sendComment();
         }
     }
 }

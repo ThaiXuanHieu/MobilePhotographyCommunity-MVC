@@ -193,17 +193,20 @@
                                             <span>&nbsp;·&nbsp;Trả lời</span>
                                             <span>&nbsp;·&nbsp;@Convert.ToDateTime(i.CreatedTime).ToString("dd/MM/yyyy")</span>
                                         </div>
-                                        <div class="comment-option">
-                                            <div class="dropdown post-option" style="float: right;">
-                                                <a class="dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="fal fa-ellipsis-v fa-2x"></i>
-                                                </a>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
-                                                    <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
-                                                </ul>
+                                        @if (Convert.ToInt32(Session[UserSession.UserId]) == i.User.UserId)
+                                        {
+                                            <div class="comment-option">
+                                                <div class="dropdown post-option" style="float: right;">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fal fa-ellipsis-v fa-2x"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
+                                        }
                                     </div>
                                 }
                             </div>
@@ -235,6 +238,8 @@
     <script src="~/Assets/client/js/mikes-modal.min.js"></script>
     <script src="~/Scripts/controller/homeController.js"></script>
     <script src="~/Scripts/controller/common.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     <script>
         function deleteImgPreview() {
             $("#img-preview").attr("src", "");
