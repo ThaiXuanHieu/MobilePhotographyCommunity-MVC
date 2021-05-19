@@ -14,8 +14,20 @@
             <i class="fas fa-check"></i> @ViewBag.Message
         </div>
     }
-    <div class="row">
-        <div class="col-md-12 mt-2">
+    <div class="row pt-2">
+        <div class="col-md-4 form-group">
+            <select class="form-control">
+                <option>--Sắp xếp--</option>
+                <option>Lượt tương tác cao nhất</option>
+                <option>Lượt tương tác thấp nhất</option>
+                <option>Ngày thêm mới nhất</option>
+                <option>Ngày thêm cũ nhất</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
             <div class="search-box float-right">
                 <form action="" method="post">
                     <div class="input-group mb-3">
@@ -104,23 +116,19 @@
     @if (ViewBag.PageNum % 2 == 0)
     {
         <ul class="pagination">
-            <li class="page-item disabled"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = 0, pageSize = 5 })">Trước</a></li>
             @for (int i = 0; i < ViewBag.PageNum / 5; i++)
             {
                 <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
             }
-            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
         </ul>
     }
     else
     {
         <ul class="pagination">
-            <li class="page-item disabled"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = 0, pageSize = 5 })">Trước</a></li>
             @for (int i = 0; i < (ViewBag.PageNum / 5) + 1; i++)
             {
                 <li class="page-item"><a class="page-link" href="@Url.Action("Index", "/Post", new { pageIndex = i, pageSize = 5 })">@(i + 1)</a></li>
             }
-            <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
         </ul>
     }
 

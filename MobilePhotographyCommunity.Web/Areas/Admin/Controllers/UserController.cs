@@ -44,6 +44,7 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
 
         public ActionResult Search(string str)
         {
+            ViewBag.SearchString = str;
             var users = userService.Search(str);
             return View("Index", users);
         }

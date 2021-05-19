@@ -15251,6 +15251,7 @@
     <Content Include="Views\Challenge\Index.cshtml" />
     <Content Include="Views\Shared\_MikesModal.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
