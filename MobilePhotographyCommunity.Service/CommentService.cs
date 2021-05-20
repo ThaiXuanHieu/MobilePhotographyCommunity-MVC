@@ -14,6 +14,7 @@ namespace MobilePhotographyCommunity.Service
         Comment GetById(int id);
         IEnumerable<Comment> GetByPostId(int id);
         void Add(Comment model);
+        void Update(Comment model);
     }
 
     public class CommentService : ICommentService
@@ -40,6 +41,11 @@ namespace MobilePhotographyCommunity.Service
         public IEnumerable<Comment> GetByPostId(int id)
         {
             return commentRepository.GetByPostId(id);
+        }
+
+        public void Update(Comment model)
+        {
+            commentRepository.Update(model);
         }
     }
 }

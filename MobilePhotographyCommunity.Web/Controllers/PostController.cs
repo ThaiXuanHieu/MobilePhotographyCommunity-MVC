@@ -203,26 +203,56 @@ namespace MobilePhotographyCommunity.Web.Controllers
 
         }
 
-        public JsonResult Comment(int postId, string content)
+        public JsonResult Comment(int commentId, int postId, string content)
         {
             bool status = false;
-            var comment = new Comment();
-            comment.PostId = postId;
-            comment.Content = content;
-            comment.CreatedBy = Convert.ToInt32(Session[UserSession.UserId]);
-            comment.CreatedTime = DateTime.Now;
-            
+            if(commentId == 0)
+            {
+                var comment = new Comment();
+                comment.PostId = postId;
+                comment.Content = content;
+                comment.CreatedBy = Convert.ToInt32(Session[UserSession.UserId]);
+                comment.CreatedTime = DateTime.Now;
+
+                try
+                {
+                    commentService.Add(comment);
+                    status = true;
+                }
+                catch (Exception)
+                {
+                    status = false;
+                }
+
+                comment.User = userService.GetById(Convert.ToInt32(comment.CreatedBy));
+                return Json(new { data = comment, status = status });
+            }
+
+            var commentUpdate = commentService.GetById(commentId);
+            commentUpdate.CommentId = commentId;
+            commentUpdate.Content = content;
+            commentUpdate.PostId = postId;
+            commentUpdate.ModifiedBy = Convert.ToInt32(Session[UserSession.UserId]);
+            commentUpdate.ModifiedTime = DateTime.Now;
+
             try
             {
-                commentService.Add(comment);
+                commentService.Update(commentUpdate);
                 status = true;
             }
             catch (Exception)
             {
                 status = false;
             }
-            comment.User = userService.GetById(Convert.ToInt32(comment.CreatedBy));
-            return Json(new { data = comment, status = status });
+
+            commentUpdate.User = userService.GetById(Convert.ToInt32(commentUpdate.CreatedBy));
+            return Json(new { data = commentUpdate, status = status });
+
+        }
+
+        public JsonResult GetComment(int id)
+        {
+            return Json(new { data = commentService.GetById(id), status = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -164,7 +164,7 @@
                                     <div class="form-group rg-comment" style="position: relative">
                                         <input type="text" name="" id="" placeholder="Viết bình luận..."
                                                class="comment-content-inp form-control" data-id="@item.PostId">
-                                        <a class="btn btn-primary btn-send-comment" data-id="@item.PostId" style="position: absolute; top: 0; right: 0;">Đăng</a>
+                                        <a class="btn btn-primary btn-send-comment" data-id="@item.PostId" data-commentId="0" style="position: absolute; top: 0; right: 0;">Đăng</a>
                                     </div>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
                                                 <a href="/Account/UserProfile/@i.User.UserId">
                                                     <h4 class="name">@i.User.FirstName @i.User.LastName</h4>
                                                 </a>
-                                                <span>
+                                                <span data-id="@i.CommentId">
                                                     @i.Content
                                                 </span>
                                             </div>
@@ -201,8 +201,8 @@
                                                         <i class="fal fa-ellipsis-v fa-2x"></i>
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
-                                                        <li><a href="#"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                                        <li><a href="#" class="btn-edit-comment" data-id="@i.CommentId"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                                        <li><a href="#" class="btn-delete-comment" data-id="@i.CommentId"><i class="fal fa-trash-alt"></i> Xóa</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
