@@ -254,5 +254,11 @@ namespace MobilePhotographyCommunity.Web.Controllers
         {
             return Json(new { data = commentService.GetById(id), status = true }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult DeleteComment(int id)
+        {
+            commentService.Delete(id);
+            return Json(new { data = id, status = true }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

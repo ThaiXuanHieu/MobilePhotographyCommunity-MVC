@@ -141,8 +141,8 @@
                             + "<i class='fal fa-ellipsis-v fa-2x'></i>"
                             + "</a>"
                             + "<ul class='dropdown-menu dropdown-menu-right'>"
-                            + "<li><a href='#' class='btn-edit-comment' data-id='" + data.CommentId + "'><i class='fal fa-edit'></i> Chỉnh sửa</a></li>"
-                            + "<li><a href='#' class='btn-delete-comment' data-id='" + data.CommentId + "'><i class='fal fa-trash-alt'></i> Xóa</a></li>"
+                            + "<li><a href='javascript:void(0)' class='btn-edit-comment' data-id='" + data.CommentId + "'><i class='fal fa-edit'></i> Chỉnh sửa</a></li>"
+                            + "<li><a href='javascript:void(0)' class='btn-delete-comment' data-id='" + data.CommentId + "'><i class='fal fa-trash-alt'></i> Xóa</a></li>"
                             + "</ul>"
                             + "</div>"
                             + "</div>"
@@ -178,6 +178,7 @@
                         const comment = response.data;
                         $("span[data-id=" + commentId + "]").text(comment.Content);
                         $(".comment-content-inp[data-id = " + postId + "]").val("");
+                        $(".btn-send-comment[data-id = " + comment.PostId + "]").attr("data-commentId", "0");
                     }
                 },
                 error: function (err) {
@@ -207,6 +208,24 @@
             }
         });
         
+    });
+
+    $(".btn-delete-comment").on("click", function () {
+        const commentId = $(this).data("id");
+        $.ajax({
+            type: "GET",
+            url: "/Post/DeleteComment",
+            data: {
+                id: commentId,
+            },
+            dataType: "json",
+            success: function (response) {
+                if (response.status) {
+                    const commentId = response.data;
+                    $(".other-comment[data-id=" + commentId + "]").remove();
+                }
+            }
+        });
     });
 
 });

@@ -171,7 +171,7 @@
                             <div class="all-comment" data-id="@item.PostId">
                                 @foreach (var i in listComment)
                                 {
-                                    <div class="other-comment">
+                                    <div class="other-comment" data-id="@i.CommentId">
                                         <div class="detail-comment">
                                             <div class="commentedby">
                                                 <a href="/Account/UserProfile/@i.User.UserId">
@@ -201,8 +201,8 @@
                                                         <i class="fal fa-ellipsis-v fa-2x"></i>
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
-                                                        <li><a href="#" class="btn-edit-comment" data-id="@i.CommentId"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
-                                                        <li><a href="#" class="btn-delete-comment" data-id="@i.CommentId"><i class="fal fa-trash-alt"></i> Xóa</a></li>
+                                                        <li><a href="javascript:void(0)" class="btn-edit-comment" data-id="@i.CommentId"><i class="fal fa-edit"></i> Chỉnh sửa</a></li>
+                                                        <li><a href="javascript:void(0)" class="btn-delete-comment" data-id="@i.CommentId"><i class="fal fa-trash-alt"></i> Xóa</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
