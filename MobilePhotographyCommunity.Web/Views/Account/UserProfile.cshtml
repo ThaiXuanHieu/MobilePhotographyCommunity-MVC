@@ -25,14 +25,14 @@
 
                     </div>
                     <div class="status-friend">
-                        <a href="#" class="btn btn-primary"><i class="fal fa-user-plus"></i> Kết bạn</a>
+                        @*<a href="#" class="btn btn-primary"><i class="fal fa-user-plus"></i> Kết bạn</a>*@
                         @*<a href="#" class="btn btn-info">
-                            <i class="fal fa-sign-out-alt"></i> Đã gửi lời mời kết
-                            bạn
-                        </a>
-                        <a href="#" class="btn btn-default"><i class="fal fa-check"></i> Bạn bè</a>
-                        <a href="#" class="btn btn-primary"><i class="fal fa-signal"></i> Theo dõi</a>
-                        <a href="#" class="btn btn-default"><i class="fal fa-check"></i> Đang theo dõi</a>*@
+                                <i class="fal fa-sign-out-alt"></i> Đã gửi lời mời kết
+                                bạn
+                            </a>
+                            <a href="#" class="btn btn-default"><i class="fal fa-check"></i> Bạn bè</a>
+                            <a href="#" class="btn btn-primary"><i class="fal fa-signal"></i> Theo dõi</a>
+                            <a href="#" class="btn btn-default"><i class="fal fa-check"></i> Đang theo dõi</a>*@
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
@@ -84,7 +84,7 @@
                                     <div class="modal-body">
                                         <form action="/Account/UpdateProfile" method="post" id="frm-userProfile" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <input type="hidden" name="UserId" value="@Session[UserSession.UserId]"/>
+                                                <input type="hidden" name="UserId" value="@Session[UserSession.UserId]" />
                                             </div>
                                             <div class="row text-center">
                                                 <div class="avt-box">
@@ -194,7 +194,15 @@
 
                 </div>
                 <div id="album" class="tab-pane fade">
-
+                    <div class="d-flex" style="justify-content: flex-start; padding: 0 90px">
+                        <div class="">
+                            <div class="photo-box">
+                                <a href="javascript:void(0)"><i class="fal fa-plus"></i> Tạo album</a>
+                            </div>
+                        </div>
+                        <div></div>
+                        <div></div>
+                    </div>
                 </div>
             </div>
         </div>

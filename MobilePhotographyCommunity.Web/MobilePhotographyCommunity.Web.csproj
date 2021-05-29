@@ -15191,6 +15191,7 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\controller\admin\category.js" />
+    <Content Include="Scripts\controller\admin\post.js" />
     <Content Include="Scripts\controller\categoryController.js" />
     <Content Include="Scripts\controller\challenge.js" />
     <Content Include="Scripts\controller\common.js" />

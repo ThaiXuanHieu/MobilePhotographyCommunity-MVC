@@ -16,13 +16,15 @@
     }
     <div class="row pt-2">
         <div class="col-md-4 form-group">
-            <select class="form-control">
-                <option>--Sắp xếp--</option>
-                <option>Lượt tương tác cao nhất</option>
-                <option>Lượt tương tác thấp nhất</option>
-                <option>Ngày thêm mới nhất</option>
-                <option>Ngày thêm cũ nhất</option>
-            </select>
+            <form action="/Admin/Post/SortPost" method="post" id="form-sort-post">
+                <select class="form-control" name="type" id="sort-post">
+                    <option value="0">--Sắp xếp--</option>
+                    <option value="1">Lượt tương tác cao nhất</option>
+                    <option value="2">Lượt tương tác thấp nhất</option>
+                    <option value="3">Ngày thêm mới nhất</option>
+                    <option value="4">Ngày thêm cũ nhất</option>
+                </select>
+            </form>
         </div>
         <div class="col-md-4">
 
@@ -67,7 +69,7 @@
                                  style="width: 40px; height: 40px; border-radius: 50%;">
                             <span>@item.User.FirstName @item.User.LastName</span>
                         </td>
-                        <td>@Convert.ToDateTime(item.CreatedTime).ToString("dd/MM/yyyy")</td>
+                        <td>@Convert.ToDateTime(item.CreatedTime).ToString("dd/MM/yyyy hh:mm")</td>
                         <td><input type="checkbox" name="" id=""></td>
                         <td>
                             @if (item.CategoryId != null)
@@ -140,5 +142,6 @@
             $('#msgAlert').fadeOut('slow');
         }, 2000);
     </script>
+    <script src="~/Scripts/controller/admin/post.js"></script>
 }
 

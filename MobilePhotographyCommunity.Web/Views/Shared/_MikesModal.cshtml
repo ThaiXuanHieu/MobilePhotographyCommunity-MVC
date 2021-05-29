@@ -17,7 +17,7 @@
             <a href="#" style="float:left" id="count-like"> </a>
             <a href="#" style="float:right" id="count-comment"> </a>
         </div>
-        <div class="post-action">
+        <div class="post-action" style="clear:both">
             <div class="row" style="text-align: center;">
                 <div class="col-xs-4"><a class="btn"><i class="fal fa-thumbs-up"></i> Thích</a></div>
                 <div class="col-xs-4">
@@ -96,6 +96,13 @@
                         $("#avt-auth-modal").attr("src", "/UploadImage/Avatar/" + data.User.Avatar);
                         $("#post-caption-modal").text(data.Caption);
                         $("#created-date-modal").text(GetDate(data.CreatedTime));
+                        if (data.Likes.length <= 0 || data.Comments.length <= 0) {
+
+                        } else {
+                            $("#count-like").text(data.Likes.length + " Thích");
+                            $("#count-comment").text(data.Comments.length + " Bình luận");
+                        }
+                        
                         var otherComment = "";
                         $.each(data.Comments, function (i, item) {
                             otherComment += "<div class='other-comment'>"

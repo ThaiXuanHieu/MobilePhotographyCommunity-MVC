@@ -101,6 +101,7 @@
     <Compile Include="ViewModel\LikeViewModel.cs" />
     <Compile Include="ViewModel\PostCategoryViewModel.cs" />
     <Compile Include="ViewModel\PostViewModel.cs" />
+    <Compile Include="ViewModel\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModel\UserProfileVm.cs" />
     <Compile Include="ViewModel\UserVm.cs" />
   </ItemGroup>

@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
 
-    $(".btn-delete-post").on("click", function () {
+    $(".btn-delete-post").on("click", function (e) {
+        e.preventDefault();
         var postId = $(this).data("id");
+        var post = $("#" + postId);
         $.ajax({
             type: "POST",
             url: "/Post/DeletePost",
@@ -11,7 +13,7 @@
             dataType: "json",
             success: function (response) {
                 if (response.status) {
-                    window.location.reload();
+                    post.remove();
                 } else {
                     console.log("Lỗi");
                 }

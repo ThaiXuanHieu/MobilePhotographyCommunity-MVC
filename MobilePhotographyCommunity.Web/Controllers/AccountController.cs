@@ -169,8 +169,30 @@ namespace MobilePhotographyCommunity.Web.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult ResetPassword()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(ResetPasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = userService.GetById(Convert.ToInt32(Session[UserSession.UserId]));
+            if (!user.PasswordHash.Equals(PasswordHashMD5.MD5Hash(model.OldPassword)))
+            {
+                ModelState.AddModelError("", "Mật khẩu hiện tại không chính xác");
+                return View();
+            }
+
+            user.PasswordHash = PasswordHashMD5.MD5Hash(model.NewPassword);
+            userService.Update(user);
+            ViewBag.ResetPwSuccess = "Đổi mật khẩu thành công";
             return View();
         }
     }
