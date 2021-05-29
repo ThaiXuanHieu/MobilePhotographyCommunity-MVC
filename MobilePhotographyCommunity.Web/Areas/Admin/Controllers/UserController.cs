@@ -1,4 +1,5 @@
-﻿using MobilePhotographyCommunity.Service;
+﻿using MobilePhotographyCommunity.Data.DomainModel;
+using MobilePhotographyCommunity.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,12 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private readonly IUserService userService;
-        
-        public UserController(IUserService userService)
+        private readonly IUserRoleService userRoleService;
+
+        public UserController(IUserService userService, IUserRoleService userRoleService)
         {
             this.userService = userService;
+            this.userRoleService = userRoleService;
         }
 
         // GET: Admin/User
@@ -47,6 +50,17 @@ namespace MobilePhotographyCommunity.Web.Areas.Admin.Controllers
             ViewBag.SearchString = str;
             var users = userService.Search(str);
             return View("Index", users);
+        }
+
+        public ActionResult AssignRole(int id)
+        {
+            var user = userService.GetById(id);
+            var userRole = new UserRole();
+            userRole.UserId = id;
+            userRole.RoleId = 1;
+            userRoleService.Add(userRole);
+            TempData["result"] = "Gán quyền thành công";
+            return RedirectToAction("Index");
         }
     }
 }

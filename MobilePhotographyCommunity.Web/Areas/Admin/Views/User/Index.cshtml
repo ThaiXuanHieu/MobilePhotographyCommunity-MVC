@@ -65,9 +65,34 @@
                         <td>
                             <a href="~/Account/UserProfile/@item.UserId" class="btn btn-info" target="_blank" title="Chi tiết"><i class="fal fa-info"></i></a>
                             <a data-toggle="modal" data-target="#delete-@item.UserId" class="btn btn-danger" title="Xóa"><i class="fal fa-trash-alt"></i></a>
-                            @*<a href="" class="btn btn-success"><i class="fal fa-user-shield"></i></a>*@
+                            <a data-toggle="modal" data-target="#assign-@item.UserId-@item.FirstName.Replace(" ", "")@item.LastName.Replace(" ", "")" class="btn btn-success" title="Gán quyền quản trị"><i class="fal fa-user-shield"></i></a>
                         </td>
                     </tr>
+                    <!-- The Modal -->
+                    <div class="modal fade" id="assign-@item.UserId-@item.FirstName.Replace(" ", "")@item.LastName.Replace(" ", "")">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Xác nhận</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    Gán @item.FirstName @item.LastName làm quản trị viên?
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <a href="/Admin/User/AssignRole/@item.UserId" class="btn btn-success">Đồng ý</a>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Hủy bỏ</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <!-- The Modal -->
                     <div class="modal fade" id="delete-@item.UserId">
                         <div class="modal-dialog">
