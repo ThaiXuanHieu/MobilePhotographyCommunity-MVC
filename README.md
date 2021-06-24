@@ -21,7 +21,5 @@
 ![home](https://user-images.githubusercontent.com/48479522/123201698-67d7f800-d4dd-11eb-9d6e-82314ce68d80.png)
 3. Category
 ![category](https://user-images.githubusercontent.com/48479522/123201700-69a1bb80-d4dd-11eb-81e2-7f492c9668b4.png)
-4. Challenge
-![challenge](https://user-images.githubusercontent.com/48479522/94520403-6af7cd80-0256-11eb-9e08-2d5d3debcae4.png)
-5. User Profile
+4. User Profile
 ![profile](https://user-images.githubusercontent.com/48479522/123201704-6b6b7f00-d4dd-11eb-8340-03f1391f3c00.png)
