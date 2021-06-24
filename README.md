@@ -18,10 +18,10 @@
 1. Login & Register
 ![login-register](https://user-images.githubusercontent.com/48479522/94520344-4dc2ff00-0256-11eb-87e4-ab320daf10df.png)
 2. Home
-![home](https://user-images.githubusercontent.com/48479522/94520391-66331980-0256-11eb-853c-8b3297ad6b8a.png)
+![home](https://user-images.githubusercontent.com/48479522/123201698-67d7f800-d4dd-11eb-9d6e-82314ce68d80.png)
 3. Category
-![category](https://user-images.githubusercontent.com/48479522/94520395-68957380-0256-11eb-8a3e-226a6407fccb.png)
+![category](https://user-images.githubusercontent.com/48479522/123201700-69a1bb80-d4dd-11eb-81e2-7f492c9668b4.png)
 4. Challenge
 ![challenge](https://user-images.githubusercontent.com/48479522/94520403-6af7cd80-0256-11eb-9e08-2d5d3debcae4.png)
 5. User Profile
-![user-profile](https://user-images.githubusercontent.com/48479522/94520406-6cc19100-0256-11eb-8488-2074a55de09a.png)
+![profile](https://user-images.githubusercontent.com/48479522/123201704-6b6b7f00-d4dd-11eb-8340-03f1391f3c00.png)
